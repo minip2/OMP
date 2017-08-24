@@ -6,6 +6,7 @@ public class BuyerDM {
 	private int no;
 	private String productId;
 	private int buysAmount;
+	private int totalPrice;
 	private String buyNo;
 	private Date buyDate;
 	private String name;
@@ -15,6 +16,12 @@ public class BuyerDM {
 	private String adress;
 	
 	
+	public int getTotalPrice() {
+		return totalPrice;
+	}
+	public void setTotalPrice(int tatalPrice) {
+		this.totalPrice = tatalPrice;
+	}
 	public String getId() {
 		return id;
 	}

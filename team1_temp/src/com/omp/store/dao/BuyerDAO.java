@@ -20,9 +20,9 @@ BuyerDM pdm = new BuyerDM();
 		try {
 			con = ConnectionPool.getConnection();
 			StringBuffer sql = new StringBuffer();
-			sql.append("b.select buy_no, ");
-			sql.append("b.product_id , ");
-			sql.append("b.buy_amount , ");
+			sql.append("select b.buy_no, ");
+			sql.append("p.product_id , ");
+			sql.append("b.buys_amount , ");
 			sql.append("b.buy_date , ");
 			sql.append("b.id  ");
 			sql.append("  from t97_buyer b,t97_Product p");
@@ -32,11 +32,11 @@ BuyerDM pdm = new BuyerDM();
 			
 			while(rs.next()) {
 				BuyerDM dm = new BuyerDM();
-				dm.setBuyNo(rs.getString("buy_no"));
-				dm.setProductId(rs.getString("product_id"));
-				dm.setBuysAmount(rs.getInt("buy_amount"));
-				dm.setBuyDate(rs.getDate("buy_date"));
-				dm.setId(rs.getString("id"));
+				dm.setBuyNo(rs.getString("b.buy_no"));
+				dm.setProductId(rs.getString("p.product_id"));
+				dm.setBuysAmount(rs.getInt("b.buy_amount"));
+				dm.setBuyDate(rs.getDate("b.buy_date"));
+				dm.setId(rs.getString("b.id"));
 				list.add(dm);
 			}
 			
@@ -56,25 +56,36 @@ BuyerDM pdm = new BuyerDM();
 		try {
 			con = ConnectionPool.getConnection();
 			StringBuffer sql = new StringBuffer();
-			sql.append("select buy_no, ");
-			sql.append("category_val, ");
-			sql.append("product_name, ");
-			sql.append("photo_path, ");
-			sql.append("quantity, ");
-			sql.append("price ");
-			sql.append("  from t97_Product ");
-			sql.append(" where buy_no = ? ");
+			sql.append("select b.buy_no, ");
+			sql.append("p.product_id, ");
+			sql.append("b.buys_amount, ");
+			sql.append("b.buy_date, ");
+			sql.append("b.id, ");
+			sql.append("p.price * b.buys_amount as total_price , ");
+			sql.append("b.name, ");
+			sql.append("b.phon_number, ");
+			sql.append("b.email, ");
+			sql.append("b.adress, ");
+			sql.append("b.buy_date, ");
+			sql.append(" from t97_buyer b,t97_Product p ");
+			sql.append(" where buy_no = ? and b.product_id = p.product_id");
 			stmt=con.prepareStatement(sql.toString());
 			stmt.setString(1, buyNo);
 			ResultSet rs = stmt.executeQuery();
 			
 			if(rs.next()) {
 				BuyerDM dm = new BuyerDM();
-				dm.setProductId(rs.getString("buy_no"));
-				dm.setCategoryVal(rs.getInt("category_val"));
-				dm.setProductName(rs.getString("product_name"));
-				dm.setQuantity(rs.getInt("quantity"));
-				dm.setPrice(rs.getInt("price"));
+				dm.setBuyNo(rs.getString("b.buy_no"));
+				dm.setProductId(rs.getString("p.product_id"));
+				dm.setBuysAmount(rs.getInt("b.buys_amount"));
+				dm.setBuyDate(rs.getDate("b.buy_date"));
+				dm.setId(rs.getString("b.id"));
+				dm.setTotalPrice(rs.getInt("total_price"));
+				dm.setName(rs.getString("b.name"));
+				dm.setPhonNumber(rs.getString("b.phon_number"));
+				dm.setEmail(rs.getString("b.email"));
+				dm.setAdress(rs.getString("b.adress"));
+				dm.setBuyDate(rs.getTimestamp("b.buy_date"));
 				return dm;
 			}
 			else {return null;}
@@ -94,26 +105,32 @@ BuyerDM pdm = new BuyerDM();
 	try {
 		con = ConnectionPool.getConnection();
 		StringBuffer sql = new StringBuffer();
-		sql.append("insert into t97_Product(buy_no, ");
-		sql.append("category_val, ");
-		sql.append("product_name, ");
-		sql.append("photo_path, ");
-		sql.append("quantity, ");
-		sql.append("price) ");
-		sql.append("values(?, ");	//상품코드(스트링)
-		sql.append("?, ");				//카테고리 밸류(인트)
-		sql.append("?, ");			//상품명(스트링)
-		sql.append("?, ");		//사진경로(스트링)
-		sql.append("?, ");				//총수량(인트)
-		sql.append("?) ");				//가격(인트)
+		sql.append("insert into t97_buyer(buy_no, ");
+		sql.append("product_id, ");
+		sql.append("buys_amount, ");
+		sql.append("id, ");
+		sql.append("name, ");
+		sql.append("phon_number) ");
+		sql.append("email) ");
+		sql.append("adress) ");
+		sql.append("values(?, ");	//주문번호(스트링)
+		sql.append("?, ");				//상품코드(스트링)
+		sql.append("?, ");			//구매갯수(인트)
+		sql.append("?, ");		//아이디(스트링)
+		sql.append("?, ");				//구매자이름(인트)
+		sql.append("?) ");				//폰번호(인트)
+		sql.append("?) ");				//이메일(인트)
+		sql.append("?) ");				//배송지(인트)
 		
 		stmt = con.prepareStatement(sql.toString());
-		stmt.setString(1, dm.getProductId());
-		stmt.setInt(2, dm.getCategoryVal());
-		stmt.setString(3, dm.getProductName());
-		stmt.setString(4, dm.getPhotoPath());
-		stmt.setInt(5, dm.getQuantity());
-		stmt.setInt(6, dm.getPrice());
+		stmt.setString(1, dm.getBuyNo());
+		stmt.setString(2, dm.getProductId());
+		stmt.setInt(3, dm.getBuysAmount());
+		stmt.setString(4, dm.getId());
+		stmt.setString(5, dm.getName());
+		stmt.setString(6, dm.getPhonNumber());
+		stmt.setString(7, dm.getEmail());
+		stmt.setString(8, dm.getAdress());
 		stmt.executeUpdate();
 		
 	} catch (Exception e) {
@@ -131,21 +148,19 @@ BuyerDM pdm = new BuyerDM();
 		try {
 			con = ConnectionPool.getConnection();
 			StringBuffer sql = new StringBuffer();
-			sql.append("update t97_Product ");
-			sql.append("   set product_name = ?, ");
-			sql.append("       category_val = ?, ");
-			sql.append("       price = ?, ");
-			sql.append("       photo_path = ?, ");
-			sql.append("       quantity = ? " );
+			sql.append("update t97_buyer ");
+			sql.append("   set buys_amount = ?, ");
+			sql.append("       phon_number = ?, ");
+			sql.append("       email = ?, ");
+			sql.append("       adress = ?, ");
 			sql.append(" where buy_no = ? ");
 			
 			stmt = con.prepareStatement(sql.toString());
-			stmt.setString(1, domain.getProductName());
-			stmt.setInt(2, domain.getCategoryVal());
-			stmt.setInt(3, domain.getPrice());
-			stmt.setString(4, domain.getPhotoPath());
-			stmt.setInt(5, domain.getQuantity());
-			stmt.setString(6, domain.getProductId());
+			stmt.setInt(1, domain.getBuysAmount());
+			stmt.setString(2, domain.getPhonNumber());
+			stmt.setString(3, domain.getEmail());
+			stmt.setString(4, domain.getAdress());
+			stmt.setString(5, domain.getBuyNo());
 			int no = stmt.executeUpdate();
 			
 			
@@ -166,7 +181,7 @@ BuyerDM pdm = new BuyerDM();
 				con = ConnectionPool.getConnection();
 				StringBuffer sql = new StringBuffer();
 				sql.append("delete " );
-				sql.append("  from t97_Product " );
+				sql.append("  from t97_buyer " );
 				sql.append(" where buy_no = ? " );
 				stmt = con.prepareStatement(sql.toString());
 				stmt.setString(1, id);
