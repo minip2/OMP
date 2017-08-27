@@ -7,13 +7,20 @@ public class CommentDM {
 	private String content;
 	private String id;
 	private int no;
-	private int categoryGroup;
+	private int groupVal;
+	private String nickname;
 	
-	public int getCategoryGroup() {
-		return categoryGroup;
+	public String getNickname() {
+		return nickname;
 	}
-	public void setCategoryGroup(int categoryGroup) {
-		this.categoryGroup = categoryGroup;
+	public void setNickname(String nickname) {
+		this.nickname = nickname;
+	}
+	public int getGroupVal() {
+		return groupVal;
+	}
+	public void setGroupVal(int groupVal) {
+		this.groupVal = groupVal;
 	}
 	public Date getRegDate() {
 		return regDate;

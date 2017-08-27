@@ -58,9 +58,9 @@ public class DictionaryDAO {
 			con = ConnectionPool.getConnection();
 
 			StringBuffer sql = new StringBuffer();
-			sql.append("select version, mod_date, id ,detail ");
+			sql.append("select version, mod_date, id, detail, nickname ");
 			sql.append("  from t97_dictionary ");
-			sql.append(" order by mod_date ");
+			sql.append(" order by version desc ");
 			stmt = con.prepareStatement(sql.toString());
 			ResultSet rs = stmt.executeQuery();
 			
@@ -70,6 +70,7 @@ public class DictionaryDAO {
 				dic.setModDate(rs.getDate("mod_date"));
 				dic.setId(rs.getString("id"));
 				dic.setDetail(rs.getString("detail"));
+				dic.setNickname(rs.getString("nickname"));
 				list.add(dic);
 			}
 			
@@ -91,7 +92,7 @@ public class DictionaryDAO {
 			con = ConnectionPool.getConnection();
 
 			StringBuffer sql = new StringBuffer();
-			sql.append("select dog_val, version, id, detail, mod_date ");
+			sql.append("select dog_val, version, id, detail, mod_date, nickname ");
 			sql.append("  from t97_dictionary ");
 			sql.append(" where version = ? ");
 			stmt = con.prepareStatement(sql.toString());
@@ -104,6 +105,7 @@ public class DictionaryDAO {
 				dic.setId(rs.getString("id"));
 				dic.setDetail(rs.getString("detail"));
 				dic.setModDate(rs.getTimestamp("mod_date"));
+				dic.setNickname(rs.getString("nickname"));
 				return dic;
 			}
 		} catch (Exception e) {
@@ -115,7 +117,7 @@ public class DictionaryDAO {
 		return null;
 	}
 	
-	// 현재 입력받은 디테일 정보 저장
+	// 현재 입력받은 디테일 정보 사전도메인에 저장
 	public void insertDetail(DictionaryDM dic) {
 		Connection con = null;
 		PreparedStatement stmt = null;
@@ -123,13 +125,15 @@ public class DictionaryDAO {
 			con = ConnectionPool.getConnection();
 
 			StringBuffer sql = new StringBuffer();
-			sql.append("insert into t97_dictionary(dog_val, version, id, detail ");
-			sql.append("values (?, ?, ?, ? ) ");
+			sql.append("insert into t97_dictionary(mod_date, dog_val, version,"
+					+ " id, detail, nickname ");
+			sql.append("values (sysdate, ?, ?, ?, ?, ? ) ");
 			stmt = con.prepareStatement(sql.toString());
 			stmt.setInt(1, dic.getDogVal());
 			stmt.setString(2, dic.getVersion());
 			stmt.setString(3, dic.getId());
 			stmt.setString(4, dic.getDetail());
+			stmt.setString(5, dic.getNickname());
 			
 			stmt.executeUpdate();
 			
@@ -140,6 +144,8 @@ public class DictionaryDAO {
 			ConnectionPool.releaseConnection(con);
 		}
 	}
+	
+	
 	
 	// 디테일 정보 삭제
 	public boolean deleteDetail(String version) {
@@ -168,20 +174,22 @@ public class DictionaryDAO {
 		return true;
 	}
 	
-	// 디테일 정보 수정
-	public void updateDetail(DictionaryDM dic) {
+	// 도그도메인 디테일 정보 수정
+	public void updateDetail(DogDM dog) {
 		Connection con = null;
 		PreparedStatement stmt = null;
 		try {
 			con = ConnectionPool.getConnection();
 
 			StringBuffer sql = new StringBuffer();
-			sql.append("update t97_dictionary ");
-			sql.append("   set detail = ? ");
+			sql.append("update t97_dog ");
+			sql.append("   set detail = ?, ");
 			sql.append("       version = ? ");
+			sql.append(" where dog_val = ? ");
 			stmt = con.prepareStatement(sql.toString());
-			stmt.setString(1, dic.getDetail());
-			stmt.setString(2, dic.getVersion());
+			stmt.setString(1, dog.getDetail());
+			stmt.setString(2, dog.getVersion());
+			stmt.setInt(3, dog.getDogVal());
 			stmt.executeUpdate();
 			
 		} catch (Exception e) {
@@ -191,6 +199,10 @@ public class DictionaryDAO {
 			ConnectionPool.releaseConnection(con);
 		}
 	}
+	
+	// 도그 검색..
+	
+	
 }
 
 

@@ -8,7 +8,14 @@ public class DogDM {
 	private String origin;
 	private String color;
 	private String dogSize;
+	private String version;
 	
+	public String getVersion() {
+		return version;
+	}
+	public void setVersion(String version) {
+		this.version = version;
+	}
 	public String getDogSize() {
 		return dogSize;
 	}
