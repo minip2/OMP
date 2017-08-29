@@ -1,4 +1,4 @@
-package src.com.omp.dictionary.dao;
+package com.omp.dictionary.dao;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -6,10 +6,10 @@ import java.sql.ResultSet;
 import java.util.ArrayList;
 import java.util.List;
 
-import src.com.omp.dictionary.domain.DictionaryDM;
-import src.com.omp.dictionary.domain.DogDM;
-import src.com.omp.util.ConnectionPool;
-import src.com.omp.util.JdbcUtil;
+import com.omp.dictionary.domain.DictionaryDM;
+import com.omp.dictionary.domain.DogDM;
+import com.omp.util.ConnectionPool;
+import com.omp.util.JdbcUtil;
 
 public class DictionaryDAO {
 	// 도그테이블 참조

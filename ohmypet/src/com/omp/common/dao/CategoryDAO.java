@@ -1,4 +1,4 @@
-package src.com.omp.common.dao;
+package com.omp.common.dao;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -6,9 +6,9 @@ import java.sql.ResultSet;
 import java.util.ArrayList;
 import java.util.List;
 
-import src.com.omp.common.domain.CategoryDM;
-import src.com.omp.util.ConnectionPool;
-import src.com.omp.util.JdbcUtil;
+import com.omp.common.domain.CategoryDM;
+import com.omp.util.ConnectionPool;
+import com.omp.util.JdbcUtil;
 
 public class CategoryDAO {
 	public List<CategoryDM> selectCategory (int groupVal) {

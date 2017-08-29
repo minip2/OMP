@@ -1,4 +1,4 @@
-package src.com.omp.store.domain;
+package com.omp.store.domain;
 
 import java.util.Date;
 

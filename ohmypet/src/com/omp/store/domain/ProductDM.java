@@ -1,4 +1,4 @@
-package src.com.omp.store.domain;
+package com.omp.store.domain;
 
 public class ProductDM {
 	private String productId;
