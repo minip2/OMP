@@ -1,4 +1,4 @@
-package com.omp.common.domain;
+package src.com.omp.common.domain;
 
 public class TagDM {
 

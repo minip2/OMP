@@ -1,4 +1,4 @@
-package com.omp.store.dao;
+package src.com.omp.store.dao;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -6,9 +6,9 @@ import java.sql.ResultSet;
 import java.util.ArrayList;
 import java.util.List;
 
-import com.omp.store.domain.BuyerDM;
-import com.omp.util.ConnectionPool;
-import com.omp.util.JdbcUtil;
+import src.com.omp.store.domain.BuyerDM;
+import src.com.omp.util.ConnectionPool;
+import src.com.omp.util.JdbcUtil;
 
 public class BuyerDAO {
 BuyerDM pdm = new BuyerDM();
@@ -65,7 +65,7 @@ BuyerDM pdm = new BuyerDM();
 			sql.append("b.name, ");
 			sql.append("b.phon_number, ");
 			sql.append("b.email, ");
-			sql.append("b.adress, ");
+			sql.append("b.address, ");
 			sql.append("b.buy_date, ");
 			sql.append(" from t97_buyer b,t97_Product p ");
 			sql.append(" where buy_no = ? and b.product_id = p.product_id");
@@ -84,7 +84,7 @@ BuyerDM pdm = new BuyerDM();
 				dm.setName(rs.getString("b.name"));
 				dm.setPhonNumber(rs.getString("b.phon_number"));
 				dm.setEmail(rs.getString("b.email"));
-				dm.setAdress(rs.getString("b.adress"));
+				dm.setAdress(rs.getString("b.address"));
 				dm.setBuyDate(rs.getTimestamp("b.buy_date"));
 				return dm;
 			}
@@ -112,7 +112,7 @@ BuyerDM pdm = new BuyerDM();
 		sql.append("name, ");
 		sql.append("phon_number) ");
 		sql.append("email) ");
-		sql.append("adress) ");
+		sql.append("address) ");
 		sql.append("values(?, ");	//주문번호(스트링)
 		sql.append("?, ");				//상품코드(스트링)
 		sql.append("?, ");			//구매갯수(인트)
@@ -130,7 +130,7 @@ BuyerDM pdm = new BuyerDM();
 		stmt.setString(5, dm.getName());
 		stmt.setString(6, dm.getPhonNumber());
 		stmt.setString(7, dm.getEmail());
-		stmt.setString(8, dm.getAdress());
+		stmt.setString(8, dm.getAddress());
 		stmt.executeUpdate();
 		
 	} catch (Exception e) {
@@ -152,14 +152,14 @@ BuyerDM pdm = new BuyerDM();
 			sql.append("   set buys_amount = ?, ");
 			sql.append("       phon_number = ?, ");
 			sql.append("       email = ?, ");
-			sql.append("       adress = ?, ");
+			sql.append("       address = ?, ");
 			sql.append(" where buy_no = ? ");
 			
 			stmt = con.prepareStatement(sql.toString());
 			stmt.setInt(1, domain.getBuysAmount());
 			stmt.setString(2, domain.getPhonNumber());
 			stmt.setString(3, domain.getEmail());
-			stmt.setString(4, domain.getAdress());
+			stmt.setString(4, domain.getAddress());
 			stmt.setString(5, domain.getBuyNo());
 			int no = stmt.executeUpdate();
 			

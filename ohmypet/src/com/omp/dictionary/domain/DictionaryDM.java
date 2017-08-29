@@ -1,4 +1,4 @@
-package com.omp.dictionary.domain;
+package src.com.omp.dictionary.domain;
 
 import java.util.Date;
 

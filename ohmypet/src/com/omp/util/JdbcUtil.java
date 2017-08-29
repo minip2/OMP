@@ -1,4 +1,4 @@
-package com.omp.util;
+package src.com.omp.util;
 
 import java.sql.Connection;
 import java.sql.DriverManager;

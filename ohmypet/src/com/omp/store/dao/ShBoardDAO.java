@@ -1,4 +1,4 @@
-package com.omp.store.dao;
+package src.com.omp.store.dao;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -6,10 +6,10 @@ import java.sql.ResultSet;
 import java.util.ArrayList;
 import java.util.List;
 
-import com.omp.store.domain.ProductDM;
-import com.omp.store.domain.ShBoardDM;
-import com.omp.util.ConnectionPool;
-import com.omp.util.JdbcUtil;
+import src.com.omp.store.domain.ProductDM;
+import src.com.omp.store.domain.ShBoardDM;
+import src.com.omp.util.ConnectionPool;
+import src.com.omp.util.JdbcUtil;
 
 public class ShBoardDAO {
 ShBoardDM pdm = new ShBoardDM();

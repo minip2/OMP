@@ -1,4 +1,4 @@
-package com.omp.store.domain;
+package src.com.omp.store.domain;
 
 import java.util.Date;
 
@@ -13,7 +13,7 @@ public class BuyerDM {
 	private String id;
 	private String phonNumber;
 	private String email;
-	private String adress;
+	private String address;
 	
 	
 	public int getTotalPrice() {
@@ -76,10 +76,10 @@ public class BuyerDM {
 	public void setEmail(String email) {
 		this.email = email;
 	}
-	public String getAdress() {
-		return adress;
+	public String getAddress() {
+		return address;
 	}
 	public void setAdress(String adress) {
-		this.adress = adress;
+		this.address = adress;
 	}
 }
