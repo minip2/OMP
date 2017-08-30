@@ -1,7 +1,14 @@
-<!DOCTYPE html>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<%@ page import="java.util.List" %>
+<%
+    List<String> dog = (List<String>)request.getAttribute("dog");
+    String keyword = (String)request.getAttribute("keyword");
+%>
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
-<meta charset="UTF-8">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Insert title here</title>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <!-- 합쳐지고 최소화된 최신 CSS -->
@@ -14,7 +21,7 @@
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
 </head>
 <body>
-    <h2><a class="dogSearch" href="/ohmypet/Html/dictionary/dogSearch.html">검색</a></h2>
+<h2><a class="dogSearch" href="/ohmypet/Html/dictionary/dogSearch.html">검색</a></h2>
     <form action="dogSearch">
     <ul class="nav nav-pills">
       <li role="presentation" class="dropdown">
@@ -61,9 +68,11 @@
         <button type="submit">검색</button>
         <br>
     </form>
-    <t3>'대형' 검색 결과...</t3>
+    <t3>'<%= keyword %>' 검색 결과...</t3>
     <br>
-            웰시코기, 푸들, 골든리드리버....
+        <% for (String dogName : dog) { %>
+            <%= dogName %>   <br>
+        <% } %>
     <ul>
         <li><a href="dogSearch.html">검색</a></li>
         <li><a href="dictionaryComment.html">강아지에게 한마디</a></li>

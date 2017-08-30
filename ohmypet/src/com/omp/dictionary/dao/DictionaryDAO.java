@@ -4,6 +4,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.ArrayList;
+import java.util.Dictionary;
 import java.util.List;
 
 import com.omp.dictionary.domain.DictionaryDM;
@@ -125,7 +126,7 @@ public class DictionaryDAO {
 
 			StringBuffer sql = new StringBuffer();
 			sql.append("insert into t97_dictionary(mod_date, dog_val, version,"
-					+ " id, detail, nickname ");
+					+ " id, detail, nickname) ");
 			sql.append("values (sysdate, ?, ?, ?, ?, ? ) ");
 			stmt = con.prepareStatement(sql.toString());
 			stmt.setInt(1, dic.getDogVal());
@@ -200,8 +201,68 @@ public class DictionaryDAO {
 	}
 	
 	// 도그 검색..
+	public List<String> searchDog(String keyword, String groupName) {
+		Connection con = null;
+		PreparedStatement stmt = null;
+		List<String> list = new ArrayList<>();
+		try {
+			con = ConnectionPool.getConnection();
+			StringBuffer sql = new StringBuffer();
+			sql.append("select d.dog_name ");
+			sql.append("  from t97_group g ");
+			sql.append(" inner join t97_category c ");
+			sql.append("    on c.group_val = g.group_val ");
+			sql.append(" inner join t97_dog d ");
+			sql.append("    on c.category_val = d.dog_val ");
+			sql.append(" where c.category_name like '%?%' ");
+			sql.append("   and g.group_name = ? ");
+			stmt = con.prepareStatement(sql.toString());
+			stmt.setString(1, keyword);
+			stmt.setString(2, groupName);
+			ResultSet rs = stmt.executeQuery();
+			while(rs.next()) {
+				list.add(rs.getString("dog_name"));
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			JdbcUtil.close(stmt);
+			ConnectionPool.releaseConnection(con);
+		}
+		return list;
+	}
 	
-	
+	// 개검색 메뉴바
+	public List<String> dogMenu(String categoryName, String groupName) {
+		Connection con = null;
+		PreparedStatement stmt = null;
+		List<String> list = new ArrayList<>();
+		try {
+			con = ConnectionPool.getConnection();
+			StringBuffer sql = new StringBuffer();
+			sql.append("select d.dog_name ");
+			sql.append("  from t97_group g ");
+			sql.append(" inner join t97_category c ");
+			sql.append("    on c.group_val = g.group_val ");
+			sql.append(" inner join t97_dog d ");
+			sql.append("    on c.category_val = d.dog_val ");
+			sql.append(" where c.category_name like '%?%' ");
+			sql.append("   and g.group_name = ? ");
+			stmt = con.prepareStatement(sql.toString());
+			stmt.setString(1, categoryName);
+			stmt.setString(2, groupName);
+			ResultSet rs = stmt.executeQuery();
+			while(rs.next()) {
+				list.add(rs.getString("dog_name"));
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			JdbcUtil.close(stmt);
+			ConnectionPool.releaseConnection(con);
+		}
+		return list;
+	}
 }
 
 
