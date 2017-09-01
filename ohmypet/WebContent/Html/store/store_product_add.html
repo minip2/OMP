@@ -3,28 +3,65 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<style>
+ td {
+ border: 1px solid #444
+ }
+</style>
 </head>
 <body>
 <h2>상품등록 페이지</h2>
-<form>
+
+<form action = "/ohmypet/com/omp/store/ProductAddController">
 
 
-<select>
+상품분류<select name = 'categoryVal'>
 	 		<option>상품분류</option>
 	 		<option>간식</option>
 	 		<option>장난감</option>
 	 		<option>사료</option>
 </select>
-<input type = "txet" placeholder = "상품명을 등록하세요">
-<input type = "txet" placeholder = "상품코드를 입력하세요">
+<BR>
+상품명<input type = "txet" placeholder = "상품명을 등록하세요" name = 'productName'>
+<BR>
+상품코드<input type = "txet" placeholder = "상품코드를 입력하세요" name = 'productId'>
 <br>
-<input type = "txet" placeholder = "상품수량을 입력하세요">
-<input type = "txet" placeholder = "상품가격을 입력하세요">
+총수량<input type = "txet" placeholder = "상품수량을 입력하세요" name='quantity'>
+<BR>
+판매가<input type = "txet" placeholder = "상품가격을 입력하세요" name = 'price'>
 <BR>
 <BR>
 <h5>상품사진을 등록하세요</h5><input type = "file" placeholder>
 <BR>
+<BR>
 <button type="submit">등록하기</button>
+<BR>
+<table>
+	<tr colspan = 5>
+		<th> 등록된 상품 </th>
+	</tr>
+	<tr>
+		<td>분류</td>
+		<td>상품명</td>
+		<td>상품코드</td>
+		<td>수량</td>
+		<td>판매가</td>
+	</tr>
+	<tr>
+		<td>간식</td>
+		<td>국밥</td>
+		<td>A00003</td>
+		<td>999</td>
+		<td>99999</td>
+	</tr>
+	<tr>
+		<td></td>
+		<td></td>
+		<td></td>
+		<td></td>
+		<td></td>
+	</tr>
+</table>
 </form>
 </body>
 </html>

@@ -4,10 +4,23 @@ public class ProductDM {
 	private String productId;
 	private int categoryVal;
 	private String productName;
-	private String photoPath;
 	private int quantity;
 	private int price;
+	private int no;
+	private String categoryValue;
 	
+	public String getCategoryValue() {
+		return categoryValue;
+	}
+	public void setCategoryValue(String categoryValue) {
+		this.categoryValue = categoryValue;
+	}
+	public int getNo() {
+		return no;
+	}
+	public void setNo(int no) {
+		this.no = no;
+	}
 	public String getProductId() {
 		return productId;
 	}
@@ -26,13 +39,7 @@ public class ProductDM {
 	public void setProductName(String productName) {
 		this.productName = productName;
 	}
-	
-	public String getPhotoPath() {
-		return photoPath;
-	}
-	public void setPhotoPath(String photoPath) {
-		this.photoPath = photoPath;
-	}
+
 	public int getQuantity() {
 		return quantity;
 	}

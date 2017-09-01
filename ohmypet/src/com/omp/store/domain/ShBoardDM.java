@@ -9,7 +9,16 @@ public class ShBoardDM {
 	private String title;
 	private String productDetail;
 	private int salesAmount;
+	private String photoPath;
 	private Date regDate;
+
+	public String getPhotoPath() {
+		return photoPath;
+	}
+	public void setPhotoPath(String photoPath) {
+		this.photoPath = photoPath;
+	}
+	
 	
 	public String getProductId() {
 		return productId;

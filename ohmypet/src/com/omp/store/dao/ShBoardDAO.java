@@ -21,26 +21,22 @@ ShBoardDM pdm = new ShBoardDM();
 		try {
 			con = ConnectionPool.getConnection();
 			StringBuffer sql = new StringBuffer();
-			sql.append("select s.no, ");
-			sql.append("p.product_id , ");
-			sql.append("s.id , ");
-			sql.append("s.title , ");
-			sql.append("s.reg_Date  ");
-			sql.append("  from t97_Product p, t97_ShBoard s ");
-			sql.append(" where s.product_id = p.product_id ");
-			sql.append(" order by b.no desc");
+			sql.append("select no, title , photo_path, reg_Date ");
+			sql.append("  from t97_ShBoard ");
+			sql.append(" order by no desc");
 			
 			stmt=con.prepareStatement(sql.toString());
 			ResultSet rs = stmt.executeQuery();
 			
 			while(rs.next()) {
 				ShBoardDM dm = new ShBoardDM();
-				dm.setNo(rs.getInt("s.no"));
-				dm.setProductId(rs.getString("p.product_id"));
-				dm.setId(rs.getString("s.id"));
-				dm.setTitle(rs.getString("s.title"));
-				dm.setRegDate(rs.getDate("s.reg_Date"));
+				
+				dm.setNo(rs.getInt("no"));
+				dm.setTitle(rs.getString("title"));
+				dm.setPhotoPath(rs.getString("photo_path"));
+				dm.setRegDate(rs.getDate("reg_Date"));
 				list.add(dm);
+				System.out.println();
 			}
 			
 		} catch (Exception e) {
@@ -84,7 +80,7 @@ ShBoardDM pdm = new ShBoardDM();
 				dm.setProductId(rs.getString("p.product_id"));
 				pdm.setProductName(rs.getString("p.product_name"));
 				pdm.setCategoryVal(rs.getInt("p.category_val"));
-				pdm.setPhotoPath(rs.getString("p.photo_path"));
+				dm.setPhotoPath(rs.getString("p.photo_path"));
 				pdm.setQuantity(rs.getInt("p.quantity"));
 				pdm.setPrice(rs.getInt("p.price"));
 				dm.setTitle(rs.getString("s.title"));
@@ -111,19 +107,21 @@ ShBoardDM pdm = new ShBoardDM();
 	try {
 		con = ConnectionPool.getConnection();
 		StringBuffer sql = new StringBuffer();
-		sql.append("insert into t97_shboard(no, ");
+		sql.append("insert into t97_shboard(ProductId, no, ");
 		sql.append("id, ");
 		sql.append("title, ");
 		sql.append("product_detail ");
 		sql.append("values(s_shboard_no.nextval, ");	
 		sql.append("?, ");				//작성자(스트링)
+		sql.append("?, ");				//작성자(스트링)
 		sql.append("?, ");			//제목(스트링)
 		sql.append("?, ");				//제품상세(스트링)
 		
 		stmt = con.prepareStatement(sql.toString());
-		stmt.setString(1, dm.getId());
-		stmt.setString(2, dm.getTitle());
-		stmt.setString(3, dm.getProductDetail());
+		stmt.setString(1, dm.getProductId());
+		stmt.setString(2, dm.getId());
+		stmt.setString(3, dm.getTitle());
+		stmt.setString(4, dm.getProductDetail());
 		stmt.executeUpdate();
 		
 	} catch (Exception e) {

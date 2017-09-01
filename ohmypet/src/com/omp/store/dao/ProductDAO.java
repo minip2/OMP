@@ -24,8 +24,10 @@ public class ProductDAO {
 			sql.append("category_val, ");
 			sql.append("product_name, ");
 			sql.append("quantity, ");
-			sql.append("price ");
+			sql.append("price, ");
+			sql.append("no ");
 			sql.append("  from t97_Product ");
+			sql.append(" order by no desc");			
 			stmt=con.prepareStatement(sql.toString());
 			ResultSet rs = stmt.executeQuery();
 			
@@ -36,6 +38,7 @@ public class ProductDAO {
 				dm.setProductName(rs.getString("product_name"));
 				dm.setQuantity(rs.getInt("quantity"));
 				dm.setPrice(rs.getInt("price"));
+				dm.setNo(rs.getInt("no"));
 				list.add(dm);
 			}
 			
@@ -96,23 +99,22 @@ public class ProductDAO {
 		sql.append("insert into t97_Product(Product_id, ");
 		sql.append("category_val, ");
 		sql.append("product_name, ");
-		sql.append("photo_path, ");
 		sql.append("quantity, ");
-		sql.append("price) ");
+		sql.append("price, ");
+		sql.append("no) ");
 		sql.append("values(?, ");	//상품코드(스트링)
 		sql.append("?, ");				//카테고리 밸류(인트)
 		sql.append("?, ");			//상품명(스트링)
-		sql.append("?, ");		//사진경로(스트링)
 		sql.append("?, ");				//총수량(인트)
-		sql.append("?) ");				//가격(인트)
+		sql.append("?, ");				//가격(인트)
+		sql.append("s_Product_no.nextval) ");				//글번호(인트)
 		
 		stmt = con.prepareStatement(sql.toString());
 		stmt.setString(1, dm.getProductId());
 		stmt.setInt(2, dm.getCategoryVal());
 		stmt.setString(3, dm.getProductName());
-		stmt.setString(4, dm.getPhotoPath());
-		stmt.setInt(5, dm.getQuantity());
-		stmt.setInt(6, dm.getPrice());
+		stmt.setInt(4, dm.getQuantity());
+		stmt.setInt(5, dm.getPrice());
 		stmt.executeUpdate();
 		
 	} catch (Exception e) {
@@ -134,7 +136,6 @@ public class ProductDAO {
 			sql.append("   set product_name = ?, ");
 			sql.append("       category_val = ?, ");
 			sql.append("       price = ?, ");
-			sql.append("       photo_path = ?, ");
 			sql.append("       quantity = ? " );
 			sql.append(" where Product_id = ? ");
 			
@@ -142,12 +143,9 @@ public class ProductDAO {
 			stmt.setString(1, domain.getProductName());
 			stmt.setInt(2, domain.getCategoryVal());
 			stmt.setInt(3, domain.getPrice());
-			stmt.setString(4, domain.getPhotoPath());
-			stmt.setInt(5, domain.getQuantity());
-			stmt.setString(6, domain.getProductId());
+			stmt.setInt(4, domain.getQuantity());
+			stmt.setString(5, domain.getProductId());
 			int no = stmt.executeUpdate();
-			
-			
 		} catch (Exception e) {
 			e.printStackTrace();
 		} finally {

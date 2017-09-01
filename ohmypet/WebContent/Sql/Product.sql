@@ -1,24 +1,22 @@
-create Product(
+drop table t97_Product purge;
+create sequence s_Product_no;
+create table t97_Product(
 				product_id varchar2(300) primary key,
+				no number,
 				category_val number(6) not null,
 				product_name VARCHAR2(300),
-				photo_path VARCHAR2(1000),
 				quantity NUMBER,
-				sales_amount NUMBER,
-				save_amount NUMBER,
 				price NUMBER);
 				
-insert into Product(product_id,
+insert into t97_Product(no,
+					product_id,
 					category_val,
 					product_name,
-					photo_path,
 					quantity,
-					sales_amount,
 					price)
-values(A00001,
+values(t97_Product.nextval,
+		'A00001',
 		1000,
 		'된장찌개',
-		'data/1.jpg',
 		9999,
-		0,
 		45000);
