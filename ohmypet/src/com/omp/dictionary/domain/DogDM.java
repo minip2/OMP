@@ -8,12 +8,13 @@ public class DogDM {
 	private String origin;
 	private String color;
 	private String dogSize;
-	private String version;
+	private double version;
 	
-	public String getVersion() {
+
+	public double getVersion() {
 		return version;
 	}
-	public void setVersion(String version) {
+	public void setVersion(double version) {
 		this.version = version;
 	}
 	public String getDogSize() {

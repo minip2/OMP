@@ -1,3 +1,4 @@
+<%@page import="com.omp.dictionary.domain.DictionaryDM"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
@@ -14,17 +15,28 @@
     	<input type="hidden" value="${dogName}" name="dogName">
         <button type="submit">편집</button>
     </form>
-    <form action="/ohmypet/com/omp/dictionary/controller/history">
-    	<input type="hidden" value="${dogName}" name="dogName">
-        <button>
-                  역사보기
-        </button>
-    </form>
-    <h1><c:out value="${dogName}" /></h1><br>
-	원산지 : <c:out value="${dog.origin}" /><br>
-	크기 : <c:out value="${dog.dogSize}" /><br>
-	색상 : <c:out value="${dog.color}" /><br>
-	버전 : <c:out value="${dog.version}" /><br>
-	설명 : <c:out value="${dog.detail}" /><br>
+        <h1><c:out value="${dogName}" /></h1><br>        
+	<table>
+		<tr>
+			<th>버전</th>
+			<th>날짜</th>
+			<th>닉네임</th>
+			<th>삭제</th>
+		</tr>
+	<c:forEach var="dictionary" items="${history}">
+		<tr>
+			<td><c:out value="${dictionary.version}"></c:out></td>
+			<td><c:out value="${dictionary.modDate}"></c:out></td>
+			<td><c:out value="${dictionary.nickname}"></c:out></td>
+			<td>
+				<form action="/ohmypet/com/omp/dictionary/controller/delete">
+				    <input type="hidden" value="${dogName}" name="dogName">
+					<input type="hidden" value="${dictionary.version}" name="version">
+					<button>삭제</button>
+				</form>
+			</td>
+		</tr>
+	</c:forEach>
+	</table>
 </body>
 </html>

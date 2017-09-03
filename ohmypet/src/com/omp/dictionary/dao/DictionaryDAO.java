@@ -22,10 +22,9 @@ public class DictionaryDAO {
 			con = ConnectionPool.getConnection();
 
 			StringBuffer sql = new StringBuffer();
-			sql.append("select dog_val, detail, category_val, dog_name,"
-					+ " origin, size, color ");
+			sql.append("select * ");
 			sql.append("  from t97_dog ");
-			sql.append(" where dog_val = ? ");
+			sql.append(" where dog_name = ? ");
 			stmt = con.prepareStatement(sql.toString());
 			stmt.setString(1, dogName);
 			
@@ -38,6 +37,7 @@ public class DictionaryDAO {
 				dogDM.setOrigin(rs.getString("origin"));
 				dogDM.setDogSize(rs.getString("dog_size"));
 				dogDM.setColor(rs.getString("color"));
+				dogDM.setVersion(rs.getDouble("version"));
 				return dogDM;
 			}
 		} catch (Exception e) {
@@ -49,8 +49,8 @@ public class DictionaryDAO {
 		return null;
 	}
 	
-	// 히스토리 리스트 출력
-	public List<DictionaryDM> selectDictionary() {
+	// 히스토리 리스트 출력1
+	public List<DictionaryDM> selectDictionary(int dogVal) {
 		Connection con = null;
 		PreparedStatement stmt = null;
 		List<DictionaryDM> list = new ArrayList<>();
@@ -58,18 +58,21 @@ public class DictionaryDAO {
 			con = ConnectionPool.getConnection();
 
 			StringBuffer sql = new StringBuffer();
-			sql.append("select version, mod_date, id, detail, nickname ");
+			sql.append("select * ");
 			sql.append("  from t97_dictionary ");
+			sql.append(" where dog_val = ? ");			
 			sql.append(" order by version desc ");
 			stmt = con.prepareStatement(sql.toString());
+			stmt.setInt(1, dogVal);
 			ResultSet rs = stmt.executeQuery();
 			
 			while(rs.next()) {
 				DictionaryDM dic = new DictionaryDM();
-				dic.setVersion(rs.getString("version"));
-				dic.setModDate(rs.getDate("mod_date"));
+				dic.setDogVal(rs.getInt("dog_val"));
+				dic.setVersion(rs.getDouble("version"));
 				dic.setId(rs.getString("id"));
 				dic.setDetail(rs.getString("detail"));
+				dic.setModDate(rs.getTimestamp("mod_date"));
 				dic.setNickname(rs.getString("nickname"));
 				list.add(dic);
 			}
@@ -84,7 +87,7 @@ public class DictionaryDAO {
 	}
 	
 	// 디테일 정보 출력
-	public DictionaryDM selectDictionaryByNo(String version) {
+	public DictionaryDM selectDictionaryByNo(int dogVal, Double version) {
 		Connection con = null;
 		PreparedStatement stmt = null;
 		DictionaryDM dic = new DictionaryDM();
@@ -94,14 +97,16 @@ public class DictionaryDAO {
 			StringBuffer sql = new StringBuffer();
 			sql.append("select dog_val, version, id, detail, mod_date, nickname ");
 			sql.append("  from t97_dictionary ");
-			sql.append(" where version = ? ");
+			sql.append(" where dog_val = ? ");
+			sql.append("   and version = ? ");
 			stmt = con.prepareStatement(sql.toString());
-			stmt.setString(1, version);
+			stmt.setInt(1, dogVal);
+			stmt.setDouble(2, version);
 			
 			ResultSet rs = stmt.executeQuery();
 			if(rs.next()) {
 				dic.setDogVal(rs.getInt("dog_val"));
-				dic.setVersion(rs.getString("version"));
+				dic.setVersion(rs.getInt("version"));
 				dic.setId(rs.getString("id"));
 				dic.setDetail(rs.getString("detail"));
 				dic.setModDate(rs.getTimestamp("mod_date"));
@@ -130,7 +135,7 @@ public class DictionaryDAO {
 			sql.append("values (sysdate, ?, ?, ?, ?, ? ) ");
 			stmt = con.prepareStatement(sql.toString());
 			stmt.setInt(1, dic.getDogVal());
-			stmt.setString(2, dic.getVersion());
+			stmt.setDouble(2, dic.getVersion());
 			stmt.setString(3, dic.getId());
 			stmt.setString(4, dic.getDetail());
 			stmt.setString(5, dic.getNickname());
@@ -148,7 +153,7 @@ public class DictionaryDAO {
 	
 	
 	// 디테일 정보 삭제
-	public boolean deleteDetail(String version) {
+	public double deleteDetail(int dogVal, Double version) {
 		Connection con = null;
 		PreparedStatement stmt = null;
 		int delNo = -1;
@@ -157,9 +162,11 @@ public class DictionaryDAO {
 
 			StringBuffer sql = new StringBuffer();
 			sql.append("delete t97_dictionary ");
-			sql.append(" where version = ? ");
+			sql.append(" where dog_val = ? ");
+			sql.append("   and version = ? ");
 			stmt = con.prepareStatement(sql.toString());
-			stmt.setString(1, version);
+			stmt.setInt(1, dogVal);
+			stmt.setDouble(2, version);
 			delNo = stmt.executeUpdate();
 			
 		} catch (Exception e) {
@@ -169,9 +176,9 @@ public class DictionaryDAO {
 			ConnectionPool.releaseConnection(con);
 		}
 		if (delNo == -1) {
-			return false;
+			return 0;
 		}
-		return true;
+		return version;
 	}
 	
 	// 도그도메인 디테일 정보 수정
@@ -188,7 +195,7 @@ public class DictionaryDAO {
 			sql.append(" where dog_val = ? ");
 			stmt = con.prepareStatement(sql.toString());
 			stmt.setString(1, dog.getDetail());
-			stmt.setString(2, dog.getVersion());
+			stmt.setDouble(2, dog.getVersion());
 			stmt.setInt(3, dog.getDogVal());
 			stmt.executeUpdate();
 			
@@ -201,24 +208,19 @@ public class DictionaryDAO {
 	}
 	
 	// 도그 검색..
-	public List<String> searchDog(String keyword, String groupName) {
+	public List<String> searchDog(String groupName, String keyword) {
 		Connection con = null;
 		PreparedStatement stmt = null;
 		List<String> list = new ArrayList<>();
+		keyword = "%" + keyword + "%";
 		try {
 			con = ConnectionPool.getConnection();
 			StringBuffer sql = new StringBuffer();
-			sql.append("select d.dog_name ");
-			sql.append("  from t97_group g ");
-			sql.append(" inner join t97_category c ");
-			sql.append("    on c.group_val = g.group_val ");
-			sql.append(" inner join t97_dog d ");
-			sql.append("    on c.category_val = d.dog_val ");
-			sql.append(" where c.category_name like '%?%' ");
-			sql.append("   and g.group_name = ? ");
+			sql.append("select dog_name ");
+			sql.append("  from t97_dog ");
+			sql.append(" where " + groupName + " like ? ");
 			stmt = con.prepareStatement(sql.toString());
 			stmt.setString(1, keyword);
-			stmt.setString(2, groupName);
 			ResultSet rs = stmt.executeQuery();
 			while(rs.next()) {
 				list.add(rs.getString("dog_name"));
@@ -231,38 +233,7 @@ public class DictionaryDAO {
 		}
 		return list;
 	}
-	
-	// 개검색 메뉴바
-	public List<String> dogMenu(String categoryName, String groupName) {
-		Connection con = null;
-		PreparedStatement stmt = null;
-		List<String> list = new ArrayList<>();
-		try {
-			con = ConnectionPool.getConnection();
-			StringBuffer sql = new StringBuffer();
-			sql.append("select d.dog_name ");
-			sql.append("  from t97_group g ");
-			sql.append(" inner join t97_category c ");
-			sql.append("    on c.group_val = g.group_val ");
-			sql.append(" inner join t97_dog d ");
-			sql.append("    on c.category_val = d.dog_val ");
-			sql.append(" where c.category_name like '%?%' ");
-			sql.append("   and g.group_name = ? ");
-			stmt = con.prepareStatement(sql.toString());
-			stmt.setString(1, categoryName);
-			stmt.setString(2, groupName);
-			ResultSet rs = stmt.executeQuery();
-			while(rs.next()) {
-				list.add(rs.getString("dog_name"));
-			}
-		} catch (Exception e) {
-			e.printStackTrace();
-		} finally {
-			JdbcUtil.close(stmt);
-			ConnectionPool.releaseConnection(con);
-		}
-		return list;
-	}
+
 }
 
 

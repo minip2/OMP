@@ -9,5 +9,9 @@ create table t97_comment (
     content varchar2(4000),
     id varchar2(30),
     nickname varchar2(30),
-    constraint commentPK primary key (no, group_val);
+    constraint commentPK primary key (no, group_val)
 );
+
+select * from t97_comment;
+select * from tab;
+drop table t97_comment;

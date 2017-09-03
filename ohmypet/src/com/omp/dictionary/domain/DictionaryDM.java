@@ -4,7 +4,7 @@ import java.util.Date;
 
 public class DictionaryDM {
 	private int dogVal;
-	private String version;
+	private double version;
 	private String id;
 	private Date modDate;
 	private String detail;
@@ -22,10 +22,10 @@ public class DictionaryDM {
 	public void setDogVal(int dogVal) {
 		this.dogVal = dogVal;
 	}
-	public String getVersion() {
+	public double getVersion() {
 		return version;
 	}
-	public void setVersion(String version) {
+	public void setVersion(double version) {
 		this.version = version;
 	}
 	public String getId() {
