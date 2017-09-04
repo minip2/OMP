@@ -21,6 +21,10 @@ public class ProductList extends HttpServlet{
 		ProductDM dm = new ProductDM();
 		
 		List<ProductDM> list = dao.ProductList();
+		
+		
+//		switch(dm.getCategoryVal())
+		
 		request.setAttribute("list", list);
 		RequestDispatcher rd = request.getRequestDispatcher("/jsp/productmain.jsp");
 		

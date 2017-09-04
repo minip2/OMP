@@ -12,8 +12,10 @@ public class test {
 		List<ShBoardDM> list = dao.ShBoardList();
 		
 		for(ShBoardDM s : list) {
-		int i = s.getNo();
-		System.out.println(i);
+		System.out.println(s.getProductId());
+		System.out.println(s.getProductId());
+		System.out.println(s.getProductId());
+		System.out.println(s.getProductId());
 		}
 		
 	}

@@ -13,24 +13,17 @@ import javax.servlet.http.HttpServletResponse;
 import com.omp.store.dao.ProductDAO;
 import com.omp.store.domain.ProductDM;
 
-@WebServlet("/product/mod")
-public class ProductMod extends HttpServlet{
-
-	@Override
-	protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
-//		response.sendRedirect("/ohmypet/com/omp/store/storeproductadd.jsp");
+public class test{
+	public static void main(String[] args) {
 		ProductDAO dao = new ProductDAO();
 		ProductDM dm = new ProductDM();
 		
 		List<ProductDM> list = dao.ProductList();
-		
-		
-		request.setAttribute("list", list);
-		RequestDispatcher rd = request.getRequestDispatcher("/jsp/productmod.jsp");
-		rd.forward(request, response);
+		for(ProductDM l : list) {
+			System.out.println(l.getCategoryVal());// 1000
+			System.out.println(l.getProductId());// null
 	}
 	
-	
-	
+		
+	}
 }

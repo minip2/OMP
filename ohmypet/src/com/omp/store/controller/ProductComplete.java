@@ -1,6 +1,7 @@
 package com.omp.store.controller;
 
 import java.io.IOException;
+import java.util.List;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -12,8 +13,8 @@ import javax.servlet.http.HttpServletResponse;
 import com.omp.store.dao.ProductDAO;
 import com.omp.store.domain.ProductDM;
 
-@WebServlet("/store/add")
-public class ProductInsert extends HttpServlet{
+@WebServlet("/product/complete")
+public class ProductComplete extends HttpServlet{
 
 	@Override
 	protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -22,7 +23,7 @@ public class ProductInsert extends HttpServlet{
 		ProductDAO dao = new ProductDAO();
 		ProductDM dm = new ProductDM();
 		
-		int val = 0;
+		int val = 1000;
 		String value = request.getParameter("categoryVal");
 		switch(value) {
 		case "간식" :
@@ -37,21 +38,20 @@ public class ProductInsert extends HttpServlet{
 		
 		}
 		
-		
 		dm.setCategoryVal(val);
-		dm.setCategoryValue(value);
-		dm.setProductName(request.getParameter("productName"));
 		dm.setProductId(request.getParameter("productId"));
+		dm.setProductName(request.getParameter("productName"));
 		dm.setQuantity(Integer.parseInt(request.getParameter("quantity")));
 		dm.setPrice(Integer.parseInt(request.getParameter("price")));
 		
-		dao.ProductInsert(dm);
+		dao.ProductUpdate(dm);
 //		
 		request.setAttribute("categoryVal",dm.getCategoryVal());
 		request.setAttribute("price",dm.getPrice());
-		request.setAttribute("productId",dm.getProductId());
 		request.setAttribute("productName",dm.getProductName());
 		request.setAttribute("quantity",dm.getQuantity());
+		
+		
 		
 		RequestDispatcher rd = request.getRequestDispatcher("/product/list");
 		rd.forward(request, response);
