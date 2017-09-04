@@ -15,6 +15,31 @@ import com.omp.util.JdbcUtil;
 
 
 public class NoticeDAO {
+	public int maxNo() {
+		int no =1;
+		Connection con = null;
+		PreparedStatement stmt = null;
+		try {
+			con = ConnectionPool.getConnection();
+			StringBuffer sql = new StringBuffer();
+			
+			sql.append(" select Max(no) as no ");
+			sql.append(" from t97_notice ");
+			stmt = con.prepareStatement(sql.toString());
+			System.out.println(sql.toString());
+			ResultSet rs = stmt.executeQuery();
+			if(rs.next()) no = rs.getInt("no");
+				
+			
+		} catch (Exception e) {
+			e.printStackTrace(); System.out.println("맥스넘 에러");
+		}finally {
+			JdbcUtil.close(stmt);
+			ConnectionPool.releaseConnection(con);
+		}
+		return no;
+	}
+	
 	public List<NoticeDM> selectNotice(){
 		List<NoticeDM> list = new ArrayList<>();
 		Connection con = null;
@@ -22,7 +47,7 @@ public class NoticeDAO {
 		try {
 			con = ConnectionPool.getConnection();
 			StringBuffer sql = new StringBuffer();
-			sql.append(" select  no, id, title, content, regDate ");
+			sql.append(" select  no, id, title, content, reg_Date ");
 			sql.append(" from t97_notice  ");
 			sql.append(" order by no desc  ");
 			
@@ -34,7 +59,7 @@ public class NoticeDAO {
 				notice.setId(rs.getString("id"));
 				notice.setTitle(rs.getString("title"));
 				notice.setContent(rs.getString("content"));
-				notice.setRegDate(rs.getDate("regDate"));
+				notice.setRegDate(rs.getDate("reg_Date"));
 				list.add(notice);
 			}
 			
@@ -56,7 +81,7 @@ public class NoticeDAO {
 			
 			con = ConnectionPool.getConnection();
 			StringBuffer sql = new StringBuffer();
-			sql.append(" select no, id, title,  content, regDate ");
+			sql.append(" select no, id, title,  content, reg_Date ");
 			sql.append(" from t97_notice ");
 			sql.append(" where no = ? ");
 			stmt = con.prepareStatement(sql.toString());
@@ -67,9 +92,10 @@ public class NoticeDAO {
 				notice.setId(rs.getString("id"));
 				notice.setTitle(rs.getString("title"));
 				notice.setContent(rs.getString("content"));
-				notice.setRegDate(rs.getDate("regDate"));
+				notice.setRegDate(rs.getDate("reg_Date"));
 				
 				return notice;
+				
 			}
 			else {
 				return null;

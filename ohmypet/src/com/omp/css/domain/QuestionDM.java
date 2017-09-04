@@ -8,8 +8,30 @@ public class QuestionDM {
 	private String title;
 	private int answer_check;
 	private String question_content;
+	private String answer_content;
 	private Date question_date;
 	private String category_val;
+	private String question_date_detail;
+	
+	
+	public String getQuestion_date_detail() {
+		return question_date_detail;
+	}
+	public void setQuestion_date_detail(String question_date_detail) {
+		this.question_date_detail = question_date_detail;
+	}
+	public int getAnswer_check() {
+		return answer_check;
+	}
+	public void setAnswer_check(int answer_check) {
+		this.answer_check = answer_check;
+	}
+	public String getAnswer_content() {
+		return answer_content;
+	}
+	public void setAnswer_content(String answer_content) {
+		this.answer_content = answer_content;
+	}
 	public int getNo() {
 		return no;
 	}
@@ -28,12 +50,8 @@ public class QuestionDM {
 	public void setTitle(String title) {
 		this.title = title;
 	}
-	public int getAnswer_check() {
-		return answer_check;
-	}
-	public void setAnswer_check(char answer_check) {
-		this.answer_check = answer_check;
-	}
+	
+
 	public String getQuestion_content() {
 		return question_content;
 	}
@@ -52,4 +70,5 @@ public class QuestionDM {
 	public void setCategory_val(String category_val) {
 		this.category_val = category_val;
 	}
+
 }
