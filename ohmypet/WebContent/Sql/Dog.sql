@@ -6,7 +6,7 @@ create table t97_dog(
     origin varchar2(60) not null,
     color varchar2(60) not null,
     dog_size varchar2(20) not null,
-    version number(6, 2) default 1.0
+    version number(6) default 0
 );
 
 insert into t97_dog(dog_val, detail, dog_name, category_val, origin, color, dog_size)
@@ -25,4 +25,6 @@ select * from t97_dog;
 select * from tab;
 drop table t97_dog;
 
+select * from user_sequences;
+drop sequence s_dictionary_1103;
 

@@ -17,9 +17,8 @@
         </button>
     </form>
     <h1><c:out value="${dogName}" /></h1>
-    <form action="/ohmypet/com/omp/dictionary/controller/dictionary">
+    <form method="post" action="/ohmypet/com/omp/dictionary/controller/modDictionary">
         <input type="hidden" value="${dogName}" name="dogName">
-    	<input type="hidden" value="${dog.dogVal}" name="dogVal">
   	    <textarea rows="20" cols="50" name="detail"><c:out value="${dog.detail}" /></textarea>
         <button>
         	수정 완료

@@ -25,7 +25,7 @@
 		</tr>
 	<c:forEach var="dictionary" items="${history}">
 		<tr>
-			<td><c:out value="${dictionary.version}"></c:out></td>
+			<td>v<c:out value="${dictionary.version/10 + 1}"></c:out></td>
 			<td><c:out value="${dictionary.modDate}"></c:out></td>
 			<td><c:out value="${dictionary.nickname}"></c:out></td>
 			<td>

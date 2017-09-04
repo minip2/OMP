@@ -24,7 +24,7 @@ public class historyController extends HttpServlet{
 		String dogName = request.getParameter("dogName");
 		DogDM dog = dao.selectDog(dogName);
 		
-		List<DictionaryDM> history = dao.selectDictionary(dog.getDogVal());
+		List<DictionaryDM> history = dao.selectDictionaryList(dog.getDogVal());
 		
 		request.setAttribute("history", history);
 		request.setAttribute("dogName", dogName);

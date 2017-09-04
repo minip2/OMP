@@ -22,11 +22,10 @@ public class EditController extends HttpServlet{
 		String dogName = request.getParameter("dogName");
 		DogDM dog = dao.selectDog(dogName);
 		int dogVal = dog.getDogVal();
-		DictionaryDM dictionary = dao.selectDictionaryByNo(dogVal, dog.getVersion());
+		DictionaryDM dictionary = dao.selectDictionary(dogVal, dog.getVersion());
 		
 		request.setAttribute("dogName", dogName);
 		request.setAttribute("dog", dog);
-		request.setAttribute("dictionary", dictionary);
 		
 		RequestDispatcher rd = request.getRequestDispatcher(
 				"/jsp/dictionary/edit.jsp"

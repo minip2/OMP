@@ -23,21 +23,20 @@ public class DeleteController extends HttpServlet{
 	protected void service(
 			HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String dogName = request.getParameter("dogName");
-		Double version = Double.parseDouble(request.getParameter("version"));
+		int version = Integer.parseInt((request.getParameter("version")));
 		DogDM dog = dao.selectDog(dogName);
-		if(version != 1.0) {
-			//전 버전
-			double preVersionNo = Math.floor((version - 0.1)*10)/10;
-			DictionaryDM preDic = dao.selectDictionaryByNo(dog.getDogVal(), preVersionNo);
-			dog.setVersion(preDic.getVersion());
-			dog.setDetail(preDic.getDetail());
-			dao.updateDetail(dog);
+		int dogVal = dog.getDogVal();
+		if(version != 0) {
+			//최신 버전
+			int deleteVersion = dao.deleteDetail(dogVal, version);
+			DictionaryDM preDictionary = dao.selectPreDictionary(dogVal);
 			
-			double deleteVersion = dao.deleteDetail(dog.getDogVal(), version);
+			dog.setVersion(preDictionary.getVersion());
+			dog.setDetail(preDictionary.getDetail());
+			dao.updateDetail(dog);
 		}
 		
-		List<DictionaryDM> history = dao.selectDictionary(dog.getDogVal());
-		
+		List<DictionaryDM> history = dao.selectDictionaryList(dog.getDogVal());
 		
 		request.setAttribute("history", history);
 		request.setAttribute("dogName", dogName);

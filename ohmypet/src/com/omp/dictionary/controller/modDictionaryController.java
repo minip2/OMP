@@ -13,17 +13,37 @@ import com.omp.dictionary.dao.DictionaryDAO;
 import com.omp.dictionary.domain.DictionaryDM;
 import com.omp.dictionary.domain.DogDM;
 
-@WebServlet("/com/omp/dictionary/controller/dictionary")
-public class DictionaryController extends HttpServlet{
+@WebServlet("/com/omp/dictionary/controller/modDictionary")
+public class modDictionaryController extends HttpServlet{
 	DictionaryDAO dao = new DictionaryDAO();
 	
 	@Override
 	protected void service(
 			HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-	
+	request.setCharacterEncoding("utf-8");
+		
+	String detail = request.getParameter("detail");
 	String dogName = request.getParameter("dogName");
 	DogDM dog = dao.selectDog(dogName);
+	int dogVal = dog.getDogVal();
+	int version = dog.getVersion();
+	DictionaryDM dictionary = dao.selectDictionary(dogVal, version);
 	
+	String sequenceName = "s_dictionary_" + dogVal;
+	
+	if (version == 0) {
+		sequenceName = dao.insertSequence(dogVal);
+	}
+	
+	dictionary.setDetail(detail);
+	dao.insertDictionary(dictionary, sequenceName);
+
+	DictionaryDM predictionary = dao.selectPreDictionary(dogVal);
+	
+	dog.setDetail(predictionary.getDetail());
+	dog.setVersion(predictionary.getVersion());
+	dao.updateDetail(dog);
+
 	request.setAttribute("dog", dog);
 	request.setAttribute("dogName", dogName);
 	

@@ -24,7 +24,7 @@
 	원산지 : <c:out value="${dog.origin}" /><br>
 	크기 : <c:out value="${dog.dogSize}" /><br>
 	색상 : <c:out value="${dog.color}" /><br>
-	버전 : <c:out value="${dog.version}" /><br>
+	버전 : v<c:out value="${dog.version/10+1}" /><br>
 	설명 : <c:out value="${dog.detail}" /><br>
 </body>
 </html>

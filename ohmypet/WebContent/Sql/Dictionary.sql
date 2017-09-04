@@ -1,6 +1,6 @@
 create table t97_dictionary (
     dog_val number(6) not null,
-    version number(6, 2) default 1.0,
+    version number(6) default 0,
     id varchar2(30) not null,
     detail varchar2(4000),
     mod_date date default sysdate,
@@ -20,3 +20,16 @@ values(1103, 'administor', '오랜 역사를 가진 몰타섬의 공주', '관�
 select * from t97_dictionary;
 select * from tab;
 drop table t97_dictionary;
+
+select *
+  from (select *
+          from t97_dictionary
+         where dog_val = 1103
+         order by version desc) a
+ where rownum = 1;
+ 
+ 
+ select dog_val, version, id, detail, mod_date, nickname
+from t97_dictionary 
+where dog_val = 1102 
+and version = 21; 
