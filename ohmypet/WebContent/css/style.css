@@ -15,6 +15,7 @@ body{
 	background-color: #ffffff;
 }
 nav{
+	text-align: center;
 	height: 40px;
 	width: 100%;
 	background: white;
@@ -32,6 +33,7 @@ nav ul{
 }
 nav li{
 	display: inline;
+	/* padding-bottom:5px; */
 	float: left;
 }
 nav a{
@@ -49,10 +51,11 @@ nav li a{
 	-moz-box-sizing: border-box;
 	-webkit-box-sizing: border-box;
 }
-nav li:last-child a{
+/* last-child :자식 중 마지막 엘리먼트*/
+ nav li:last-child a{
 	border-right: 0;
     }
-/* nav a:hover, nav a:active{
+ /* nav a:hover, nav a:active{
 	background-color: #0000ff;
 } */
 nav a#pull{
@@ -82,7 +85,7 @@ nav a#pull{
 	}
 	nav a#pull:after {
 		content:"";
-		background: url('nav-icon.png') no-repeat;
+		background: url('/ohmypet/img/burger.png') no-repeat;
 		width: 30px;
 		height: 30px;
 		display: inline-block;
