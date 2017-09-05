@@ -18,11 +18,7 @@
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
 </head>
 <body>
-	<div class="container">
-	<h2><a class="dogSearch" href="${pageContext.request.contextPath}/com/omp/dictionary/controller/search">검색</a></h2>
-	</div>
-	
-	<div>
+<h2><a class="dogSearch" href="${pageContext.request.contextPath}/com/omp/dictionary/controller/search">검색</a></h2>
     <ul class="nav nav-pills">
       <li role="presentation" class="dropdown">
         <a class="dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-expanded="false">
@@ -47,7 +43,7 @@
       <li role="presentation" class="dropdown">
         <a class="dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-expanded="false">
                      원산지 <span class="caret"></span>
-        </a>     
+        </a>
         <ul class="dropdown-menu" role="menu">
             <li><a href="${pageContext.request.contextPath}/com/omp/dictionary/controller/search?groupName=<c:out value="origin" />&keyword=<c:out value="한국" />">한국</a></li>
             <li><a href="${pageContext.request.contextPath}/com/omp/dictionary/controller/search?groupName=<c:out value="origin" />&keyword=<c:out value="프랑스" />">프랑스</a></li>
@@ -55,9 +51,7 @@
         </ul>
       </li>
     </ul>
-    </div>
-
-	<div>
+    
     <form action="${pageContext.request.contextPath}/com/omp/dictionary/controller/search">
         <select name="groupName">
             <option value="dog_name">이름</option>
@@ -69,15 +63,11 @@
         <button type="submit">검색</button>
         <br>
     </form>
-    </div>
 
-	<div>
 	<h3> 검색결과</h3>
 	    <c:forEach var="dogName" items="${dogList}">
 	    	<a href="${pageContext.request.contextPath}/com/omp/dictionary/controller/dictionary?dogName=<c:out value="${dogName}" />"> <c:out value="${dogName}" /></a>
 	    </c:forEach>
-	</div>
-	    
 	<c:import url="/jsp/dictionary/dictionaryList.jsp" />
 </body>
 </html>
