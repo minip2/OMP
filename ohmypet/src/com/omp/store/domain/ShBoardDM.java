@@ -11,7 +11,14 @@ public class ShBoardDM {
 	private int salesAmount;
 	private String photoPath;
 	private Date regDate;
+	private int price;
 
+	public int getPrice() {
+		return price;
+	}
+	public void setPrice(int price) {
+		this.price = price;
+	}
 	public String getPhotoPath() {
 		return photoPath;
 	}

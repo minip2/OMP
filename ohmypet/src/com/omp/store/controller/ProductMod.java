@@ -27,7 +27,7 @@ public class ProductMod extends HttpServlet{
 		
 		
 		request.setAttribute("list", list);
-		RequestDispatcher rd = request.getRequestDispatcher("/jsp/productmod.jsp");
+		RequestDispatcher rd = request.getRequestDispatcher("/jsp/store/productmod.jsp");
 		rd.forward(request, response);
 	}
 	

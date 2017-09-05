@@ -32,13 +32,13 @@ th {
 
 	<h2>상품관리</h2>
 
-	<a href="/ohmypet/store/main">
+	<a href="${pageContext.request.contextPath}/store/main">
 		<button type="button">돌아가기</button>
 	</a>
 
 	<br>
 
-	<form action="/ohmypet/store/add">
+	<form action="${pageContext.request.contextPath}/store/add">
 
 
 		<select name='categoryVal'>
@@ -86,7 +86,7 @@ th {
 			<c:forEach var="p" items="${list}">
 				<c:choose>
 						<c:when test="${p.productId == param.productId}">
-							<form action="/ohmypet/product/complete">
+							<form action="${pageContext.request.contextPath}/product/complete">
 							<td><c:choose>
 									<c:when test="${1000 == param.categoryVal}">
 										<select name='categoryVal'>
@@ -144,12 +144,12 @@ th {
 							<td><c:out value="${p.quantity}" /></td>
 							<td><c:out value="${p.price}" /></td>
 							<td>
-								<form action="/ohmypet/product/del">
+								<form action="${pageContext.request.contextPath}/product/del">
 									<button type="submit" value="${p.productId}" name="productId">삭제하기</button>
 								</form>
 							</td>
 							<td>
-								<form action="/ohmypet/product/mod">
+								<form action="${pageContext.request.contextPath}/product/mod">
 									<input type="hidden" value="${p.productId}" name="productId">
 									<input type="hidden" value="${p.categoryVal}"
 										name="categoryVal"> <input type="hidden"
@@ -160,7 +160,7 @@ th {
 								</form>
 							</td>
 							<td>
-								<form action="/ohmypet/jsp/shboardinsert.jsp">
+								<form action="${pageContext.request.contextPath}/jsp/shboardinsert.jsp">
 									<input type="hidden" value="${p.productId}" name="productId">
 									<input type="hidden" value="${p.categoryVal}"
 										name="categoryVal"> <input type="hidden"

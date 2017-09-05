@@ -22,7 +22,7 @@ public class ShBoardList extends HttpServlet{
 		
 		List<ShBoardDM> list = dao.ShBoardList();
 		request.setAttribute("list", list);
-		RequestDispatcher rd = request.getRequestDispatcher("/jsp/storemain.jsp");
+		RequestDispatcher rd = request.getRequestDispatcher("/jsp/store/storemain.jsp");
 		
 		rd.forward(request, response);
 	}

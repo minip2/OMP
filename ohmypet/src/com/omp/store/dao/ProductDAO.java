@@ -61,7 +61,6 @@ public class ProductDAO {
 			sql.append("select Product_id, ");
 			sql.append("category_val, ");
 			sql.append("product_name, ");
-			sql.append("photo_path, ");
 			sql.append("quantity, ");
 			sql.append("price ");
 			sql.append("  from t97_Product ");
@@ -183,6 +182,88 @@ public class ProductDAO {
 			return false;
 			
 	}
+	public List<ProductDM> KeywordSearch(String category,String skeyword) {
+		Connection con = null;
+		PreparedStatement stmt = null;
+		List<ProductDM> list = new ArrayList<>();
+		
+		String str = "%" + skeyword+"%";
+		try {
+			con = ConnectionPool.getConnection();
+			StringBuffer sql = new StringBuffer();
+			sql.append("select Product_id, ");
+			sql.append("category_val, ");
+			sql.append("product_name, ");
+			sql.append("quantity, ");
+			sql.append("price, ");
+			sql.append("no ");
+			sql.append("  from t97_Product ");
+			sql.append("  where " + category + " like ? ");
+			sql.append(" order by no desc");			
+			stmt=con.prepareStatement(sql.toString());
+			stmt.setString(1, str);
+			ResultSet rs = stmt.executeQuery();
+			
+			while(rs.next()) {
+				ProductDM dm = new ProductDM();
+				dm.setProductId(rs.getString("Product_id"));
+				dm.setCategoryVal(rs.getInt("category_val"));
+				dm.setProductName(rs.getString("product_name"));
+				dm.setQuantity(rs.getInt("quantity"));
+				dm.setPrice(rs.getInt("price"));
+				dm.setNo(rs.getInt("no"));
+				list.add(dm);
+			}
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			JdbcUtil.close(stmt);
+			ConnectionPool.releaseConnection(con);
+		}
 
+		return list;
+	}
+	public List<ProductDM> KeywordSearch(String category,int ikeyword) {
+		Connection con = null;
+		PreparedStatement stmt = null;
+		List<ProductDM> list = new ArrayList<>();
+		
+		try {
+			con = ConnectionPool.getConnection();
+			StringBuffer sql = new StringBuffer();
+			sql.append("select Product_id, ");
+			sql.append("category_val, ");
+			sql.append("product_name, ");
+			sql.append("quantity, ");
+			sql.append("price, ");
+			sql.append("no ");
+			sql.append("  from t97_Product ");
+			sql.append("  where " + category + " = ? ");
+			sql.append(" order by no desc");			
+			stmt=con.prepareStatement(sql.toString());
+			stmt.setInt(1, ikeyword);
+			ResultSet rs = stmt.executeQuery();
+			
+			while(rs.next()) {
+				ProductDM dm = new ProductDM();
+				dm.setProductId(rs.getString("Product_id"));
+				dm.setCategoryVal(rs.getInt("category_val"));
+				dm.setProductName(rs.getString("product_name"));
+				dm.setQuantity(rs.getInt("quantity"));
+				dm.setPrice(rs.getInt("price"));
+				dm.setNo(rs.getInt("no"));
+				list.add(dm);
+			}
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			JdbcUtil.close(stmt);
+			ConnectionPool.releaseConnection(con);
+		}
+		
+		return list;
+	}
 	
 }

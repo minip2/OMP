@@ -32,13 +32,13 @@ th {
 
 	<h2>상품관리</h2>
 
-	<a href="/ohmypet/store/main">
+	<a href="${pageContext.request.contextPath}/store/main">
 		<button type="button">돌아가기</button>
 	</a>
 
 	<br>
 
-	<form action="/ohmypet/store/add">
+	<form action="${pageContext.request.contextPath}/store/add">
 
 
 		<select name='categoryVal'>
@@ -59,10 +59,10 @@ th {
 
 
 	<table>
-		<tr>
+			<form action = "${pageContext.request.contextPath}/product/search">
+			<tr>
 			<th colspan="5">상품목록</th>
 			<th>
-				<form>
 					<select name='option'>
 						<option>검색옵션</option>
 						<option>분류</option>
@@ -72,9 +72,9 @@ th {
 			</th>
 			<th>
 				<button>검색</button>
-				</form>
 			</th>
 		</tr>
+				</form>
 		<tr>
 			<td>카테고리</td>
 			<td>상품코드</td>
@@ -91,12 +91,12 @@ th {
 				<td><c:out value="${p.quantity}" /></td>
 				<td><c:out value="${p.price}" /></td>
 				<td>
-					<form action="/ohmypet/product/del">
+					<form action="${pageContext.request.contextPath}/product/del">
 						<button type="submit" value="${p.productId}" name="productId">삭제하기</button>
 					</form>
 				</td>
 				<td>
-					<form action="/ohmypet/product/mod">
+					<form action="${pageContext.request.contextPath}/product/mod">
 						<input type="hidden" value="${p.categoryVal}" name="categoryVal">
 						<input type="hidden" value="${p.productId}" name="productId">
 						<input type="hidden" value="${p.productName}" name="productName">
@@ -106,7 +106,7 @@ th {
 					</form>
 				</td>
 				<td>
-					<form action="/ohmypet/jsp/shboardinsert.jsp">
+					<form action="${pageContext.request.contextPath}/jsp/store/shboardinsert.jsp">
 						<input type="hidden" value="${p.categoryVal}" name="categoryVal">
 						<input type="hidden" value="${p.productId}" name="productId">
 						<input type="hidden" value="${p.productName}" name="productName">

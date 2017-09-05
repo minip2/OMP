@@ -21,7 +21,7 @@ ShBoardDM pdm = new ShBoardDM();
 		try {
 			con = ConnectionPool.getConnection();
 			StringBuffer sql = new StringBuffer();
-			sql.append("select no, title , photo_path, reg_Date ");
+			sql.append("select no, title, photo_path, reg_Date, price");
 			sql.append("  from t97_ShBoard ");
 			sql.append(" order by no desc");
 			
@@ -32,11 +32,11 @@ ShBoardDM pdm = new ShBoardDM();
 				ShBoardDM dm = new ShBoardDM();
 				
 				dm.setNo(rs.getInt("no"));
+				dm.setPrice(rs.getInt("price"));
 				dm.setTitle(rs.getString("title"));
 				dm.setPhotoPath(rs.getString("photo_path"));
 				dm.setRegDate(rs.getDate("reg_Date"));
 				list.add(dm);
-				System.out.println();
 			}
 			
 		} catch (Exception e) {
@@ -55,20 +55,14 @@ ShBoardDM pdm = new ShBoardDM();
 		try {
 			con = ConnectionPool.getConnection();
 			StringBuffer sql = new StringBuffer();
-			sql.append("select s.no, ");
-			sql.append("p.product_id, ");
-			sql.append("p.product_name, ");
-			sql.append("p.category_val, ");
-			sql.append("p.photo_path, ");
-			sql.append("p.quantity, ");
-			sql.append("p.price, ");
-			sql.append("s.title, ");
-			sql.append("s.id, ");
-			sql.append("s.product_Detail, ");
-			sql.append("s.sales_Amount + b.buys_amount as total_sales_amount, ");
-			sql.append("s.reg_Date ");
-			sql.append(" from t97_shboard b,t97_Product p,t97_ShBoard s  ");
-			sql.append(" where s.no = ? ");
+			sql.append("select no, ");
+			sql.append("photo_path, ");
+			sql.append("price, ");
+			sql.append("title, ");
+			sql.append("product_Detail, ");
+			sql.append("reg_Date ");
+			sql.append(" from t97_shboard ");
+			sql.append(" where no = ? ");
 			stmt=con.prepareStatement(sql.toString());
 			stmt.setInt(1, no);
 			ResultSet rs = stmt.executeQuery();
@@ -76,18 +70,12 @@ ShBoardDM pdm = new ShBoardDM();
 			if(rs.next()) {
 				ProductDM pdm = new ProductDM();
 				ShBoardDM dm = new ShBoardDM();
-				dm.setNo(rs.getInt("s.no"));
-				dm.setProductId(rs.getString("p.product_id"));
-				pdm.setProductName(rs.getString("p.product_name"));
-				pdm.setCategoryVal(rs.getInt("p.category_val"));
-				dm.setPhotoPath(rs.getString("p.photo_path"));
-				pdm.setQuantity(rs.getInt("p.quantity"));
-				pdm.setPrice(rs.getInt("p.price"));
-				dm.setTitle(rs.getString("s.title"));
-				dm.setId(rs.getString("s.id"));
-				dm.setProductDetail(rs.getString("s.product_Detail"));
-				dm.setSalesAmount(rs.getInt("total_sales_amount"));
-				dm.setRegDate(rs.getTimestamp("s.reg_Date"));
+				dm.setNo(rs.getInt("no"));
+				dm.setPhotoPath(rs.getString("photo_path"));
+				dm.setPrice(rs.getInt("price"));
+				dm.setTitle(rs.getString("title"));
+				dm.setProductDetail(rs.getString("product_Detail"));
+				dm.setRegDate(rs.getTimestamp("reg_Date"));
 				return dm;
 			}
 			else {return null;}
@@ -107,21 +95,28 @@ ShBoardDM pdm = new ShBoardDM();
 	try {
 		con = ConnectionPool.getConnection();
 		StringBuffer sql = new StringBuffer();
-		sql.append("insert into t97_shboard(ProductId, no, ");
+		sql.append("insert into t97_shboard(Product_Id, ");
+		sql.append("no, ");
 		sql.append("id, ");
 		sql.append("title, ");
-		sql.append("product_detail ");
-		sql.append("values(s_shboard_no.nextval, ");	
-		sql.append("?, ");				//작성자(스트링)
+		sql.append("price, ");
+		sql.append("photo_path, ");
+		sql.append("product_detail) ");
+		sql.append("values(?, ");	
+		sql.append("s_shboard_no.nextval, ");				//작성자(스트링)
 		sql.append("?, ");				//작성자(스트링)
 		sql.append("?, ");			//제목(스트링)
-		sql.append("?, ");				//제품상세(스트링)
+		sql.append("?, ");			//제목(스트링)
+		sql.append("?, ");			//제목(스트링)
+		sql.append("?) ");				//제품상세(스트링)
 		
 		stmt = con.prepareStatement(sql.toString());
 		stmt.setString(1, dm.getProductId());
 		stmt.setString(2, dm.getId());
 		stmt.setString(3, dm.getTitle());
-		stmt.setString(4, dm.getProductDetail());
+		stmt.setInt(4, dm.getPrice());
+		stmt.setString(5, dm.getPhotoPath());
+		stmt.setString(6, dm.getProductDetail());
 		stmt.executeUpdate();
 		
 	} catch (Exception e) {
@@ -141,13 +136,15 @@ ShBoardDM pdm = new ShBoardDM();
 			StringBuffer sql = new StringBuffer();
 			sql.append("update t97_shboard ");
 			sql.append("   set title = ?, ");
-			sql.append("       product_detail = ?, ");
+			sql.append("       price = ?, ");
+			sql.append("       product_detail = ? ");
 			sql.append(" where no = ? ");
 			
 			stmt = con.prepareStatement(sql.toString());;
 			stmt.setString(1, domain.getTitle());
-			stmt.setString(2, domain.getProductDetail());
-			stmt.setInt(3, domain.getNo());
+			stmt.setInt(2, domain.getPrice());
+			stmt.setString(3, domain.getProductDetail());
+			stmt.setInt(4, domain.getNo());
 			int no = stmt.executeUpdate();
 			
 			

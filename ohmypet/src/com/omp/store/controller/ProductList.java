@@ -26,7 +26,7 @@ public class ProductList extends HttpServlet{
 //		switch(dm.getCategoryVal())
 		
 		request.setAttribute("list", list);
-		RequestDispatcher rd = request.getRequestDispatcher("/jsp/productmain.jsp");
+		RequestDispatcher rd = request.getRequestDispatcher("/jsp/store/productmain.jsp");
 		
 		rd.forward(request, response);
 	}
