@@ -18,16 +18,20 @@
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
 </head>
 <body>
-<h2><a class="dogSearch" href="/ohmypet/com/omp/dictionary/controller/search">검색</a></h2>
+	<div class="container">
+	<h2><a class="dogSearch" href="${pageContext.request.contextPath}/com/omp/dictionary/controller/search">검색</a></h2>
+	</div>
+	
+	<div>
     <ul class="nav nav-pills">
       <li role="presentation" class="dropdown">
         <a class="dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-expanded="false">
                      색상 <span class="caret"></span>
         </a>
         <ul class="dropdown-menu" role="menu">
-            <li><a href="/ohmypet/com/omp/dictionary/controller/search?groupName=<c:out value="color" />&keyword=<c:out value="갈색" />">갈색</a></li>
-            <li><a href="/ohmypet/com/omp/dictionary/controller/search?groupName=<c:out value="color" />&keyword=<c:out value="흰색" />">흰색</a></li>
-            <li><a href="/ohmypet/com/omp/dictionary/controller/search?groupName=<c:out value="color" />&keyword=<c:out value="검정색" />">검정색</a></li>
+            <li><a href="${pageContext.request.contextPath}/com/omp/dictionary/controller/search?groupName=<c:out value="color" />&keyword=<c:out value="갈색" />">갈색</a></li>
+            <li><a href="${pageContext.request.contextPath}/com/omp/dictionary/controller/search?groupName=<c:out value="color" />&keyword=<c:out value="흰색" />">흰색</a></li>
+            <li><a href="${pageContext.request.contextPath}/com/omp/dictionary/controller/search?groupName=<c:out value="color" />&keyword=<c:out value="검정색" />">검정색</a></li>
         </ul>
       </li>
       <li role="presentation" class="dropdown">
@@ -35,24 +39,26 @@
                      크기 <span class="caret"></span>
         </a>
         <ul class="dropdown-menu" role="menu">
-            <li><a href="/ohmypet/com/omp/dictionary/controller/search?groupName=<c:out value="dog_size" />&keyword=<c:out value="대형" />">대형</a></li>
-            <li><a href="/ohmypet/com/omp/dictionary/controller/search?groupName=<c:out value="dog_size" />&keyword=<c:out value="중형" />">중형</a></li>
-            <li><a href="/ohmypet/com/omp/dictionary/controller/search?groupName=<c:out value="dog_size" />&keyword=<c:out value="소형" />">소형</a></li>
+            <li><a href="${pageContext.request.contextPath}/com/omp/dictionary/controller/search?groupName=<c:out value="dog_size" />&keyword=<c:out value="대형" />">대형</a></li>
+            <li><a href="${pageContext.request.contextPath}/com/omp/dictionary/controller/search?groupName=<c:out value="dog_size" />&keyword=<c:out value="중형" />">중형</a></li>
+            <li><a href="${pageContext.request.contextPath}/com/omp/dictionary/controller/search?groupName=<c:out value="dog_size" />&keyword=<c:out value="소형" />">소형</a></li>
         </ul>
       </li>
       <li role="presentation" class="dropdown">
         <a class="dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-expanded="false">
                      원산지 <span class="caret"></span>
-        </a>
+        </a>     
         <ul class="dropdown-menu" role="menu">
-            <li><a href="/ohmypet/com/omp/dictionary/controller/search?groupName=<c:out value="origin" />&keyword=<c:out value="한국" />">한국</a></li>
-            <li><a href="/ohmypet/com/omp/dictionary/controller/search?groupName=<c:out value="origin" />&keyword=<c:out value="프랑스" />">프랑스</a></li>
-            <li><a href="/ohmypet/com/omp/dictionary/controller/search?groupName=<c:out value="origin" />&keyword=<c:out value="이탈리아" />">이탈리아</a></li>
+            <li><a href="${pageContext.request.contextPath}/com/omp/dictionary/controller/search?groupName=<c:out value="origin" />&keyword=<c:out value="한국" />">한국</a></li>
+            <li><a href="${pageContext.request.contextPath}/com/omp/dictionary/controller/search?groupName=<c:out value="origin" />&keyword=<c:out value="프랑스" />">프랑스</a></li>
+            <li><a href="${pageContext.request.contextPath}/com/omp/dictionary/controller/search?groupName=<c:out value="origin" />&keyword=<c:out value="이탈리아" />">이탈리아</a></li>
         </ul>
       </li>
     </ul>
-    
-    <form action="/ohmypet/com/omp/dictionary/controller/search">
+    </div>
+
+	<div>
+    <form action="${pageContext.request.contextPath}/com/omp/dictionary/controller/search">
         <select name="groupName">
             <option value="dog_name">이름</option>
             <option value="origin">원산지</option>
@@ -63,17 +69,15 @@
         <button type="submit">검색</button>
         <br>
     </form>
+    </div>
 
+	<div>
 	<h3> 검색결과</h3>
 	    <c:forEach var="dogName" items="${dogList}">
-	    	<a href="/ohmypet/com/omp/dictionary/controller/dictionary?dogName=<c:out value="${dogName}" />"> <c:out value="${dogName}" /></a>
+	    	<a href="${pageContext.request.contextPath}/com/omp/dictionary/controller/dictionary?dogName=<c:out value="${dogName}" />"> <c:out value="${dogName}" /></a>
 	    </c:forEach>
-	
-    <ul>
-        <li><a href="/ohmypet/com/omp/dictionary/controller/search">검색</a></li>
-        <li><a href="/ohmypet/Jsp/dictionary/dictionaryComment.jsp">강아지에게 한마디</a></li>
-        <li>동영상</li>
-        <li>분양소 찾기</li>
-    </ul>
+	</div>
+	    
+	<c:import url="/jsp/dictionary/dictionaryList.jsp" />
 </body>
 </html>

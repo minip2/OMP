@@ -13,8 +13,8 @@ import com.omp.dictionary.dao.DictionaryDAO;
 import com.omp.dictionary.domain.DictionaryDM;
 import com.omp.dictionary.domain.DogDM;
 
-@WebServlet("/com/omp/dictionary/controller/edit")
-public class EditController extends HttpServlet{
+@WebServlet("/com/omp/dictionary/controller/dictionaryEdit")
+public class DictionaryEditController extends HttpServlet{
 	DictionaryDAO dao = new DictionaryDAO();
 	
 	@Override
@@ -28,7 +28,7 @@ public class EditController extends HttpServlet{
 		request.setAttribute("dog", dog);
 		
 		RequestDispatcher rd = request.getRequestDispatcher(
-				"/jsp/dictionary/edit.jsp"
+				"/jsp/dictionary/dictionaryEdit.jsp"
 		);
 		rd.forward(request, response);
 		

@@ -9,9 +9,9 @@
 <title>Insert title here</title>
 </head>
 <body>
-    <h3><a href="/ohmypet/com/omp/dictionary/controller/dictionary?dogName=<c:out value="${dogName}" />">
+    <h3><a href="${pageContext.request.contextPath}/com/omp/dictionary/controller/dictionary?dogName=<c:out value="${dogName}" />">
         '<c:out value="${dogName}" />' 상세 정보</a></h3>
-    <form action="/ohmypet/com/omp/dictionary/controller/edit">
+    <form action="${pageContext.request.contextPath}/com/omp/dictionary/controller/dictionaryEdit">
     	<input type="hidden" value="${dogName}" name="dogName">
         <button type="submit">편집</button>
     </form>
@@ -29,7 +29,7 @@
 			<td><c:out value="${dictionary.modDate}"></c:out></td>
 			<td><c:out value="${dictionary.nickname}"></c:out></td>
 			<td>
-				<form action="/ohmypet/com/omp/dictionary/controller/delete">
+				<form action="${pageContext.request.contextPath}/com/omp/dictionary/controller/delete">
 				    <input type="hidden" value="${dogName}" name="dogName">
 					<input type="hidden" value="${dictionary.version}" name="version">
 					<button>삭제</button>

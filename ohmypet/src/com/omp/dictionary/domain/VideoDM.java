@@ -1,0 +1,47 @@
+package com.omp.dictionary.domain;
+
+public class VideoDM {
+	private int no;
+	private String title;
+	private String videoOrgName;
+	private String videoSystemName;
+	private String videoPath;
+	private String videoSize;
+	
+	public int getNo() {
+		return no;
+	}
+	public void setNo(int no) {
+		this.no = no;
+	}
+	public String getTitle() {
+		return title;
+	}
+	public void setTitle(String title) {
+		this.title = title;
+	}
+	public String getVideoOrgName() {
+		return videoOrgName;
+	}
+	public void setVideoOrgName(String videoOrgName) {
+		this.videoOrgName = videoOrgName;
+	}
+	public String getVideoSystemName() {
+		return videoSystemName;
+	}
+	public void setVideoSystemName(String videoSystemName) {
+		this.videoSystemName = videoSystemName;
+	}
+	public String getVideoPath() {
+		return videoPath;
+	}
+	public void setVideoPath(String videoPath) {
+		this.videoPath = videoPath;
+	}
+	public String getVideoSize() {
+		return videoSize;
+	}
+	public void setVideoSize(String videoSize) {
+		this.videoSize = videoSize;
+	}
+}

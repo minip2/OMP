@@ -8,13 +8,13 @@
 <title>Insert title here</title>
 </head>
 <body>
-    <h3><a href="/ohmypet/com/omp/dictionary/controller/dictionary?dogName=<c:out value="${dogName}" />">
+    <h3><a href="${pageContext.request.contextPath}/com/omp/dictionary/controller/dictionary?dogName=<c:out value="${dogName}" />">
         '<c:out value="${dogName}" />' 상세 정보</a></h3>
-    <form action="/ohmypet/com/omp/dictionary/controller/edit">
+    <form action="${pageContext.request.contextPath}/com/omp/dictionary/controller/dictionaryEdit">
     	<input type="hidden" value="${dogName}" name="dogName">
         <button type="submit">편집</button>
     </form>
-    <form action="/ohmypet/com/omp/dictionary/controller/history">
+    <form action="${pageContext.request.contextPath}/com/omp/dictionary/controller/history">
     	<input type="hidden" value="${dogName}" name="dogName">
         <button>
                   역사보기
