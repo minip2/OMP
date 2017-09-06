@@ -40,7 +40,6 @@
          });
 </script>
 <style>
-
 	h1 {
     text-align: center;
     font-size: 60px;
@@ -48,7 +47,7 @@
 	}      
 	body {
         margin: 0;
-        padding: 0;
+        padding: 0px;
       }
       
       .jbTitle {
@@ -85,7 +84,6 @@
 			<li><a href="#" id="honey" value="고객센터">고객센터</a></li>
    	      </ul>
    	      <a id="pull" href="#">Menu</a>
-</nav>
-</div>
+   	  </nav>
 </body>
 </html>

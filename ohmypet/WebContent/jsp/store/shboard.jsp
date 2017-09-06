@@ -28,7 +28,7 @@ th {
 <table>
 	<tr>
 		<th>사진</th>	
-		<th><img src = "<c:out value="${sdm.photoPath }"/>" width="50px" height="50px" ></th>	
+		<th><img src = "${pageContext.request.contextPath}/store/download?path=${sdm.photoPath}&sname=${sdm.sname}&dname=${sdm.dname}" width="50px" height="50px" ></th>	
 	</tr>
 	<tr>
 		<th>가격</th>	

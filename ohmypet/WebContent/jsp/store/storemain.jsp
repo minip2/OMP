@@ -33,7 +33,6 @@ th{border: 1px solid #444;}
 </ul>
 
 
-
 <a href = "${pageContext.request.contextPath}/product/list"> <button type="button"> 상품관리 </button> </a>
 <a href = "${pageContext.request.contextPath}/product/idlist"> <button type="button"> 게시글등록 </button> </a> <br>
 
@@ -51,7 +50,9 @@ th{border: 1px solid #444;}
 	<c:forEach var="i" items="${list}">
 	<tr>
 		<td>${i.no}</td>
-		<td><a href = "${pageContext.request.contextPath}/shboard/detail?no=${i.no}"><img src = "${i.photoPath}" width="50px" height="50px"></a></td>
+		<td><a href = "${pageContext.request.contextPath}/shboard/detail?no=${i.no}">
+		<img src = "${pageContext.request.contextPath}/store/download?path=${i.photoPath}&sname=${i.sname}&dname=${i.dname}" width="50px" height="50px">
+		</a></td>
 		<td> ${i.title}</td>
 		<td>${i.price}${"원"}</td>
 		<td>${i.regDate}</td>

@@ -46,35 +46,37 @@ th {
 			<option>간식</option>
 			<option>장난감</option>
 			<option>사료</option>
-		</select> <input type="txet" placeholder="상품코드" name='productId' size="4">
+		</select> <input type="text" placeholder="상품코드" name='productId' size="4">
 
-		<input type="txet" placeholder="상품이름" name='productName' size="4">
+		<input type="text" placeholder="상품이름" name='productName' size="4">
 
-		<input type="txet" placeholder="상품수량" name='quantity' size="4">
+		<input type="text" placeholder="상품수량" name='quantity' size="4">
 
-		<input type="txet" placeholder="상품가격" name='price' size="4">
+		<input type="text" placeholder="상품가격" name='price' size="4">
 
 		<button type="submit">등록하기</button>
 	</form>
 
 
 	<table>
-			<form action = "${pageContext.request.contextPath}/product/search">
+		<form action="${pageContext.request.contextPath}/product/search">
 			<tr>
-			<th colspan="5">상품목록</th>
-			<th>
-					<select name='option'>
+				<th colspan="5">상품목록</th>
+				<th>
+				<select name='option'>
 						<option>검색옵션</option>
 						<option>분류</option>
 						<option>상품명</option>
-			</th>
-			<th><input type="txet" placeholder="" name='keyword' size="4">
-			</th>
-			<th>
-				<button>검색</button>
-			</th>
-		</tr>
-				</form>
+				</select>
+				</th>
+				<th>
+				<input type="text" placeholder="" name='keyword' size="4">
+				</th>
+				<th>
+					<button>검색</button>
+				</th>
+			</tr>
+		</form>
 		<tr>
 			<td>카테고리</td>
 			<td>상품코드</td>
@@ -106,7 +108,8 @@ th {
 					</form>
 				</td>
 				<td>
-					<form action="${pageContext.request.contextPath}/jsp/store/shboardinsert.jsp">
+					<form
+						action="${pageContext.request.contextPath}/jsp/store/shboardinsert.jsp">
 						<input type="hidden" value="${p.categoryVal}" name="categoryVal">
 						<input type="hidden" value="${p.productId}" name="productId">
 						<input type="hidden" value="${p.productName}" name="productName">

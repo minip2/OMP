@@ -15,9 +15,8 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.omp.store.dao.ProductDAO;
 import com.omp.store.domain.ProductDM;
+import com.omp.util.MlecFileRenamePolicy;
 import com.oreilly.servlet.MultipartRequest;
-
-import kr.co.mlec.util.MelcFileRenamePolicy;
 
 @WebServlet("/product/upload")
 public class FileUpload extends HttpServlet{
@@ -40,7 +39,7 @@ public class FileUpload extends HttpServlet{
 				upload + path, //디렉토리 경로
 				1024*1024*30,//업로드 최대사이즈 
 				"utf-8", //파라미터 인코딩 지정
-				new MelcFileRenamePolicy()); //rename 호출
+				new MlecFileRenamePolicy()); //rename 호출
 		
 		
 		System.out.println("업로드 성공");

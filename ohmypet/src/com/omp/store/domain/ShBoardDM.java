@@ -10,6 +10,20 @@ public class ShBoardDM {
 	private String productDetail;
 	private int salesAmount;
 	private String photoPath;
+	private String sname;
+	private String dname;
+	public String getSname() {
+		return sname;
+	}
+	public void setSname(String sname) {
+		this.sname = sname;
+	}
+	public String getDname() {
+		return dname;
+	}
+	public void setDname(String dname) {
+		this.dname = dname;
+	}
 	private Date regDate;
 	private int price;
 

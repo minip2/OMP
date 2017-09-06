@@ -7,8 +7,8 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<h3>동영상 등록</h3>
-	<form action="${pageContext.request.contextPath}/com/omp/dictionary/controller/insertVideo"
+	<h2>동영상 등록</h2>
+	<form action="${pageContext.request.contextPath}/com/omp/dictionary/controller/video"
 	      method="post" enctype="multiPart/form-data">
 		제목 : <input type="text" name="title">
 		첨부파일 : <input type="file" name="attachFile">

@@ -15,7 +15,6 @@ public class RegVideoController extends HttpServlet{
 	protected void service(
 			HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-		response.sendRedirect("/ohmypet/jsp/dictionary/regVideo.jsp");
 	}
 
 }

@@ -21,7 +21,7 @@ ShBoardDM pdm = new ShBoardDM();
 		try {
 			con = ConnectionPool.getConnection();
 			StringBuffer sql = new StringBuffer();
-			sql.append("select no, title, photo_path, reg_Date, price");
+			sql.append("select no, title, photo_path, reg_Date, price,sname ,dname  ");
 			sql.append("  from t97_ShBoard ");
 			sql.append(" order by no desc");
 			
@@ -35,6 +35,8 @@ ShBoardDM pdm = new ShBoardDM();
 				dm.setPrice(rs.getInt("price"));
 				dm.setTitle(rs.getString("title"));
 				dm.setPhotoPath(rs.getString("photo_path"));
+				dm.setSname(rs.getString("sname"));
+				dm.setDname(rs.getString("dname"));
 				dm.setRegDate(rs.getDate("reg_Date"));
 				list.add(dm);
 			}
@@ -57,6 +59,8 @@ ShBoardDM pdm = new ShBoardDM();
 			StringBuffer sql = new StringBuffer();
 			sql.append("select no, ");
 			sql.append("photo_path, ");
+			sql.append("sname, ");
+			sql.append("dname, ");
 			sql.append("price, ");
 			sql.append("title, ");
 			sql.append("product_Detail, ");
@@ -72,6 +76,8 @@ ShBoardDM pdm = new ShBoardDM();
 				ShBoardDM dm = new ShBoardDM();
 				dm.setNo(rs.getInt("no"));
 				dm.setPhotoPath(rs.getString("photo_path"));
+				dm.setSname(rs.getString("sname"));
+				dm.setDname(rs.getString("dname"));
 				dm.setPrice(rs.getInt("price"));
 				dm.setTitle(rs.getString("title"));
 				dm.setProductDetail(rs.getString("product_Detail"));
@@ -101,10 +107,14 @@ ShBoardDM pdm = new ShBoardDM();
 		sql.append("title, ");
 		sql.append("price, ");
 		sql.append("photo_path, ");
+		sql.append("sname, ");
+		sql.append("dname, ");
 		sql.append("product_detail) ");
 		sql.append("values(?, ");	
 		sql.append("s_shboard_no.nextval, ");				//작성자(스트링)
 		sql.append("?, ");				//작성자(스트링)
+		sql.append("?, ");			//제목(스트링)
+		sql.append("?, ");			//제목(스트링)
 		sql.append("?, ");			//제목(스트링)
 		sql.append("?, ");			//제목(스트링)
 		sql.append("?, ");			//제목(스트링)
@@ -116,7 +126,9 @@ ShBoardDM pdm = new ShBoardDM();
 		stmt.setString(3, dm.getTitle());
 		stmt.setInt(4, dm.getPrice());
 		stmt.setString(5, dm.getPhotoPath());
-		stmt.setString(6, dm.getProductDetail());
+		stmt.setString(6, dm.getSname());
+		stmt.setString(7, dm.getDname());
+		stmt.setString(8, dm.getProductDetail());
 		stmt.executeUpdate();
 		
 	} catch (Exception e) {

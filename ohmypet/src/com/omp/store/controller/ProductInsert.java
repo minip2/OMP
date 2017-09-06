@@ -18,7 +18,6 @@ public class ProductInsert extends HttpServlet{
 	@Override
 	protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-//		response.sendRedirect("/ohmypet/com/omp/store/storeproductadd.jsp");
 		ProductDAO dao = new ProductDAO();
 		ProductDM dm = new ProductDM();
 		
