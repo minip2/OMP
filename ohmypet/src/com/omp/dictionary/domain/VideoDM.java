@@ -6,7 +6,7 @@ public class VideoDM {
 	private String videoOrgName;
 	private String videoSystemName;
 	private String videoPath;
-	private String videoSize;
+	private long videoSize;
 	
 	public int getNo() {
 		return no;
@@ -38,10 +38,11 @@ public class VideoDM {
 	public void setVideoPath(String videoPath) {
 		this.videoPath = videoPath;
 	}
-	public String getVideoSize() {
+	public long getVideoSize() {
 		return videoSize;
 	}
-	public void setVideoSize(String videoSize) {
+	public void setVideoSize(long videoSize) {
 		this.videoSize = videoSize;
 	}
+
 }

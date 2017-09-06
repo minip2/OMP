@@ -7,11 +7,15 @@
 <title>Insert title here</title>
 </head>
 <body>
-    <ul>
-        <li><a href="${pageContext.request.contextPath}/com/omp/dictionary/controller/search">검색</a></li>
-        <li><a href="${pageContext.request.contextPath}/com/omp/dictionary/controller/commet">강아지에게 한마디</a></li>
-        <li><a href="${pageContext.request.contextPath}/com/omp/dictionary/controller/video">동영상</a></li>
-        <li>분양소 찾기</li>
+<nav class="navbar navbar-default navbar-fixed-bottom">
+  <div class="container">
+    <ul class="nav navbar-nav">
+      <li><a href="${pageContext.request.contextPath}/com/omp/dictionary/controller/search">검색</a></li>
+      <li><a href="${pageContext.request.contextPath}/com/omp/dictionary/controller/commet">강아지에게 한마디</a></li>
+      <li><a href="${pageContext.request.contextPath}/com/omp/dictionary/controller/video">동영상</a></li> 
+      <%--  <li>분양소 찾기</li>  --%>
     </ul>
+  </div>
+</nav>
 </body>
 </html>

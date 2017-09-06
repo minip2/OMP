@@ -7,6 +7,16 @@ create table t97_video (
 	video_size number not null
 );
 
-create seqeunce s_video_no;
+create sequence s_video_no;
 
+select * from t97_video;
+select * from tab;
+drop table t97_video;
+
+select * from user_sequences;
+drop sequence s_video_no;
+
+select *
+  from t97_video
+ order by no desc;
 

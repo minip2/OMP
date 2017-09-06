@@ -35,5 +35,7 @@
                </a>
            </button>
     </form>
+    
+    <c:import url="/jsp/dictionary/dictionaryList.jsp" />
 </body>
 </html>
