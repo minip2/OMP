@@ -51,7 +51,7 @@ public class Login extends HttpServlet{
 			//login.setAccessTime(sdf.format(new Date()));
 			session.setAttribute("user", login);
 			
-			response.sendRedirect("/ohmypet/com.omp.css.controller/cssselect");
+			response.sendRedirect(page);
 		
 		}
 		else {

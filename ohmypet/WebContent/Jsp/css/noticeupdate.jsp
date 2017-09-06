@@ -39,7 +39,7 @@
 <h1>공지사항 확인하기</h1>
 
 <br><br><br>
-<form action="http://localhost:8000/ohmypet/com.omp.css.controller/noticeupdatesave">
+<form action="/ohmypet/com.omp.css.controller/noticeupdatesave">
 
 <table class="table table-condensed" >
 <%-- <colgroup><col width="20%"><col width="*"></colgroup>   --%>

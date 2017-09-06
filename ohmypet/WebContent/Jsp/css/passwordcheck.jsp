@@ -22,16 +22,16 @@
   <h2>고객센터</h2>
 		  <ul class="breadcrumb">
 		  <li><a href="#">오늘 나의 펫</a></li>
-		  <li><a href="http://localhost:8000/ohmypet/com.omp.css.controller/cssselect">고객센터</a></li>
-		  <li><a href="http://localhost:8000/ohmypet/jsp/css/questionwrite.jsp">문의하기</a></li>
+		  <li><a href="/ohmypet/com.omp.css.controller/cssselect">고객센터</a></li>
+		  <li><a href="/ohmypet/jsp/css/questionwrite.jsp">문의하기</a></li>
 		<c:choose>
 			<c:when test="${empty user}">
-				<li><a href ="http://localhost:8000/ohmypet/jsp/css/login.jsp">로그인</a></li>
-			    <li><a href="http://localhost:8000/ohmypet/jsp/css/join.jsp">회원가입</a></li>
+				<li><a href ="/ohmypet/jsp/css/login.jsp">로그인</a></li>
+			    <li><a href="/ohmypet/jsp/css/join.jsp">회원가입</a></li>
 			</c:when>
 			<c:otherwise>
 				<li><a href="/ohmypet/jsp/css/passwordcheck.jsp">개인정보 변경</a>
-				<li><a href ="http://localhost:8000/ohmypet/com.omp.css.controller/logout">로그아웃</a></li>
+				<li><a href ="/ohmypet/com.omp.css.controller/logout">로그아웃</a></li>
 				<h3>${user.nick_name}님 접속 </h3>
 			</c:otherwise>
 		</c:choose>

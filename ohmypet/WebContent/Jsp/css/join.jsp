@@ -69,6 +69,8 @@
 
 		<form action="/ohmypet/com.omp.common.controller/membership">
 			<input type="hidden" name="id" value="${id}">
+			<input type="hidden" name="nick_name" value="${nick_name}">
+			
 	 		<br>
 	 		<br>
 	 		
@@ -128,7 +130,7 @@
 	 		주소 : <input class="b" type="text" name="address" placeholder="스토어를 이용하시려면 주소를 입력해주세요.">
 	 		<br>
 	 		<br>
-	 		<button type="submit" onclick="alert('회원가입을 완료하였습니다. 환영합니다.');">가입</button>
+	 		<button type="submit" onclick="alert('회원가입을 완료하였습니다. 환영합니다.');">가입</button><br><br>
 	 		<input type="submit" value="고객센터 홈 " />
 			<br>
 			<br><br><br>

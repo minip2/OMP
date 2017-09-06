@@ -38,7 +38,7 @@
 		<!-- 합쳐지고 최소화된 최신 자바스크립트 -->
 		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
 	</head>
-<body onload="eventonload(${msg})">
+<body>
 	<br><br><br>
 		<div class = "container">
 		<h1 class="bg-primary">오늘 나의 펫</h1><br>
@@ -130,7 +130,8 @@
 	 		
 	 		</div>
 	 	</form>
-	 		<form action="ohmypet/com.omp.css.controller/cssselect"><input type="submit" value="고객센터 홈 " /></form>
+	 	<br>
+	 	<form action="/ohmypet/com.omp.css.controller/cssselect"><div class="container"><input type="submit" value="고객센터홈 " /></div></form>
 	 	
 	 
 	 

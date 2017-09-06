@@ -20,7 +20,7 @@
 		<br><br><br>
 		<h1>로그인</h1>
 		<p>${error}</p>
-		<form action="http://localhost:8000/ohmypet/com.omp.common.controller/login">
+		<form action="/ohmypet/com.omp.common.controller/login">
 		<table>
 	
 			<tr>

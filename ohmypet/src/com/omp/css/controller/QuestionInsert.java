@@ -12,7 +12,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import com.omp.css.dao.QuestionDAO;
-import com.omp.css.domain.LoginDM;
+import com.omp.common.domain.LoginDM;
 import com.omp.css.domain.QuestionDM;
 
 @WebServlet("/com.omp.css.controller/questioninsert")
