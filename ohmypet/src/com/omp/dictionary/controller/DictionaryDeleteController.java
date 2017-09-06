@@ -14,8 +14,8 @@ import com.omp.dictionary.dao.DictionaryDAO;
 import com.omp.dictionary.domain.DictionaryDM;
 import com.omp.dictionary.domain.DogDM;
 
-@WebServlet("/com/omp/dictionary/controller/delete")
-public class DeleteController extends HttpServlet{
+@WebServlet("/com/omp/dictionary/controller/dictionaryDelete")
+public class DictionaryDeleteController extends HttpServlet{
 	DictionaryDAO dao = new  DictionaryDAO();
 	DogDM dog = new DogDM();
 	

@@ -7,11 +7,29 @@
 <title>Insert title here</title>
 </head>
 <body>
-    <ul>
-        <li><a href="${pageContext.request.contextPath}/com/omp/dictionary/controller/search">검색</a></li>
-        <li><a href="${pageContext.request.contextPath}/com/omp/dictionary/controller/commet">강아지에게 한마디</a></li>
-        <li><a href="${pageContext.request.contextPath}/com/omp/dictionary/controller/video">동영상</a></li>
-        <li>분양소 찾기</li>
+
+<div class="list-group"">
+  <a href="#" class="list-group-item active">
+       작은 메뉴창
+  </a>
+  <a href="${pageContext.request.contextPath}/com/omp/dictionary/controller/search" class="list-group-item">강아지 검색</a>
+  <a href="${pageContext.request.contextPath}/com/omp/dictionary/controller/commet" class="list-group-item" disabled>강아지에게 한마디</a>
+  <a href="${pageContext.request.contextPath}/com/omp/dictionary/controller/video" class="list-group-item">강아지 동영상</a>
+<%--  <a href="#" class="list-group-item">분양소 찾기</a>  --%>
+</div>
+
+<%-- 
+<nav class="navbar navbar-default navbar-fixed-bottom">
+  <div class="container">
+    <ul class="nav navbar-nav">
+      <li><a href="${pageContext.request.contextPath}/com/omp/dictionary/controller/search">검색</a></li>
+      <li><a href="${pageContext.request.contextPath}/com/omp/dictionary/controller/commet">강아지에게 한마디</a></li>
+      <li><a href="${pageContext.request.contextPath}/com/omp/dictionary/controller/video">동영상</a></li> 
+      <li>분양소 찾기</li>
     </ul>
+  </div>
+</nav>
+--%>
+
 </body>
 </html>

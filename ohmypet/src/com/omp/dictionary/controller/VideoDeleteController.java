@@ -13,12 +13,16 @@ import javax.servlet.http.HttpServletResponse;
 import com.omp.dictionary.dao.VideoDAO;
 import com.omp.dictionary.domain.VideoDM;
 
-@WebServlet("/com/omp/dictionary/controller/video")
-public class VideoController extends HttpServlet{
+@WebServlet("/com/omp/dictionary/controller/videoDelete")
+public class VideoDeleteController extends HttpServlet{
 	VideoDAO dao = new VideoDAO();
 	
 	@Override
-	protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	protected void service(
+			HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		
+		int no = Integer.parseInt(request.getParameter("no"));
+		dao.deleteVideo(no);
 		
 		List<VideoDM> videoList = dao.videoList();
 		request.setAttribute("videoList", videoList); 
@@ -26,5 +30,5 @@ public class VideoController extends HttpServlet{
 		RequestDispatcher rd = request.getRequestDispatcher("/jsp/dictionary/video.jsp");
 		rd.forward(request, response);
 	}
-	
+
 }
