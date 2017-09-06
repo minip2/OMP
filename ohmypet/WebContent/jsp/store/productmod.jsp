@@ -160,14 +160,14 @@ img {
 								</form>
 							</td>
 							<td>
-								<form action="${pageContext.request.contextPath}/jsp/shboardinsert.jsp">
-									<input type="hidden" value="${p.productId}" name="productId">
-									<input type="hidden" value="${p.categoryVal}"
-										name="categoryVal"> <input type="hidden"
-										value="${p.productName}" name="productName"> <input
-										type="hidden" value="${p.quantity}" name="quantity"> <input
-										type="hidden" value="${p.price}" name="price">
-									<button type="submit">게시글쓰기</button>
+								<form
+						action="${pageContext.request.contextPath}/jsp/store/shboardinsert.jsp">
+						<input type="hidden" value="${p.categoryVal}" name="categoryVal">
+						<input type="hidden" value="${p.productId}" name="productId">
+						<input type="hidden" value="${p.productName}" name="productName">
+						<input type="hidden" value="${p.quantity}" name="quantity">
+						<input type="hidden" value="${p.price}" name="price">
+						<button type="submit">게시글쓰기</button>
 								</form>
 							</td>
 						</tr>
