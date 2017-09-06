@@ -17,19 +17,13 @@
 <!-- 합쳐지고 최소화된 최신 자바스크립트 -->
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
 <style>
-	div.search-title {
-		margin:50px;
-		position:relative;
-	}
-	h3.searchTitle {
-		font-size: 30px;
-	}
 	a.result {
 		font-size: 50px;
 		color: rgb(198, 77, 25);
 	}
 	body { padding-bottom: 70px; }
 </style>
+<link rel=stylesheet type="text/css" href="/oh.css" />
 </head>
 <body>
 	<c:import url="/jsp/common/top.jsp" />
@@ -84,8 +78,8 @@
       </div>
 	</nav>
 	
-    <div class = "search-title">
-	<h3 class = "searchTitle"><a class="dogSearch" href="${pageContext.request.contextPath}/com/omp/dictionary/controller/search">강아지 검색</a></h3>
+    <div class = "dictionary-title">
+	<h3 class = "dictionary-title"><a class="dogSearch" href="${pageContext.request.contextPath}/com/omp/dictionary/controller/search">강아지 검색</a></h3>
 	</div>
 
 	<h4> 검색결과</h4>
