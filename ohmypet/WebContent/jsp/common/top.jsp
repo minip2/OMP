@@ -4,6 +4,9 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
  <link rel="stylesheet" href="/ohmypet/css/style.css">
  <!-- jquery 적용위해 추가 -->
  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
@@ -37,7 +40,6 @@
          });
 </script>
 <style>
-
 	h1 {
     text-align: center;
     font-size: 60px;
@@ -45,7 +47,7 @@
 	}      
 	body {
         margin: 0;
-        padding: 0;
+        padding: 0px;
       }
       
       .jbTitle {
@@ -64,10 +66,20 @@
         position: fixed;
         top: 0px;
       }
-	
+button.id{
+float: right;
+}
 </style>
 </head>
 <body>
+<div>
+<form action="/ohmypet/jsp/css/join.jsp">
+<button class = "id">회원가입</button>
+</form>
+<form action="/ohmypet/jsp/css/login.jsp">
+<button class = "id">로그인</button>
+</form>
+</div>
 <div style="margin-top:30px">
 <h1 >오늘 나의 펫</h1>
 </div>
@@ -78,11 +90,10 @@
 			<li><a href="#"  id="dog" value="프로필">프로필</a></li>
 			<li><a href="/ohmypet/jsp/photo/photolist.jsp" class="botton" id="cat" value="사진">사진</a></li>
 			<li><a href="#"  id="honey" value="게시판">게시판</a></li>
-			<li><a href="#"  id="honey" value="스토어">스토어</a></li>
+			<li><a href="/ohmypet/store/main">스토어</a></li>
 			<li><a href="#" id="honey" value="고객센터">고객센터</a></li>
    	      </ul>
    	      <a id="pull" href="#">Menu</a>
-</nav>
-</div>
+   	  </nav>
 </body>
 </html>
