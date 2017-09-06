@@ -1,0 +1,8 @@
+@charset "UTF-8";
+	div.dictionary-title {
+		margin:50px;
+		position:relative;
+	}
+	h3.dictionary-title {
+		font-size: 30px;
+	}
