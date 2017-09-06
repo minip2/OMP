@@ -6,11 +6,26 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Insert title here</title>
+<style type="text/css">
+	.writeboard {
+		border: 3px solid tomato;
+		margin-top: 1em;
+		width: 700px;
+		margin-left: auto;
+		margin-right: auto;
+	}
+
+
+</style>
+
+
 </head>
 <body>
 	<c:import url="/jsp/common/top.jsp" />
-	<form>
+	<form >
+	<div class="writeboard">
 		<p>
+		<img src="${pageContext.request.contextPath}/data/photo/gold.jpg" width=512 height=384></img>
 		제목 : <c:out value="${dm.title}" />
 		</p>
 		<!-- 셀렉박스 -->
@@ -38,10 +53,11 @@
 		 	id : <textarea name="id"></textarea>
 		 	pw : <textarea name="password"></textarea>
 		 </div>
-		 <br>
+	
 		 <a class="btn btn-default pull-right" href="/ohmypet/com/omp/photo/modprint?no=${dm.no} ">수정</a>
 		<%--  <input type="button"
 		 		onclick="location.href='/jsp/photoprint.jsp'">수정</button>--%>
+	</div>
 	</form>
 </body>
 </html>

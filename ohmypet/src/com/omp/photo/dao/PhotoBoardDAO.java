@@ -100,7 +100,9 @@ public class PhotoBoardDAO {
 		try {
 			con = ConnectionPool.getConnection();
 			StringBuffer sql = new StringBuffer();
-			sql.append("insert into t97_photo(no, id, title, content,file_path, dog_val"); 
+			sql.append("insert into t97_photo(no, id, title,"
+					+ " content,file_path,file_org_name,"
+					+ "file_sys_name, dog_val"); 
 			sql.append(" ) values (");
 			sql.append("s_photo_no.nextval,?,?,?,?,? ) ");
 			pstmt = con.prepareStatement(sql.toString());
@@ -108,7 +110,9 @@ public class PhotoBoardDAO {
 			pstmt.setString(2, photoBoard.getTitle());
 			pstmt.setString(3, photoBoard.getContent());
 			pstmt.setString(4, photoBoard.getFile_path());
-			pstmt.setInt(5, photoBoard.getDog_val());
+			pstmt.setString(5, photoBoard.getFile_org_name());
+			pstmt.setString(6, photoBoard.getFile_sys_name());
+			pstmt.setInt(7, photoBoard.getDog_val());
 			pstmt.executeUpdate();			
 		} catch (Exception e) {
 			System.out.println("인설트 DAO 오류");

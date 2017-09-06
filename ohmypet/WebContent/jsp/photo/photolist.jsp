@@ -82,6 +82,15 @@
   </tr>
   </c:forEach>
 </table> --%>
+<c:forEach var="list" items="${photolist}" >
+  <tr>
+    <td><c:out value="${list.no}"/></td>
+    <td><c:out value="${list.id}"/></td>
+    <!--   </a>-->
+    <td><a href="/ohmypet/com/omp/photo/detail?no=${list.no}" ><c:out value="${list.title}"/></a></td>
+    <td><c:out value="${list.reg_date}"/></td>
+  </tr>
+  </c:forEach>
  <div id="columns">
       <figure>
         <img src="//s3-us-west-2.amazonaws.com/s.cdpn.io/4273/cinderella.jpg">

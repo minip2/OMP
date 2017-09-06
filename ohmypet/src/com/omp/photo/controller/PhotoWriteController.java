@@ -20,11 +20,14 @@ public class PhotoWriteController extends HttpServlet{
 		String title = request.getParameter("title");
 		String dog_val = request.getParameter("dog_val");
 		String file_path = request.getParameter("file_path");
+		String file_sys_name = request.getParameter("file_sys_name");
+		String file_org_name = request.getParameter("file_org_name");
 		String content = request.getParameter("content");
 		String id = request.getParameter("id");
 		
-		file_path="a.jpg";
 		PhotoBoardDM dm = new PhotoBoardDM();
+		dm.setFile_org_name(file_org_name);
+		dm.setFile_sys_name(file_sys_name);
 		dm.setTitle(title);
 		dm.setDog_val(Integer.parseInt(dog_val));
 		dm.setFile_path(file_path);
@@ -35,7 +38,6 @@ public class PhotoWriteController extends HttpServlet{
 		
 		PhotoBoardDAO dao = new PhotoBoardDAO();
 		dao.insertPhotoBoard(dm);
-		request.setAttribute("no", dm.getNo());
 		
 		response.sendRedirect("/ohmypet/com/omp/photo/list");
 	}

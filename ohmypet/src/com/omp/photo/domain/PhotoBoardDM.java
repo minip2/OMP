@@ -3,15 +3,32 @@ package com.omp.photo.domain;
 import java.util.Date;
 
 public class PhotoBoardDM {
-	int no;
-	String id;
-	String title;
-	String content;
-	String file_path;
-	int dog_val;
-	int view_cnt;
-	int recommend_cnt;
-	Date reg_date;
+	private int no;
+	private String id;
+	private String title;
+	private String content;
+	private String file_path;
+	private String file_sys_name;
+	private String file_org_name;
+	private int dog_val;
+	private int view_cnt;
+	private int recommend_cnt;
+	private Date reg_date;
+	
+	
+	public String getFile_sys_name() {
+		return file_sys_name;
+	}
+	public void setFile_sys_name(String file_sys_name) {
+		this.file_sys_name = file_sys_name;
+	}
+	public String getFile_org_name() {
+		return file_org_name;
+	}
+	public void setFile_org_name(String file_org_name) {
+		this.file_org_name = file_org_name;
+	}
+	
 	public int getNo() {
 		return no;
 	}
