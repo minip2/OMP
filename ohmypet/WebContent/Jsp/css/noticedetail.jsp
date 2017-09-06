@@ -18,9 +18,7 @@
 		<!-- 합쳐지고 최소화된 최신 자바스크립트 -->
 		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
 <style>
-	tr.a{
-	
-	}
+
 	
 	
 </style>
@@ -54,9 +52,11 @@
   </table>
                     <button><a href="http://localhost:8000/ohmypet/com.omp.css.controller/noticedetail?no=${notice.no-1}">이전글</a></button>
                     <button><a href="http://localhost:8000/ohmypet/com.omp.css.controller/noticedetail?no=${notice.no+1}">다음글</a></button>
+                    <button><a href="/ohmypet/com.omp.css.controller/cssselect">고객센터홈</a></button>
+                    <c:if test="${user.member_level==0}">
                     <button><a href="http://localhost:8000/ohmypet/com.omp.css.controller/noticeupdate?no=${notice.no}">수정</a></button>
                     <button><a href="http://localhost:8000/ohmypet/com.omp.css.controller/noticedelete?no=${notice.no}">삭제</a></button>
-                
+                	</c:if>
          
 </div>
 </body>

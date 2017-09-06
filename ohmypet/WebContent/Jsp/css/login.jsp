@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -19,27 +20,27 @@
 		<br><br><br>
 		<h1>로그인</h1>
 		<p>${error}</p>
-		<form action="http://localhost:8000/ohmypet/com.omp.css.controller/login">
+		<form action="http://localhost:8000/ohmypet/com.omp.common.controller/login">
 		<table>
 	
 			<tr>
 				<td>아이디:&nbsp;</td>
 				<td><input type="text" name="id"  placeholder="아이디를 입력하세요 "/></td>
-				<td rowspan="2"><button>로그인</button></td>
+				<td><button>로그인</button></td>
 			</tr>
+		</form>
 			<tr>
 				<td>비밀번호:&nbsp;</td>
 				<td><input type="password" name="password" placeholder="비밀번호를 입력하세요 " /></td>
 			</tr>
 			<tr>
-				<td><form action="http://localhost:8000/ohmypet/Html/join/join.html"><button>회원가입</button></form></td>
+				<td><form action="http://localhost:8000/ohmypet/jsp/css/join.jsp"><button>회원가입</button></form></td>
 				<td><form action="#"><button>아이디찾기</button></form></td>
 				<td><form action="#"><button>비밀번호찾기</button></form></td>
 			</tr>
 			
 			
 		</table>
-		</form>
 	</div>
 </body>
 </html>

@@ -27,10 +27,23 @@
 	input.a{
 	width: 300px;
 	}
+	a{
+		color:black;
+		text-decoration:none;
+	}
 	</style>
 
 </head>
 <body>
+
+
+<%
+	if(session.getAttribute("user") == null){
+		request.setAttribute("error", "로그인이 필요한 항목입니다");
+		RequestDispatcher rd = request.getRequestDispatcher("/jsp/css/login.jsp");
+		rd.forward(request, response);
+	}
+%>
 	<div class="container">
 		<br><br><br><br><br><br>
 		<h1 class="bg-primary">오늘 나의 펫</h1><br>
@@ -45,7 +58,7 @@
 		
 			<tr >
                 <th >제목: </th>
-                	<td><input class="a"  type="text" placeholder="제목을 입력하세요. " name="title"/>&nbsp;
+                	<td><input class="a"  type="text" placeholder="제목을 입력하세요. " name="title"/>
                 	  카테고리 <select name='category_val'>
  					 <option value='' selected>--&nbsp; 선택 &nbsp; --</option>
  					 <option value='배송문의' >배송문의</option>
@@ -57,13 +70,13 @@
             </tr>
             <tr>
                 <th>내용: </th>
-                <td><textarea class="a" cols="10" placeholder="내용을 입력하세요. " name="question_content"></textarea></td>
+                <td><textarea class="a" cols="10" placeholder="문의내용을 입력하세요. " name="question_content"></textarea></td>
             </tr>
             <tr>
                 <td colspan="2">
                     <button type ="submit" onclick="alert('글 등록이 완료되었습니다.');">글쓰기</button>
                     <input type="reset" value="초기화"/>
-                    <input type="submit" value="고객센터홈 "/>
+                    <button type="button"><a href="/ohmypet/com.omp.css.controller/cssselect">고객센터</a></button>
                 </td>
             </tr>
 		</table>

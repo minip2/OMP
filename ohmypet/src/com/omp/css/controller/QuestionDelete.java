@@ -20,7 +20,7 @@ public class QuestionDelete extends HttpServlet {
 		int no = Integer.parseInt(request.getParameter("no"));
 		QuestionDAO dao = new QuestionDAO();
 		dao.deleteQuestion(no);
-		response.sendRedirect("/ohmypet/com.omp.css.controller/questionselect");
+		response.sendRedirect("/ohmypet/com.omp.css.controller/cssselect");
 		
 	}
 	

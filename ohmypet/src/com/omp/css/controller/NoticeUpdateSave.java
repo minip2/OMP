@@ -31,7 +31,7 @@ public class NoticeUpdateSave extends HttpServlet{
 		notice.setTitle(title);
 		notice.setContent(content);
 		dao.updateNotice(notice);
-		response.sendRedirect("/ohmypet/com.omp.css.controller/noticeselect");
+		response.sendRedirect("/ohmypet/com.omp.css.controller/cssselect");
 		
 	}
 	

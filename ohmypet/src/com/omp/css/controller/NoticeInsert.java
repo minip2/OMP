@@ -32,7 +32,7 @@ public class NoticeInsert extends HttpServlet{
 		NoticeDAO dao = new NoticeDAO();
 		dao.insertNotice(notice);
 		}
-		response.sendRedirect("/ohmypet/com.omp.css.controller/noticeselect");
+		response.sendRedirect("/ohmypet/com.omp.css.controller/cssselect");
 		
 		/*request.setAttribute("notice", notice);
 		RequestDispatcher rd = request.getRequestDispatcher("/jsp/css/notice.jsp");

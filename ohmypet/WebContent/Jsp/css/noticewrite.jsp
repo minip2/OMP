@@ -21,11 +21,13 @@
 	display:inline-block;
 	}
 	textarea.a{
-		width: 800px;
+		margin-left:5%;
+		width: 70%;
 		height: 300px;
 	}
 	input.a{
-	width: 300px;
+	margin-left:5%;
+	width: 70%;
 	}
 	</style>
 
@@ -56,7 +58,8 @@
                 <td colspan="2">
                     <button type ="submit" onclick="alert('글 등록이 완료되었습니다.');">글쓰기</button>
                     <input type="reset" value="초기화"/>
-                    <input type="submit" value="고객센터홈 " />
+                    <button type="button"><a href="/ohmypet/com.omp.css.controller/cssselect">고객센터</a></button>
+                    
                 </td>
             </tr>
 		</table>

@@ -46,8 +46,10 @@ public class QuestionDAO {
 		try {
 			con = ConnectionPool.getConnection();
 			StringBuffer sql = new StringBuffer();
-			sql.append(" select  no, id, title, question_content, answer_content, question_date,  category_val ");
-			sql.append(" from t97_question  ");
+			sql.append(" select  no, q.id, title, question_content, answer_content, question_date,  category_val, nick_name  ");
+			sql.append(" from t97_question q ");
+			sql.append(" inner join t97_member m  ");
+			sql.append(" on q.id=m.id ");
 			sql.append(" order by no desc  ");
 			
 			stmt = con.prepareStatement(sql.toString());
@@ -61,6 +63,7 @@ public class QuestionDAO {
 				question.setAnswer_content(rs.getString("answer_content"));
 				question.setQuestion_date(rs.getDate("question_date"));
 				question.setCategory_val(rs.getString("category_val"));
+				question.setNick_name(rs.getString("nick_name"));
 				list.add(question);
 			}
 			
@@ -82,8 +85,10 @@ public class QuestionDAO {
 			SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
 			con = ConnectionPool.getConnection();
 			StringBuffer sql = new StringBuffer();
-			sql.append(" select no, id, title, question_content, answer_content, question_date ");
-			sql.append(" from t97_question ");
+			sql.append(" select no, q.id, title, question_content, answer_content, question_date, m.nick_name ");
+			sql.append(" from t97_question q ");
+			sql.append(" inner join t97_member m  ");
+			sql.append(" on q.id=m.id ");
 			sql.append(" where no = ? ");
 			stmt = con.prepareStatement(sql.toString());
 			stmt.setInt(1, no );
@@ -95,6 +100,7 @@ public class QuestionDAO {
 				question.setQuestion_content(rs.getString("question_content"));
 				question.setAnswer_content(rs.getString("answer_content"));
 				question.setQuestion_date(rs.getTimestamp("question_date"));
+				question.setNick_name(rs.getString("nick_name"));
 				
 				
 				return question;

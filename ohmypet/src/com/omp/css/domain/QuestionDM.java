@@ -12,8 +12,15 @@ public class QuestionDM {
 	private Date question_date;
 	private String category_val;
 	private String question_date_detail;
+	private String nick_name;
 	
 	
+	public String getNick_name() {
+		return nick_name;
+	}
+	public void setNick_name(String nick_name) {
+		this.nick_name = nick_name;
+	}
 	public String getQuestion_date_detail() {
 		return question_date_detail;
 	}

@@ -1,11 +1,12 @@
-package com.omp.css.dao;
+package com.omp.common.dao;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 
-import com.omp.css.domain.LoginDM;
+import com.omp.common.domain.LoginDM;
 import com.omp.util.ConnectionPool;
+import com.omp.util.JdbcUtil;
 
 public class LoginDAO {
 	
@@ -17,7 +18,7 @@ public class LoginDAO {
 			con = ConnectionPool.getConnection();
 			StringBuffer sql = new StringBuffer();
 			
-			sql.append(" select id, password, nick_name ");
+			sql.append(" select id, password, nick_name, member_level ");
 			sql.append(" from t97_member ");
 			sql.append(" where id = ? ");
 			sql.append(" and password = ? ");
@@ -29,9 +30,9 @@ public class LoginDAO {
 			System.out.println(password);
 			if(rs.next()) {
 				login.setId(rs.getString("id"));
-				
 				login.setPassword(rs.getString("password"));
 				login.setNick_name(rs.getString("nick_name"));
+				login.setMember_level(rs.getInt("member_level"));
 				
 				return login;
 			}
@@ -39,6 +40,9 @@ public class LoginDAO {
 			
 		} catch (Exception e) {
 			e.printStackTrace();
+		}finally {
+			JdbcUtil.close(stmt);
+			ConnectionPool.releaseConnection(con);
 		}
 		return null;
 	}

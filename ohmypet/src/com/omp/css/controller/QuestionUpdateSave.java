@@ -27,7 +27,7 @@ public class QuestionUpdateSave extends HttpServlet{
 		
 		
 		dao.updateQuestion(question);
-		response.sendRedirect("/ohmypet/com.omp.css.controller/questionselect");
+		response.sendRedirect("/ohmypet/com.omp.css.controller/cssselect");
 	}
 	
 

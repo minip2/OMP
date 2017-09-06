@@ -26,15 +26,12 @@ public class QuestionInsert extends HttpServlet{
 		
 		HttpSession session = request.getSession();
 		login = (LoginDM)session.getAttribute("user");
-		String id = login.getNick_name();
-		System.out.println(id);
+		String id = login.getId();
 		String title = request.getParameter("title");
 		String question_content = request.getParameter("question_content");
 		String category_val = request.getParameter("category_val");
-		System.out.println(id);
-		System.out.println(category_val);
+
 		
-	
 		
 		QuestionDAO dao = new QuestionDAO();
 		QuestionDM question = new QuestionDM();
@@ -42,10 +39,9 @@ public class QuestionInsert extends HttpServlet{
 		question.setTitle(title);
 		question.setQuestion_content(question_content);
 		question.setCategory_val(category_val);
-		
 		dao.insertQuestion(question);
 		
-		response.sendRedirect("/ohmypet/com.omp.css.controller/questionselect");
+		response.sendRedirect("/ohmypet/com.omp.css.controller/cssselect");
 		
 		
 	}

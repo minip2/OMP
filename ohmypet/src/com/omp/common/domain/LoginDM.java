@@ -1,4 +1,4 @@
-package com.omp.css.domain;
+package com.omp.common.domain;
 
 public class LoginDM {
 	

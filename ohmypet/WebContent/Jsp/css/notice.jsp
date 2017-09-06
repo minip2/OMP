@@ -4,17 +4,9 @@
     pageEncoding="UTF-8"%>
  <%@page import="com.omp.css.dao.NoticeDAO"%>
  <%@page import="com.omp.css.domain.NoticeDM"%>
+ <%@page import="com.omp.css.domain.LoginDM"%>
  <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
- <%--
- 	NoticeDAO dao = new NoticeDAO();
- 	List<NoticeDM> list = new ArrayList<>();
- 		list = dao.selectNotice();
- --%>
- <%--
- 	
-	List<NoticeDM> notice = (List<NoticeDM>)request.getAttribute("notice"); //키값을 준다.
-	
- --%>
+
  
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 
@@ -39,14 +31,33 @@
 <div class="container">
   <h2>고객센터</h2>
 		  <ul class="breadcrumb">
-		  <li><a href="http://localhost:8000/ohmypet/jsp/css/notice.jsp">고객센터</a></li>
+		  <li><a href="#">오늘 나의 펫</a></li>
+		  <li><a href="http://localhost:8000/ohmypet/com.omp.css.controller/cssselect">고객센터</a></li>
 		  <li><a href="http://localhost:8000/ohmypet/jsp/css/questionwrite.jsp">문의하기</a></li>
-		  <li><a href="http://localhost:8000/ohmypet/Html/join/join.html">회원가입</a></li>
-		  <li><a href="http://localhost:8000/ohmypet/jsp/css/login.jsp">로그인</a></li>
+		  
+		 <c:if test="${user.member_level == 0 }">
 		  <li><a href="http://localhost:8000/ohmypet/jsp/css/noticewrite.jsp">공지게시</a></li>
+		<%--조건이 맞을 떄 수행할 태그.. --%>
+		<h2>관리자님 환영합니다</h2> 
+		</c:if>
+	
+		 
+		  	<c:choose>
+		<c:when test="${empty user}">
+			<li><a href ="http://localhost:8000/ohmypet/jsp/css/login.jsp">로그인</a></li>
+		    <li><a href="http://localhost:8000/ohmypet/jsp/css/join.jsp">회원가입</a></li>
+		</c:when>
+		<c:otherwise>
+			<li><a href="/ohmypet/jsp/css/passwordcheck.jsp">개인정보 변경</a>
+			<li><a href ="http://localhost:8000/ohmypet/com.omp.css.controller/logout">로그아웃</a></li>
+			<h3>${user.nick_name}님 접속 </h3>
+		</c:otherwise>
+	</c:choose>
 		</ul>
+</div>
   <br>
   <br>
+  <div class="container">
   <p>오늘 나의 펫 공지사항입니다</p>
 	<table class="table table-condensed">
     <thead>
@@ -58,11 +69,7 @@
       </tr>
     </thead>
     <tbody>
-   
-      
-  <%--   	  <c:out value="${notice[5].id}"/>
-    	  <c:out value="${notice[5].title}"/>
-    	  <c:out value="${notice[5].content}"/> --%>
+
 		<c:set var="i" value= "0"/>
 		   <c:forEach var="list" items="${notice}" begin="${i}" end="${i+3}">
 		  	<tr>
@@ -74,7 +81,7 @@
 		   </c:forEach>
 		    	 
       
-      <c:out value="${notice[2].title}"/>
+    
       
     </tbody>
   </table>
@@ -110,7 +117,7 @@
      <c:forEach var="list" items="${question}" begin="0" end="5">
 		  	<tr>
 		  	 <td><c:out value="${list.category_val}"/></td>
-		   	 <td><c:out value="${list.id}"/></td>
+		   	 <td><c:out value="${list.nick_name}"/></td>
 		   	 <td><a href="http://localhost:8000/ohmypet/com.omp.css.controller/questiondetail?no=${list.no}"><c:out value="${list.title}"/></a></td>
 		  	 <td><c:out value="${list.question_date}"/></td>
 		 	</tr>

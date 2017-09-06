@@ -19,7 +19,7 @@ public class NoticeDelete extends HttpServlet {
 		int no = Integer.parseInt(request.getParameter("no"));
 		NoticeDAO dao = new NoticeDAO();
 		dao.deleteNotice(no);
-		response.sendRedirect("/ohmypet/com.omp.css.controller/noticeselect");
+		response.sendRedirect("/ohmypet/com.omp.css.controller/cssselect");
 		
 	}
 	
