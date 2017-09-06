@@ -4,9 +4,6 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
  <link rel="stylesheet" href="/ohmypet/css/style.css">
  <!-- jquery 적용위해 추가 -->
  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
@@ -40,6 +37,7 @@
          });
 </script>
 <style>
+
 	h1 {
     text-align: center;
     font-size: 60px;
@@ -47,7 +45,7 @@
 	}      
 	body {
         margin: 0;
-        padding: 0px;
+        padding: 0;
       }
       
       .jbTitle {
@@ -84,6 +82,7 @@
 			<li><a href="#" id="honey" value="고객센터">고객센터</a></li>
    	      </ul>
    	      <a id="pull" href="#">Menu</a>
-   	  </nav>
+</nav>
+</div>
 </body>
 </html>
