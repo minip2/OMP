@@ -13,12 +13,12 @@ public class FreeBoardDM {
 	private Date regDate;
 	private String filePath;
 	private String name;
-	private String categoryVal;
+	private int categoryVal;
 	
-	public String getCategoryVal() {
+	public int getCategoryVal() {
 		return categoryVal;
 	}
-	public void setCategoryVal(String categoryVal) {
+	public void setCategoryVal(int categoryVal) {
 		this.categoryVal = categoryVal;
 	}
 	public String getPw() {
@@ -83,10 +83,10 @@ public class FreeBoardDM {
 	public void setName(String name) {
 		this.name = name;
 	}
-	public String getCategoryName() {
+	public int getCategoryName() {
 		return categoryVal;
 	}
-	public void setCategoryName(String categoryVal) {
+	public void setCategoryName(int categoryVal) {
 		this.categoryVal = categoryVal;
 	}
 	

@@ -20,15 +20,17 @@ public class FreeBoardDAO {
 		try {
 			con = ConnectionPool.getConnection();
 			StringBuffer sql = new StringBuffer();
-			sql.append("select no, title, id, reg_date");
-			sql.append("  from t97_board ");
+			sql.append("select no,category_val,title, id, reg_date");
+			sql.append(" from t97_freeboard ");
 			sql.append(" order by no desc ");
 			
 			pstmt = con.prepareStatement(sql.toString());
 			ResultSet rs = pstmt.executeQuery();
 			while (rs.next()) {
+				
 				FreeBoardDM board = new FreeBoardDM();
 				board.setNo(rs.getInt("no"));
+				board.setCategoryName(rs.getInt("category_val"));
 				board.setTitle(rs.getString("title"));
 				board.setWriter(rs.getString("id"));
 				board.setRegDate(rs.getDate("reg_date"));
@@ -46,6 +48,7 @@ public class FreeBoardDAO {
 	}
 	
 	public FreeBoardDM selectBoardByNo(int no) {
+		FreeBoardDM board = new FreeBoardDM();
 		Connection con = null;
 		PreparedStatement pstmt = null;
 		
@@ -53,16 +56,15 @@ public class FreeBoardDAO {
 			con = ConnectionPool.getConnection();
 			
 			StringBuffer sql = new StringBuffer();
-			sql.append("select a.no, a.title, a.id,a.content, a.reg_date,a.view_num,"
-					   +"a.recommend,a.file_path,b.category_val,c.name");
+			sql.append("select a.no, a.title, a.id, a.content, a.reg_date, a.view_num,"
+					   +"a.recommend, a.file_path, b.category_val, c.name");
 			sql.append("  from t97_freeboard a, t97_category b,t97_member c ");
 			sql.append(" where a.category_val = b.category_val ");
 			sql.append("  and a.id = c.id ");
 			pstmt = con.prepareStatement(sql.toString());
-			pstmt.setInt(1,no);
+			//pstmt.setInt(1,no);
 			ResultSet rs = pstmt.executeQuery();
 			if(rs.next()) {
-				FreeBoardDM board = new FreeBoardDM();
 				board.setNo(rs.getInt("no"));
 				board.setTitle(rs.getString("title"));
 				board.setWriter(rs.getString("id"));
@@ -71,7 +73,7 @@ public class FreeBoardDAO {
 				board.setRecommend(rs.getInt("recommend"));
 				board.setFilePath(rs.getString("file_path"));
 				board.setRegDate(rs.getTimestamp("reg_date"));
-				board.setCategoryName(rs.getString("category_val"));
+				board.setCategoryName(rs.getInt("category_val"));
 				board.setName(rs.getString("name"));
 				
 			return board;
@@ -91,11 +93,11 @@ public class FreeBoardDAO {
 		PreparedStatement pstmt = null;  
 		try {
 			
-			con = ConnectionPool.getConnection();   
+			con = ConnectionPool.getConnection();    
 			
 			StringBuffer sql = new StringBuffer(); 
-	    	 sql.append("insert into  t97_freeboard( ");
-	    	 sql.append("no,title,name,content,file_path,category_val,pw");
+	    	 sql.append("insert into t97_freeboard( ");
+	    	 sql.append(" no,title,id,content,file_path,category_val,pw");
 	    	 sql.append(") values ( ");
 	    	 sql.append("s_freeboard_no.nextval, ?, ?,?,?,?,?) ");
 	    	 
@@ -104,7 +106,7 @@ public class FreeBoardDAO {
 	    	 pstmt.setString(2, board.getName());
 	    	 pstmt.setString(3, board.getContent());
 	    	 pstmt.setString(4, board.getFilePath());
-	    	 pstmt.setString(5, board.getCategoryVal());
+	    	 pstmt.setInt(5, board.getCategoryVal());
 	    	 pstmt.setString(6, board.getPw());
 	    	 
 	    	 pstmt.executeUpdate();
@@ -172,6 +174,8 @@ public class FreeBoardDAO {
 		
 		return false;
 	}
+
+	
 }
 
 
