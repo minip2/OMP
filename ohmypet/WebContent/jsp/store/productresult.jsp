@@ -18,18 +18,19 @@ img {
 	height: 250px;
 }
 
-td {
-	border: 1px solid #444;
-	width: 13%;
-}
 
-th {
-	border: 1px solid #444;
+.store_board{
+	margin-left: auto;
+	margin-right: auto;
+	width: 60%;
+	/* text-align: center; */
 }
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
 </style>
 </head>
 <body>
-
+<c:import url="/jsp/common/top.jsp"/>
+<div class="store_board">
 	<h2>상품관리</h2>
 
 	<a href="${pageContext.request.contextPath}/store/main">
@@ -61,7 +62,7 @@ th {
 	</form>
 
 
-	<table>
+	<table class="table table-hover">
 			<form action = "${pageContext.request.contextPath}/product/search">
 			<tr>
 			<th colspan="5">상품목록</th>
@@ -121,5 +122,7 @@ th {
 			</tr>
 		</c:forEach>
 	</table>
+	</div>
+	
 </body>
 </html>

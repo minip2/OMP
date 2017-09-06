@@ -12,10 +12,17 @@
 td {
 	border: 1px solid #444
 }
+.store_board{
+	margin-left: auto;
+	margin-right: auto;
+	width: 60%;
+	/* text-align: center; */
+}
 </style>
 </head>
 <body>
-
+<c:import url="/jsp/common/top.jsp"/>
+<div class="store_board">
 	<h2>게시글 등록 페이지</h2>
 	<a href="${pageContext.request.contextPath}/store/main">
 		<button type="button">돌아가기</button> <br>
@@ -58,7 +65,7 @@ td {
 					</c:otherwise>
 				</c:choose>
 				<BR>
-				상품코드${param.productId} <BR> 
+				상품코드 <c:out value="${param.productId}"/> <BR> 
 				상품명<input type="text" placeholder="상품명을 등록하세요" name='productName'value="${param.productName}"> <BR>
 				총수량<input type="text" placeholder="상품수량을 입력하세요" name='quantity'	value="${param.quantity}"> <BR>
 				판매가<input type="text"	placeholder="상품가격을 입력하세요" name='price' value="${param.price}"><br>
@@ -66,6 +73,7 @@ td {
 				<br>상세내용<br>
 				<textarea rows="5" cols="80" placeholder="이곳에 내용을 입력하세요" name="productDetail"></textarea>
 				<BR> <BR>
+				<input type="hidden" name="productId" value="${param.productId}">
 				<input type="hidden" name="id" value="admin">
 				<h5>상품사진을 등록하세요</h5>
 				<input type="file" name = "img"> <BR> <BR>
@@ -117,6 +125,7 @@ td {
 				<br>상세내용<br>
 				<textarea rows="5" cols="80" placeholder="이곳에 내용을 입력하세요" name="productDetail"></textarea>
 				<BR> <BR>
+				<input type="hidden" name="productId" value="${pdm.productId}">
 				<input type="hidden" name="id" value="admin">
 				<h5>상품사진을 등록하세요</h5>
 				<input type="file" name = "img"> <BR> <BR>
@@ -156,5 +165,6 @@ td {
 
 		</c:otherwise>
 	</c:choose>
+	</div>
 </body>
 </html>

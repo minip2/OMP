@@ -50,6 +50,46 @@ ShBoardDM pdm = new ShBoardDM();
 
 		return list;
 	}
+	
+	public List<ShBoardDM> ShBoardListSel(int no) {
+		Connection con = null;
+		PreparedStatement stmt = null;
+		List<ShBoardDM> list = new ArrayList<>();
+		try {
+			con = ConnectionPool.getConnection();
+			StringBuffer sql = new StringBuffer();
+			sql.append("select s.no no, s.title title, s.photo_path photo_path, s.reg_Date reg_Date, s.price price,sname , dname ");
+			sql.append("  from t97_ShBoard s, t97_Product p");
+			sql.append("  where p.category_val = ? and s.PRODUCT_ID = p.PRODUCT_ID ");
+			sql.append(" order by no desc");
+			
+			stmt=con.prepareStatement(sql.toString());
+			stmt.setInt(1, no);
+			ResultSet rs = stmt.executeQuery();
+			
+			while(rs.next()) {
+				ShBoardDM dm = new ShBoardDM();
+				
+				dm.setNo(rs.getInt("no"));
+				dm.setPrice(rs.getInt("price"));
+				dm.setTitle(rs.getString("title"));
+				dm.setPhotoPath(rs.getString("photo_path"));
+				dm.setSname(rs.getString("sname"));
+				dm.setDname(rs.getString("dname"));
+				dm.setRegDate(rs.getDate("reg_Date"));
+				list.add(dm);
+			}
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			JdbcUtil.close(stmt);
+			ConnectionPool.releaseConnection(con);
+		}
+
+		return list;
+	}
+	
 
 	public ShBoardDM ShBoardSelect(int no) {
 		Connection con = null;

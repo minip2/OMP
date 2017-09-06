@@ -18,18 +18,18 @@ img {
 	height: 250px;
 }
 
-td {
-	border: 1px solid #444;
-	width: 13%;
+.store_board{
+	margin-left: auto;
+	margin-right: auto;
+	width: 60%;
+	/* text-align: center; */
 }
-
-th {
-	border: 1px solid #444;
-}
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
 </style>
 </head>
 <body>
-
+<c:import url="/jsp/common/top.jsp"/>
+<div class="store_board">
 	<h2>상품관리</h2>
 
 	<a href="${pageContext.request.contextPath}/store/main">
@@ -58,9 +58,9 @@ th {
 	</form>
 
 
-	<table>
+	<table class="table table-hover">
 		<tr>
-			<form action="s">
+			<form action="${pageContext.request.contextPath}/product/search">
 				<th colspan="5">상품목록</th>
 			<th><select name='option'>
 					<option>검색옵션</option>
@@ -175,5 +175,6 @@ th {
 				</c:choose>
 			</c:forEach>
 	</table>
+	</div>
 </body>
 </html>

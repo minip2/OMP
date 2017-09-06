@@ -21,9 +21,17 @@ td {
 th {
 	border: 1px solid #444;
 }
+.store_board{
+	margin-left: auto;
+	margin-right: auto;
+	width: 60%;
+	/* text-align: center; */
+}
 </style>
 </head>
 <body>
+<c:import url="/jsp/common/top.jsp"/>
+<div class="store_board">
 <h2>제품 상세 페이지</h2>
 <table>
 	<tr>
@@ -63,6 +71,6 @@ th {
 <button>목록보기</button>
 </form>
 
-
+</div>
 </body>
 </html>

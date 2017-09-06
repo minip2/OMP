@@ -14,13 +14,13 @@ import javax.servlet.http.HttpServletResponse;
 import com.omp.store.dao.ShBoardDAO;
 import com.omp.store.domain.ShBoardDM;
 
-@WebServlet("/store/main")
-public class ShBoardList extends HttpServlet{
+@WebServlet("/store/main/category")
+public class ShBoardListSel extends HttpServlet{
 	@Override	
 	protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		ShBoardDAO dao = new ShBoardDAO();
-		
-		List<ShBoardDM> list = dao.ShBoardList();
+		int no = Integer.parseInt(request.getParameter("no"));
+		List<ShBoardDM> list = dao.ShBoardListSel(no);
 		request.setAttribute("list", list);
 		
 		RequestDispatcher rd = request.getRequestDispatcher("/jsp/store/storemain.jsp");

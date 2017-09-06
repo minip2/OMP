@@ -9,6 +9,8 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 
+
+
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
@@ -21,15 +23,24 @@ height: 250px;
 } 
 td{border: 1px solid #444;}
 th{border: 1px solid #444;}
+.store_board{
+	margin-left: auto;
+	margin-right: auto;
+	width: 60%;
+	/* text-align: center; */
+}
 </style>
 </head>
 <body>
+<c:import url="/jsp/common/top.jsp"/>
+<div class="store_board">
+
 <h2>스토어</h2>
 <ul>
-	<li> <a href = "store_main.html"> 전체 </a> </li>
-	<li> <a href = "store_meal.html">사료 </a> </li>
-	<li> <a href = "store_snack.html">간식 </a> </li>
-	<li> <a href = "store_toy.html">장난감 </a> </li>
+	<li> <a href = "/ohmypet/store/main"> 전체 </a> </li>
+	<li> <a href = "/ohmypet/store/main/category?no=1000">간식 </a> </li>
+	<li> <a href = "/ohmypet/store/main/category?no=2000">장난감 </a> </li>
+	<li> <a href = "/ohmypet/store/main/category?no=3000">사료 </a> </li>
 </ul>
 
 
@@ -59,6 +70,6 @@ th{border: 1px solid #444;}
 	</tr>
 	</c:forEach>
 </table>
-
+</div>
 </body>
 </html>

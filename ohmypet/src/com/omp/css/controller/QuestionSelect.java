@@ -1,7 +1,7 @@
-package com.omp.store.controller;
+package com.omp.css.controller;
 
 import java.io.IOException;
-import java.util.Date;
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.servlet.RequestDispatcher;
@@ -11,20 +11,23 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.omp.store.dao.ShBoardDAO;
-import com.omp.store.domain.ShBoardDM;
+import com.omp.css.dao.QuestionDAO;
+import com.omp.css.domain.QuestionDM;
 
-@WebServlet("/store/main")
-public class ShBoardList extends HttpServlet{
-	@Override	
+@WebServlet("/com.omp.css.controller/questionselect")
+public class QuestionSelect extends HttpServlet{
+
+	@Override
 	protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		ShBoardDAO dao = new ShBoardDAO();
 		
-		List<ShBoardDM> list = dao.ShBoardList();
-		request.setAttribute("list", list);
+		QuestionDAO dao = new QuestionDAO();
+		List<QuestionDM> question = dao.selectQuestion();
 		
-		RequestDispatcher rd = request.getRequestDispatcher("/jsp/store/storemain.jsp");
-		
+		request.setAttribute("question", question);
+		RequestDispatcher rd = request.getRequestDispatcher("/jsp/css/notice.jsp");
 		rd.forward(request, response);
+		
 	}
+	
+	
 }
