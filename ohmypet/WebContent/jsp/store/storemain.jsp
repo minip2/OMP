@@ -19,6 +19,9 @@
 .adminbutton{
 float: right;
 }
+table.a{
+display: inline-block;
+}
 img{
 border: 1px solid #444;
 width: 250px; 
@@ -38,11 +41,16 @@ margin-left: auto;
 	margin-top: 50px;
 	width: 58%;}
 .store_board{
+	display: inline;
 	margin-left: auto;
 	margin-right: auto;
 	margin-top: 50px;
 	width: 58%;	
+	padding: 28%;
 	column-count: 3;
+	/*float: right;*/
+
+	
 }
 .clearfix li{
 	display: inline;
@@ -60,8 +68,7 @@ margin-left: auto;
 	text-shadow: 1px 1px 0px #ffffff;
 	clear: right;
 	}
-.adminbutton{
-}
+
 .list{
 float: right;
 }
@@ -86,7 +93,7 @@ float: right;
 
 <div class="store_board">
 <c:forEach var="i" items="${list}">
-<table>
+<table class="a">
 		<tr><td>
 		<a href = "${pageContext.request.contextPath}/shboard/detail?no=${i.no}">
 		<img src = "${pageContext.request.contextPath}/store/download?path=${i.photoPath}&sname=${i.sname}&dname=${i.dname}" width="50px" height="50px">
