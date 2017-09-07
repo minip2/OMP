@@ -34,7 +34,6 @@ th{border: 1px solid #444;}
 <body>
 <c:import url="/jsp/common/top.jsp"/>
 <div class="store_board">
-
 <h2>스토어</h2>
 <ul>
 	<li> <a href = "/ohmypet/store/main"> 전체 </a> </li>
@@ -42,11 +41,10 @@ th{border: 1px solid #444;}
 	<li> <a href = "/ohmypet/store/main/category?no=2000">장난감 </a> </li>
 	<li> <a href = "/ohmypet/store/main/category?no=3000">사료 </a> </li>
 </ul>
-
-
+<c:if test="${user.member_level == 0}">
 <a href = "${pageContext.request.contextPath}/product/list"> <button type="button"> 상품관리 </button> </a>
 <a href = "${pageContext.request.contextPath}/product/idlist"> <button type="button"> 게시글등록 </button> </a> <br>
-
+</c:if>
 <table>
 	<tr>
 		<th colspan = '5'>게시글목록</th>

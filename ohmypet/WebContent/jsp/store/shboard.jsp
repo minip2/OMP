@@ -36,7 +36,7 @@ th {
 <table>
 	<tr>
 		<th>사진</th>	
-		<th><img src = "${pageContext.request.contextPath}/store/download?path=${sdm.photoPath}&sname=${sdm.sname}&dname=${sdm.dname}" width="50px" height="50px" ></th>	
+		<th><img src = "${pageContext.request.contextPath}/store/download?path=${sdm.photoPath}&sname=${sdm.sname}&dname=${sdm.dname}" width="50px" height="50px" ></th>
 	</tr>
 	<tr>
 		<th>가격</th>	
@@ -44,7 +44,9 @@ th {
 	</tr>
 	<tr>
 		<th>제목</th>	
-		<th><c:out value="${sdm.title }"/></th>	
+		<th><c:out value="${sdm.title }"/></th>
+		<th><button>장바구니</button></th>	
+		<th><button>구매하기</button></th>	
 	</tr>
 	
 </table>
@@ -56,6 +58,7 @@ th {
 	</tr>
 </table>
 <hr>
+<c:if test="${user.member_level == 0}">
 <form action="/ohmypet/shboard/del">
 <input type="hidden" name="no" value="${sdm.no}">
 <button>삭제하기</button>
@@ -64,9 +67,13 @@ th {
 <input type="hidden" name="price" value="${sdm.price}">
 <input type="hidden" name="title" value="${sdm.title}">
 <input type="hidden" name="no" value="${sdm.no}">
+<input type="hidden" name="photoPath" value="${sdm.photoPath}">
+<input type="hidden" name="sname" value="${sdm.sname}">
+<input type="hidden" name="dname" value="${sdm.dname}">
 <input type="hidden" name="productDetail" value="${sdm.productDetail}">
 <button>수정하기</button>
 </form>
+</c:if>
 <form action ="/ohmypet/store/main">
 <button>목록보기</button>
 </form>
