@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -70,13 +71,24 @@ float: right;
 </head>
 <body>
 <div>
-<form action="/ohmypet/jsp/css/join.jsp">
-<button class = "id">회원가입</button>
-</form>
-<form action="/ohmypet/jsp/css/login.jsp">
-<button class = "id">로그인</button>
-</form>
-</div>
+		<c:choose>
+			<c:when test="${empty user}">
+				<form action="/ohmypet/jsp/css/join.jsp">
+					<button class="id">회원가입</button>
+				</form>
+				<form action="/ohmypet/jsp/css/login.jsp">
+					<button class="id">로그인</button>
+				</form>
+			</c:when>
+
+
+			<c:otherwise>
+				<form action="/ohmypet/com.omp.common.controller/logout">
+					<button class="id">로그아웃</button>
+				</form>
+			</c:otherwise>
+		</c:choose>
+	</div>
 <div style="margin-top:30px">
 <h1 >오늘 나의 펫</h1>
 </div>
