@@ -16,23 +16,39 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Insert title here</title>
 <style>
+.adminbutton{
+float: right;
+}
 img{
 border: 1px solid #444;
 width: 250px; 
 height: 250px; 
 } 
-td{border: 1px solid #444;}
-th{border: 1px solid #444;}
+td{
+border: 1px solid #444;
+margin-left: auto;
+margin-right: auto;
+margin-top: 50px;
+	/*width: 58%;*/
+	}
+th{
+border: 1px solid #444;
+margin-left: auto;
+	margin-right: auto;
+	margin-top: 50px;
+	width: 58%;}
 .store_board{
 	margin-left: auto;
 	margin-right: auto;
-	width: 60%;
-	/* text-align: center; */
+	margin-top: 50px;
+	width: 58%;	
+	column-count: 3;
 }
 .clearfix li{
 	display: inline;
 	/* padding-bottom:5px; */
-	float: left;
+	float:right;
+	
 }
 .clearfix a{
 	color: #408080;
@@ -45,14 +61,14 @@ th{border: 1px solid #444;}
 	clear: right;
 	}
 .adminbutton{
-
+}
+.list{
+float: right;
 }
 </style>
 </head>
 <body>
 <c:import url="/jsp/common/top.jsp"/>
-<div class="store_board">
-<h2>스토어</h2>
 <nav class = "clearfix">
 <ul>
 	<li> <a href = "/ohmypet/store/main"> 전체 </a> </li>
@@ -67,29 +83,30 @@ th{border: 1px solid #444;}
 <a href = "${pageContext.request.contextPath}/product/idlist"> <button type="button"> 게시글등록 </button> </a> <br>
 </div>
 </c:if>
+
+<div class="store_board">
+<c:forEach var="i" items="${list}">
 <table>
-	<tr>
-		<th colspan = '5'>게시글목록</th>
-	</tr>	
-	<tr>
-		<td>글번호</td>
-		<td>사진</td>
-		<td>글제목</td>
-		<td>가격</td>
-		<td>등록일시</td>
-	</tr>
-	<c:forEach var="i" items="${list}">
-	<tr>
-		<td>${i.no}</td>
-		<td><a href = "${pageContext.request.contextPath}/shboard/detail?no=${i.no}">
+		<tr><td>
+		<a href = "${pageContext.request.contextPath}/shboard/detail?no=${i.no}">
 		<img src = "${pageContext.request.contextPath}/store/download?path=${i.photoPath}&sname=${i.sname}&dname=${i.dname}" width="50px" height="50px">
-		</a></td>
-		<td> ${i.title}</td>
-		<td>${i.price}${"원"}</td>
-		<td>${i.regDate}</td>
-	</tr>
-	</c:forEach>
+		</a>
+		</td></tr>
+		
+		<tr><td>
+		${i.title}
+		</td></tr>
+		
+		<tr><td>
+		${i.price}${"원"}
+		</td></tr>
+		
+		<tr><td>
+		${i.regDate}
+		</td></tr>
 </table>
+</c:forEach>
 </div>
+
 </body>
 </html>
