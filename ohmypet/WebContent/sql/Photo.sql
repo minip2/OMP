@@ -2,9 +2,13 @@ create table t97_photo(
 	no number primary key,
 	id varchar2(30) not null,
 	title varchar2(100) not null,
+	password number,
 	content varchar2(4000),
 	dog_val number(6) ,
-	file_path varchar2(1000),
+	category_val number(6),
+	file_path varchar2(3000),
+	file_org_name varchar2(3000),
+	file_sys_name varchar2(3000),
 	view_cnt number,
 	recommend_cnt number,
 	reg_date date default sysdate
@@ -26,7 +30,9 @@ create table t97_photo_file(
 
 create sequence s_photo_no;
 
+drop sequence s_photo_no;
 drop table t97_photo purge;
+drop table t97_photo;
 drop table t97_photo_file purge;
 
 insert into t97_photo(

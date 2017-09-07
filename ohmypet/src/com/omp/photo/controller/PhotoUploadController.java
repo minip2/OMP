@@ -16,11 +16,15 @@ import com.omp.util.MlecFileRenamePolicy;
 import com.oreilly.servlet.MultipartRequest;
 
 @WebServlet("/com/omp/photo/photoupload")
-public class PhotoUploadTest extends HttpServlet {
+public class PhotoUploadController extends HttpServlet {
 
 	@Override
 	protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		request.setCharacterEncoding("utf-8");
+		String update = request.getParameter("update");
+		int no = Integer.parseInt(request.getParameter("no"));
+		System.out.println("no : "+no);
+		System.out.println("update : "+update);
 		String realFolder ="C:/java97_2/server-work/wtpwebapps/ohmypet/data/photo";
 		String file_sys_name = ""; //서버에 실제 저장된 파일 이름
 		int maxSize = 1024*1024*30;
@@ -50,6 +54,12 @@ public class PhotoUploadTest extends HttpServlet {
 //		String fullpath = "/ohmypet/data/photo/gold.jpg";
 		request.setAttribute("file_sys_name", file_sys_name);
 		request.setAttribute("file_path", file_path);
+		System.out.println("update : "+update);
+		if(update!=null) {
+			request.setAttribute("dm", request.getAttribute("dm"));
+			RequestDispatcher rd = request.getRequestDispatcher("/jsp/photo/photoupdate.jsp");
+			rd.forward(request, response);
+		}
 		RequestDispatcher rd = request.getRequestDispatcher("/jsp/photo/photowrite.jsp");
 		rd.forward(request, response);
 		

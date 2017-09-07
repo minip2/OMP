@@ -17,7 +17,33 @@
    	    border-bottom: 1px solid #ddd;
 	}
 	
-	#columns{
+	/* #columns{
+		/* column-count:3; */ 
+        /*column-width:800px; 
+        column-gap: 15px;  /* 컬럼과 컬럼 사이  */
+        
+       /*  border: 1px solid black; */
+     /* }
+      #columns figure{
+        display: inline-block; /* 짤리는거 처리  */
+      /*  border:1px solid rgba(0,0,0,0.2);
+        margin:0;
+        margin-bottom: 15px;
+        padding:10px;
+        box-shadow: 2px 2px 5px rgba(0,0,0,0.5);;
+      }
+      #columns figure img{
+        width:320px;
+        height:330px;
+      }
+      #columns figure figcaption{
+        border-top:1px solid rgba(0,0,0,0.2);
+        padding:10px;
+        margin-top:11px;
+        height: 80px;
+      } */
+      
+      #columns{
         column-width:350px;
         column-gap: 15px;
       }
@@ -38,7 +64,9 @@
         margin-top:11px;
       }
       
-      /*  a:link {color:grey;
+      
+      
+       a:link {color:grey;
               text-decoration:none; /*하이퍼링크의 밑줄 속성 제거 */
               border-botton-width: 1px;
               border-botton-style: dashed; /* border-botton : 밑줄 속성, style에 dashed로 주면 점선*/
@@ -52,6 +80,12 @@
               border-botton-color: skyblue;
      } */
       
+      .center-style{
+      	
+      }
+      div.board-margin{
+      	margin: 30px;
+      }
 	
 </style>
 
@@ -59,84 +93,22 @@
 </head>
 <body>
 <c:import url="/jsp/common/top.jsp" />
-
-<%-- 제목, 컨텐트, 날짜, 파일패스, 아이디 --%>
-<%-- <h2>사진게시판</h2>
-<div class="container" style="margin-top:50px">
-	<table>
-  <tr>
-    <th>제목</th>
-    <th>컨텐트</th>
-    <th>파일패스</th>
-    <th>아이티</th>
-    <th>날짜</th>
-  </tr>
-  <tr>
-  <c:forEach var="list" items="${photolist}" >
-  <tr>
-    <td><c:out value="${list.no}"/></td>
-    <td><c:out value="${list.id}"/></td>
-    <!--   </a>-->
-    <td><a href="/ohmypet/com/omp/photo/detail?no=${list.no}" ><c:out value="${list.title}"/></a></td>
-    <td><c:out value="${list.reg_date}"/></td>
-  </tr>
+<div>
+	<button type="button"><a href="/ohmypet/jsp/photo/photowrite.jsp">글쓰기 </a></button>
+</div>
+ <div id="columns" class="board-margin"> 
+ 	<c:forEach var="list" items="${photolist}" >
+      <figure>
+        <img src="${list.file_path}">
+        <figcaption>
+	        <c:out value="${list.title}"/><br>
+	        <a href="/ohmypet/com/omp/photo/detail?no=${list.no}" >
+	        <c:out value="${list.content}"/></a>
+        </figcaption>
+      </figure>
   </c:forEach>
-</table> --%>
-<c:forEach var="list" items="${photolist}" >
-  <tr>
-    <td><c:out value="${list.no}"/></td>
-    <td><c:out value="${list.id}"/></td>
-    <!--   </a>-->
-    <td><a href="/ohmypet/com/omp/photo/detail?no=${list.no}" ><c:out value="${list.title}"/></a></td>
-    <td><c:out value="${list.reg_date}"/></td>
-  </tr>
-  </c:forEach>
- <div id="columns">
-      <figure>
-        <img src="//s3-us-west-2.amazonaws.com/s.cdpn.io/4273/cinderella.jpg">
-        <figcaption>Cinderella wearing European fashion of the mid-1860’s</figcaption>
-      </figure>
+</div>
  
-      <figure>
-        <img src="//s3-us-west-2.amazonaws.com/s.cdpn.io/4273/rapunzel.jpg">
-        <figcaption>Rapunzel, clothed in 1820’s period fashion</figcaption>
-      </figure>
- 
-      <figure>
-        <img src="//s3-us-west-2.amazonaws.com/s.cdpn.io/4273/belle.jpg">
-        <figcaption>Belle, based on 1770’s French court fashion</figcaption>
-      </figure>
- 
-      <figure>
-        <img src="//s3-us-west-2.amazonaws.com/s.cdpn.io/4273/mulan_2.jpg">
-        <figcaption>Mulan, based on the Ming Dynasty period</figcaption>
-      </figure>
- 
-      <figure>
-        <img src="//s3-us-west-2.amazonaws.com/s.cdpn.io/4273/sleeping-beauty.jpg">
-        <figcaption>Sleeping Beauty, based on European fashions in 1485</figcaption>
-      </figure>
- 
-      <figure>
-        <img src="//s3-us-west-2.amazonaws.com/s.cdpn.io/4273/pocahontas_2.jpg">
-        <figcaption>Pocahontas based on 17th century Powhatan costume</figcaption>
-      </figure>
- 
-      <figure>
-        <img src="//s3-us-west-2.amazonaws.com/s.cdpn.io/4273/snow-white.jpg">
-        <figcaption>Snow White, based on 16th century German fashion</figcaption>
-      </figure>    
- 
-      <figure>
-        <img src="//s3-us-west-2.amazonaws.com/s.cdpn.io/4273/ariel.jpg">
-        <figcaption>Ariel wearing an evening gown of the 1890’s</figcaption>
-      </figure>
- 
-      <figure>
-        <img src="//s3-us-west-2.amazonaws.com/s.cdpn.io/4273/tiana.jpg">
-        <figcaption>Tiana wearing the <i>robe de style</i> of the 1920’s</figcaption>
-      </figure>   
-    </div>
 <div class="text-center">
    <ul class = "pagination">
      <li><a href="#">1</a></li>

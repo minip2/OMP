@@ -10,11 +10,18 @@ public class PhotoBoardDM {
 	private String file_path;
 	private String file_sys_name;
 	private String file_org_name;
-	private int dog_val;
+	private int category_val;
 	private int view_cnt;
+	private int password;
 	private int recommend_cnt;
 	private Date reg_date;
 	
+	public int getPassword() {
+		return password;
+	}
+	public void setPassword(int password) {
+		this.password = password;
+	}
 	
 	public String getFile_sys_name() {
 		return file_sys_name;
@@ -59,11 +66,11 @@ public class PhotoBoardDM {
 	public void setFile_path(String file_path) {
 		this.file_path = file_path;
 	}
-	public int getDog_val() {
-		return dog_val;
+	public int getCategory_val() {
+		return category_val;
 	}
-	public void setDog_val(int dog_val) {
-		this.dog_val = dog_val;
+	public void setCategory_val(int category_val) {
+		this.category_val = category_val;
 	}
 
 	public int getView_cnt() {

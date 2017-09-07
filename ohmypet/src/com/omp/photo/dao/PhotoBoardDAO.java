@@ -19,9 +19,9 @@ public class PhotoBoardDAO {
 			try {
 			con = ConnectionPool.getConnection();
 			StringBuffer sql = new StringBuffer();
-			sql.append("select no, id, title, content, dog_val, file_path, reg_date ");
+			sql.append("select no, id, title, content, category_val, file_path, reg_date ");
 			sql.append(" from t97_photo ");
-			sql.append(" order by no ");
+			sql.append(" order by no desc ");
 			//sql.append("from t97_photo,t97_member;");
 			//System.out.println(sql.toString());
 			pstmt = con.prepareStatement(sql.toString());
@@ -34,7 +34,7 @@ public class PhotoBoardDAO {
 				photoBoard.setId(rs.getNString("id"));
 				photoBoard.setTitle(rs.getString("title"));
 				photoBoard.setContent(rs.getString("content"));
-				photoBoard.setDog_val(rs.getInt("dog_val"));
+				photoBoard.setCategory_val(rs.getInt("category_val"));
 				photoBoard.setFile_path(rs.getString("file_path"));
 				//photoBoard.setView_cnt(rs.getInt("view_cnt"));
 				photoBoard.setReg_date(rs.getDate("reg_date"));
@@ -60,7 +60,7 @@ public class PhotoBoardDAO {
 			//System.out.println("셀렉트에 들어온 no :"+ no);
 			con = ConnectionPool.getConnection();
 			StringBuffer sql = new StringBuffer();
-			sql.append("select no, id, title, content, file_path, dog_val, view_cnt, recommend_cnt, reg_date ");
+			sql.append("select no, id, title, content, file_path, category_val, view_cnt, recommend_cnt, reg_date ");
 			sql.append(" from t97_photo ");
 			sql.append(" where no= ? ");
 			//sql.append("from t97_photo,t97_member;");
@@ -77,7 +77,7 @@ public class PhotoBoardDAO {
 				photoBoard.setTitle(rs.getString("title"));
 				photoBoard.setContent(rs.getString("content"));
 				photoBoard.setFile_path(rs.getString("file_path"));
-				photoBoard.setDog_val(rs.getInt("dog_val"));
+				photoBoard.setCategory_val(rs.getInt("category_val"));
 				photoBoard.setView_cnt(rs.getInt("view_cnt"));
 				photoBoard.setRecommend_cnt(rs.getInt("recommend_cnt"));
 				photoBoard.setReg_date(rs.getDate("reg_date"));
@@ -102,9 +102,9 @@ public class PhotoBoardDAO {
 			StringBuffer sql = new StringBuffer();
 			sql.append("insert into t97_photo(no, id, title,"
 					+ " content,file_path,file_org_name,"
-					+ "file_sys_name, dog_val"); 
+					+ "file_sys_name, category_val"); 
 			sql.append(" ) values (");
-			sql.append("s_photo_no.nextval,?,?,?,?,? ) ");
+			sql.append("s_photo_no.nextval,?,?,?,?,?,?,? ) ");
 			pstmt = con.prepareStatement(sql.toString());
 			pstmt.setString(1, photoBoard.getId());
 			pstmt.setString(2, photoBoard.getTitle());
@@ -112,7 +112,7 @@ public class PhotoBoardDAO {
 			pstmt.setString(4, photoBoard.getFile_path());
 			pstmt.setString(5, photoBoard.getFile_org_name());
 			pstmt.setString(6, photoBoard.getFile_sys_name());
-			pstmt.setInt(7, photoBoard.getDog_val());
+			pstmt.setInt(7, photoBoard.getCategory_val());
 			pstmt.executeUpdate();			
 		} catch (Exception e) {
 			System.out.println("인설트 DAO 오류");
@@ -135,13 +135,13 @@ public class PhotoBoardDAO {
 			sql.append("	 title=?	");
 			sql.append("	 content=?	");
 			sql.append("	 file_path=?	");
-			sql.append("	 dog_val=?	");
+			sql.append("	 category_val=?	");
 			pstmt = con.prepareStatement(sql.toString());
 			pstmt.setString(1, photoBoard.getId());
 			pstmt.setString(2, photoBoard.getTitle());
 			pstmt.setString(3, photoBoard.getContent());
 			pstmt.setString(4, photoBoard.getFile_path());
-			pstmt.setInt(5, photoBoard.getDog_val());
+			pstmt.setInt(5, photoBoard.getCategory_val());
 			pstmt.executeUpdate();
 		}catch (Exception e) {
 			System.out.println("업데이트 DAO 오류");

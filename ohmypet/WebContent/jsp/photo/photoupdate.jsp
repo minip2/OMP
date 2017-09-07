@@ -5,10 +5,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Insert title here</title>
-<!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script> -->
+<title></title>
   <style type="text/css">      
          table{
 		border-collapse: collapse;
@@ -59,11 +56,13 @@
 <input type="file" name="filename1" size=20 style="float:left;">
 <input type="submit" value="업로드" >
 <div style="margin-top:5px;margin-bottom:5px;text-align: center; height:500px;">
-	<img src="${file_path}" style="width:100%; height: 100%"  />
+	<img src="${dm.file_path}" style="width:100%;"  />
 </div>
+<input type="hidden" name="no" value="${dm.no}" />
+<input type="hidden" name="update" value="update" />
 </form>
 		<!-- 셀렉박스 -->
-<form action="/ohmypet/com/omp/photo/controller/writer">	
+<form action="/ohmypet/com/omp/photo/mod">	
 <div class="form-group">
 	 <select name="category_val">
 		 	<option value="-1">분류</option>
@@ -71,17 +70,11 @@
 		 	<option value="2">고양이</option>
 		 	<option value="3">펫</option>
 		 </select>	
-		 <select name="dog_val">
-		 	<option value="-1"> 종류</option>
-		 	<option value="1">말티즈</option>
-		 	<option value="2">말라뮤트</option>
-		 	<option value="3">골든이</option>
-		 	<option value="4">웰시코기</option>
-		 </select>
 		 <br>
     <label for="title" >제목</label>
     <input type="hidden" name="file_sys_name" value="${file_sys_name}" />
     <input type="hidden" name="file_path" value="${file_path}" />
+    <input type="hidden" name="no" value="${dm.no}" />
     <input type="text" name="title" class="form-control" id="title" style="width:100%;" placeholder="제목을 입력해주세요." value="${dm.title}">		
 		
 		 <p>
@@ -89,19 +82,14 @@
 		 	<textarea name="content" id="content" rows="10" cols="93" placeholder="글을 쓰세요"></textarea>
 		 </p>
 		 <br>
-		 <div>
-			 <label for="tag" >tag</label>
-			 <input type="text" name="tag" class="form-control" id="tag" placeholder="태그를 입력해주세요(쉼표로 구분합니다.)"/> 
-		 </div>
-		 <br>
 		 <div class="idpw-board" >
 		 <!-- style="width:30%; float: left;"  -->
-		 	<input type="text" name="id"  placeholder="아이디" />
-		 	<input type="password" name="password"  placeholder="비밀번호" />
+		 	<input type="text" name="id"  placeholder="아이디" value="${dm.id}" />
+		 	<input type="password" name="password"  placeholder="비밀번호" value="${dm.password}" />
 		 </div>
 		 <br>
 		 <div class="button-style">
-		 <button type="submit">등록</button>
+		 <button type="submit">수정완료</button>
 		 <button type="button"><a href="/ohmypet/com/omp/photo/list">취소</a></button>
 		 </div>
 		  </div>
