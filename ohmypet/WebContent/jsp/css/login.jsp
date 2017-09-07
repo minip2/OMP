@@ -20,7 +20,7 @@
 		<br><br><br>
 		<h1>로그인</h1>
 		<p>${error}</p>
-		<form action="/ohmypet/com.omp.common.controller/login">
+		<form action="/ohmypet/com/omp/common/controller/login">
 		<table>
 	
 			<tr>
@@ -34,7 +34,7 @@
 				<td><input type="password" name="password" placeholder="비밀번호를 입력하세요 " /></td>
 			</tr>
 			<tr>
-				<td><form action="http://localhost:8000/ohmypet/jsp/css/join.jsp"><button>회원가입</button></form></td>
+				<td><form action="/ohmypet/jsp/css/join.jsp"><button>회원가입</button></form></td>
 				<td><form action="#"><button>아이디찾기</button></form></td>
 				<td><form action="#"><button>비밀번호찾기</button></form></td>
 			</tr>

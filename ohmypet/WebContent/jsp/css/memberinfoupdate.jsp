@@ -45,7 +45,7 @@
 		
 		
 		
-		<h2 class="bg-warning">회원가입</h2><br><br>
+		<h2 class="bg-warning">개인정보 수정</h2><br><br>
 		
 	 		ID :
 	 		<c:out value="${member.id}"/>
@@ -53,20 +53,21 @@
 	 		
 	 		<br><br>
 
-		<form action="/ohmypet/com.omp.common.controller/nick_nameoverlapnick">
-
+		<form action="/ohmypet/com/omp/common/controller/nick_nameoverlapnick">
+					<input type="hidden" value="${member.id}">
 	 		닉네임 : <input type = "text" placeholder="닉네임을 입력하세요" name="nick_name" value="${member.nick_name}">&nbsp;
 	 			
 	 			<button type="submit">닉네임중복체크</button><br>
-	 		
+	 			
 	 			<c:out value="${nick_msg}"/>
-	 		
+	 			
 		</form>
 
-		<form action="/ohmypet/com.omp.common.controller/membership">
+		<form action="/ohmypet/com/omp/common/controller/membershipupdate">
 	 		<br>
 	 		<br>
-	 		
+	 		<input type="hidden" name = "id" value="${member.id}">
+	 		<input type="hidden" name = "nick_name" value="${member.nick_name}">
 	 		password&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:
 	 		<input   type="password" placeholder="비밀번호를 입력하세요" name="password" maxlength="8">
 	 		<br>
@@ -131,7 +132,7 @@
 	 		</div>
 	 	</form>
 	 	<br>
-	 	<form action="/ohmypet/com.omp.css.controller/cssselect"><div class="container"><input type="submit" value="고객센터홈 " /></div></form>
+	 	<form action="/ohmypet/com/omp/css/controller/cssselect"><div class="container"><input type="submit" value="고객센터홈 " /></div></form>
 	 	
 	 
 	 

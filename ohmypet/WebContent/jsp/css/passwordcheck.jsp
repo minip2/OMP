@@ -22,7 +22,7 @@
   <h2>고객센터</h2>
 		  <ul class="breadcrumb">
 		  <li><a href="#">오늘 나의 펫</a></li>
-		  <li><a href="/ohmypet/com.omp.css.controller/cssselect">고객센터</a></li>
+		  <li><a href="/ohmypet/com/omp/css/controller/cssselect">고객센터</a></li>
 		  <li><a href="/ohmypet/jsp/css/questionwrite.jsp">문의하기</a></li>
 		<c:choose>
 			<c:when test="${empty user}">
@@ -31,14 +31,14 @@
 			</c:when>
 			<c:otherwise>
 				<li><a href="/ohmypet/jsp/css/passwordcheck.jsp">개인정보 변경</a>
-				<li><a href ="/ohmypet/com.omp.css.controller/logout">로그아웃</a></li>
+				<li><a href ="/ohmypet/com/omp/common/controller/logout">로그아웃</a></li>
 				<h3>${user.nick_name}님 접속 </h3>
 			</c:otherwise>
 		</c:choose>
 		</ul>
 </div>
 <div class="container">
-<form action="/ohmypet/com.omp.common.controller/memberinfoselect">
+<form action="/ohmypet/com/omp/common/controller/memberinfoselect">
 	<table class="table table-bordered" >
 		<br><br><br><br><br>
 		<h3>${user.id}님</h3>

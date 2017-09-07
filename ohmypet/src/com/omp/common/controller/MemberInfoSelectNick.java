@@ -14,16 +14,16 @@ import com.omp.common.dao.MembershipDAO;
 import com.omp.common.domain.LoginDM;
 import com.omp.common.domain.MembershipDM;
 
-@WebServlet("/com.omp.common.controller/memberinfoselectnick")
+@WebServlet("/com/omp/common/controller/memberinfoselectnick")
 public class MemberInfoSelectNick extends HttpServlet{
 
 	@Override
 	protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		System.out.println("개인정보 수정 서블릿 호출");
+		System.out.println("닉네임 중복수정 서블릿 호출");
 		
-		String nick_msg = request.getParameter("nick_msg");
+		//String nick_msg = request.getParameter("nick_msg");
 		String nick_name = request.getParameter("nick_name");
-		System.out.println(nick_msg+"----");
+		//System.out.println(nick_msg+"----");
 		System.out.println(nick_name+"----");
 		
 		

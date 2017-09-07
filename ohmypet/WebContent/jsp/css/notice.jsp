@@ -32,7 +32,7 @@
   <h2>고객센터</h2>
 		  <ul class="breadcrumb">
 		  <li><a href="#">오늘 나의 펫</a></li>
-		  <li><a href="/ohmypet/com.omp.css.controller/cssselect">고객센터</a></li>
+		  <li><a href="/ohmypet/com/omp/css/controller/cssselect">고객센터</a></li>
 		  <li><a href="/ohmypet/jsp/css/questionwrite.jsp">문의하기</a></li>
 		  
 		 <c:if test="${user.member_level == 0 }">
@@ -49,7 +49,7 @@
 		</c:when>
 		<c:otherwise>
 			<li><a href="/ohmypet/jsp/css/passwordcheck.jsp">개인정보 변경</a>
-			<li><a href ="/ohmypet/com.omp.css.controller/logout">로그아웃</a></li>
+			<li><a href ="/ohmypet/com/omp/common/controller/logout">로그아웃</a></li>
 			<h3>${user.nick_name}님 접속 </h3>
 		</c:otherwise>
 	</c:choose>
@@ -75,7 +75,7 @@
 		  	<tr>
 		  	 <td><c:out value="${list.no}"/></td>
 		   	 <td><c:out value="${list.id}"/></td>
-		   	 <td><a href="/ohmypet/com.omp.css.controller/noticedetail?no=${list.no}"><c:out value="${list.title}"/></a></td>
+		   	 <td><a href="/ohmypet/com/omp/css/controller/noticedetail?no=${list.no}"><c:out value="${list.title}"/></a></td>
 		  	  <td><c:out value="${list.regDate}"/></td>
 		 	 </tr>
 		   </c:forEach>
@@ -88,11 +88,11 @@
 </div>
 <div class="container">
 <ul class="pagination">
-  <li><a href="/ohmypet/jsp/notice.jsp?i=">1</a></li>
-  <li><a href="/ohmypet/jsp/notice.jsp?i=">2</a></li>
-  <li><a href="/ohmypet/jsp/notice.jsp?i=">3</a></li>
-  <li><a href="/ohmypet/jsp/notice.jsp?i=">4</a></li>
-  <li><a href="/ohmypet/jsp/notice.jsp?i=">5</a></li>
+  <li><a href="#">1</a></li>
+  <li><a href="#">2</a></li>
+  <li><a href="#">3</a></li>
+  <li><a href="#">4</a></li>
+  <li><a href="#">5</a></li>
 </ul>
 </div>
 
@@ -118,7 +118,7 @@
 		  	<tr>
 		  	 <td><c:out value="${list.category_val}"/></td>
 		   	 <td><c:out value="${list.nick_name}"/></td>
-		   	 <td><a href="/ohmypet/com.omp.css.controller/questiondetail?no=${list.no}"><c:out value="${list.title}"/></a></td>
+		   	 <td><a href="/ohmypet/com/omp/css/controller/questiondetail?no=${list.no}"><c:out value="${list.title}"/></a></td>
 		  	 <td><c:out value="${list.question_date}"/></td>
 		 	</tr>
 	</c:forEach>

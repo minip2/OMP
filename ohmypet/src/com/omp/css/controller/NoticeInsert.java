@@ -14,7 +14,7 @@ import javax.servlet.http.HttpServletResponse;
 import com.omp.css.dao.NoticeDAO;
 import com.omp.css.domain.NoticeDM;
 
-@WebServlet("/com.omp.css.controller/noticeinsert")
+@WebServlet("/com/omp/css/controller/noticeinsert")
 public class NoticeInsert extends HttpServlet{
 
 	@Override
@@ -32,7 +32,7 @@ public class NoticeInsert extends HttpServlet{
 		NoticeDAO dao = new NoticeDAO();
 		dao.insertNotice(notice);
 		}
-		response.sendRedirect("/ohmypet/com.omp.css.controller/cssselect");
+		response.sendRedirect("/ohmypet/com/omp/css/controller/cssselect");
 		
 		/*request.setAttribute("notice", notice);
 		RequestDispatcher rd = request.getRequestDispatcher("/jsp/css/notice.jsp");

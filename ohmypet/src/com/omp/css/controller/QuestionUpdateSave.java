@@ -11,7 +11,7 @@ import javax.servlet.http.HttpServletResponse;
 import com.omp.css.dao.QuestionDAO;
 import com.omp.css.domain.QuestionDM;
 
-@WebServlet("/com.omp.css.controller/questionupdatesave")
+@WebServlet("/com/omp/css/controller/questionupdatesave")
 public class QuestionUpdateSave extends HttpServlet{
 
 	@Override
@@ -27,7 +27,7 @@ public class QuestionUpdateSave extends HttpServlet{
 		
 		
 		dao.updateQuestion(question);
-		response.sendRedirect("/ohmypet/com.omp.css.controller/cssselect");
+		response.sendRedirect("/ohmypet/com/omp/css/controller/cssselect");
 	}
 	
 

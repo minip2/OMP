@@ -14,7 +14,7 @@ import com.omp.common.dao.MembershipDAO;
 import com.omp.common.domain.LoginDM;
 import com.omp.common.domain.MembershipDM;
 
-@WebServlet("/com.omp.common.controller/memberinfoselect")
+@WebServlet("/com/omp/common/controller/memberinfoselect")
 public class MemberInfoSelect extends HttpServlet{
 
 	@Override

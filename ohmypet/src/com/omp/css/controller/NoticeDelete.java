@@ -10,7 +10,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.omp.css.dao.NoticeDAO;
 
-@WebServlet("/com.omp.css.controller/noticedelete")
+@WebServlet("/com/omp/css/controller/noticedelete")
 public class NoticeDelete extends HttpServlet {
 
 	@Override
@@ -19,8 +19,8 @@ public class NoticeDelete extends HttpServlet {
 		int no = Integer.parseInt(request.getParameter("no"));
 		NoticeDAO dao = new NoticeDAO();
 		dao.deleteNotice(no);
-		response.sendRedirect("/ohmypet/com.omp.css.controller/cssselect");
-		
+		response.sendRedirect("/ohmypet/com/omp/css/controller/cssselect");
+	
 	}
 	
 }

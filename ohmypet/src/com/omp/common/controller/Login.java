@@ -19,7 +19,7 @@ import com.omp.common.domain.LoginDM;
 
 
 
-@WebServlet("/com.omp.common.controller/login")
+@WebServlet("/com/omp/common/controller/login")
 public class Login extends HttpServlet{
 
 	@Override
@@ -41,7 +41,7 @@ public class Login extends HttpServlet{
 		
 		// 로그인 쿼리 DAO에
 		 
-		String page = "/ohmypet/com.omp.css.controller/cssselect";
+		String page = "/ohmypet/com/omp/css/controller/cssselect";
 		if(login !=null) {
 			
 			HttpSession session = request.getSession();

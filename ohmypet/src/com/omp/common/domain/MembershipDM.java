@@ -39,17 +39,26 @@ public class MembershipDM {
 	public void setEmail(String email) {
 		this.email = email;
 	}
-	public String getPhon_number() {
-		return phon_number;
-	}
-	public void setPhon_number(String phon_number) {
-		this.phon_number = phon_number;
-	}
+	
 	public int getGender() {
 		return gender;
 	}
 	public void setGender(int gender) {
 		this.gender = gender;
+	}
+	
+	public String getAddress() {
+		return address;
+	}
+	public void setAddress(String address) {
+		this.address = address;
+	}
+	
+	public String getPhon_number() {
+		return phon_number;
+	}
+	public void setPhon_number(String phon_number) {
+		this.phon_number = phon_number;
 	}
 	public int getMember_level() {
 		return member_level;
@@ -69,18 +78,14 @@ public class MembershipDM {
 	public void setStore_check(int store_check) {
 		this.store_check = store_check;
 	}
-	public String getAddress() {
-		return address;
-	}
-	public void setAddress(String address) {
-		this.address = address;
-	}
 	public String getNick_name() {
 		return nick_name;
 	}
 	public void setNick_name(String nick_name) {
 		this.nick_name = nick_name;
 	}
+	
+	
 	
 
 }

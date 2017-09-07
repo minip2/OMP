@@ -5,7 +5,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 
 import com.omp.common.domain.MembershipDM;
-import com.omp.css.domain.LoginDM;
+import com.omp.common.domain.LoginDM;
 import com.omp.util.ConnectionPool;
 import com.omp.util.JdbcUtil;
 
@@ -151,7 +151,48 @@ public class MembershipDAO {
 		
 	}
 	
-	
+	public void updateMembership(MembershipDM member) {
+		
+		Connection con = null;
+		PreparedStatement stmt = null;
+		
+		
+		try {
+			con = ConnectionPool.getConnection();
+			
+			StringBuffer sql = new StringBuffer();
+			sql.append(" update t97_member  ");
+			sql.append(" set nick_name = ?, ");
+			sql.append("     password = ?, ");
+			sql.append("     phon_number = ?, ");
+			sql.append("     email = ?, ");
+			sql.append("     store_check = ?, ");
+			sql.append("     gender = ?, ");
+			sql.append("     address = ? ");
+			sql.append("   where id = ?      ");
+			stmt = con.prepareStatement(sql.toString());
+			stmt.setString(1, member.getNick_name());
+			stmt.setString(2, member.getPassword());
+			stmt.setString(3, member.getPhon_number());
+			stmt.setString(4, member.getEmail());
+			stmt.setInt(5, member.getStore_check());
+			stmt.setInt(6, member.getGender());
+			stmt.setString(7, member.getAddress());
+			stmt.setString(8, member.getId());
+			stmt.executeUpdate();
+ 
+			
+			
+			
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		}finally {
+			JdbcUtil.close(stmt);
+			ConnectionPool.releaseConnection(con);
+		}
+		
+	}
 	
 	
 	

@@ -10,7 +10,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.omp.common.dao.MembershipDAO;
-@WebServlet("/com.omp.common.controller/loginidoverlap")
+@WebServlet("/com/omp/common/controller/loginidoverlap")
 public class LoginIdOverlap extends HttpServlet{
 
 	@Override

@@ -12,7 +12,7 @@ import javax.servlet.http.HttpServletResponse;
 import com.omp.css.dao.NoticeDAO;
 import com.omp.css.domain.NoticeDM;
 
-@WebServlet("/com.omp.css.controller/noticeupdate")
+@WebServlet("/com/omp/css/controller/noticeupdate")
 public class NoticeUpdate extends HttpServlet{
 
 	@Override

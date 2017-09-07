@@ -11,7 +11,7 @@ import javax.servlet.http.HttpServletResponse;
 import com.omp.css.dao.NoticeDAO;
 import com.omp.css.domain.NoticeDM;
 
-@WebServlet("/com.omp.css.controller/noticeupdatesave")
+@WebServlet("/com/omp/css/controller/noticeupdatesave")
 public class NoticeUpdateSave extends HttpServlet{
 
 	@Override
@@ -31,7 +31,7 @@ public class NoticeUpdateSave extends HttpServlet{
 		notice.setTitle(title);
 		notice.setContent(content);
 		dao.updateNotice(notice);
-		response.sendRedirect("/ohmypet/com.omp.css.controller/cssselect");
+		response.sendRedirect("/ohmypet/com/omp/css/controller/cssselect");
 		
 	}
 	

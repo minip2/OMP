@@ -11,7 +11,7 @@ import javax.servlet.http.HttpServletResponse;
 import com.omp.common.dao.MembershipDAO;
 import com.omp.common.domain.MembershipDM;
 
-@WebServlet("/com.omp.common.controller/membership")
+@WebServlet("/com/omp/common/controller/membership")
 public class Membership extends HttpServlet{
 
 	@Override
@@ -50,7 +50,7 @@ public class Membership extends HttpServlet{
 		member.setAddress(address);
 		member.setNick_name(nick_name);
 		dao.insertMembership(member);
-		response.sendRedirect("/ohmypet/com.omp.css.controller/cssselect");
+		response.sendRedirect("/ohmypet/com/omp/css/controller/cssselect");
 		
 	}
 	

@@ -14,7 +14,7 @@ import com.omp.css.domain.QuestionDM;
 
 
 
-@WebServlet("/com.omp.css.controller/questiondetail")
+@WebServlet("/com/omp/css/controller/questiondetail")
 public class QuestionDetail extends HttpServlet {
 
 	@Override

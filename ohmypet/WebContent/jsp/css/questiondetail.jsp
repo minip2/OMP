@@ -62,13 +62,13 @@
                 <td>${question.answer_content}</td>
             </tr>
   </table>
-                    <button><a href="/ohmypet/com.omp.css.controller/questiondetail?no=${question.no-1}">이전글</a></button>
-                    <button><a href="/ohmypet/com.omp.css.controller/questiondetail?no=${question.no+1}">다음글</a></button>
-                    <button><a href="/ohmypet/com.omp.css.controller/cssselect">고객센터홈</a></button>
+                    <button><a href="/ohmypet/com/omp/css/controller/questiondetail?no=${question.no-1}">이전글</a></button>
+                    <button><a href="/ohmypet/com/omp/css/controller/questiondetail?no=${question.no+1}">다음글</a></button>
+                    <button><a href="/ohmypet/com/omp/css/controller/cssselect">고객센터홈</a></button>
                     <c:choose>
 						<c:when test="${user.id==question.id}">
-								    <button><a href="/ohmypet/com.omp.css.controller/questionupdateselect?no=${question.no}">수정하기</a></button>
-                    				<button><a href="/ohmypet/com.omp.css.controller/questiondelete?no=${question.no}">삭제하기</a></button>
+								    <button><a href="/ohmypet/com/omp/css/controller/questionupdateselect?no=${question.no}">수정하기</a></button>
+                    				<button><a href="/ohmypet/com/omp/css/controller/questiondelete?no=${question.no}">삭제하기</a></button>
 						</c:when>
 					</c:choose>	
                  
@@ -77,7 +77,7 @@
                     
                     
                     <c:if test="${user.member_level==0}">
-                    <button><a href="/ohmypet/com.omp.css.controller/questionanswer?no=${question.no}">답변하기</a></button>
+                    <button><a href="/ohmypet/com/omp/css/controller/questionanswer?no=${question.no}">답변하기</a></button>
                 	</c:if>
          
 </div>

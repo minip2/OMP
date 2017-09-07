@@ -42,7 +42,7 @@
 	
 	<div class="container">
        
-		<form action="/ohmypet/com.omp.css.controller/noticeinsert">
+		<form action="/ohmypet/com/omp/css/controller/noticeinsert">
 		<table class="table table-bordered">
 		
 			<tr >
@@ -58,7 +58,7 @@
                 <td colspan="2">
                     <button type ="submit" onclick="alert('글 등록이 완료되었습니다.');">글쓰기</button>
                     <input type="reset" value="초기화"/>
-                    <button type="button"><a href="/ohmypet/com.omp.css.controller/cssselect">고객센터</a></button>
+                    <button type="button"><a href="/ohmypet/com/omp/css/controller/cssselect">고객센터</a></button>
                     
                 </td>
             </tr>

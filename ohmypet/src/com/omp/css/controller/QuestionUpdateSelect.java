@@ -13,7 +13,7 @@ import javax.servlet.http.HttpServletResponse;
 import com.omp.css.dao.QuestionDAO;
 import com.omp.css.domain.QuestionDM;
 
-@WebServlet("/com.omp.css.controller/questionupdateselect")
+@WebServlet("/com/omp/css/controller/questionupdateselect")
 public class QuestionUpdateSelect extends HttpServlet{
 
 	@Override

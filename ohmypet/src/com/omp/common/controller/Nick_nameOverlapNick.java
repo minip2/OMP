@@ -12,7 +12,7 @@ import javax.servlet.http.HttpSession;
 
 import com.omp.common.dao.MembershipDAO;
 
-@WebServlet("/com.omp.common.controller/nick_nameoverlapnick")
+@WebServlet("/com/omp/common/controller/nick_nameoverlapnick")
 public class Nick_nameOverlapNick extends HttpServlet{
 
 	@Override
@@ -42,7 +42,7 @@ public class Nick_nameOverlapNick extends HttpServlet{
 		System.out.println(nick_msg+"11111111111");
 		System.out.println(nick_name+"11111111111");
 		
-		RequestDispatcher rd = request.getRequestDispatcher("/com.omp.common.controller/memberinfoselectnick");
+		RequestDispatcher rd = request.getRequestDispatcher("/com/omp/common/controller/memberinfoselectnick");
 		rd.forward(request, response);
 	
 		

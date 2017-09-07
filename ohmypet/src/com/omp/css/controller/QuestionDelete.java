@@ -10,7 +10,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.omp.css.dao.QuestionDAO;
 
-@WebServlet("/com.omp.css.controller/questiondelete")
+@WebServlet("/com/omp/css/controller/questiondelete")
 public class QuestionDelete extends HttpServlet {
 
 	@Override
@@ -20,7 +20,7 @@ public class QuestionDelete extends HttpServlet {
 		int no = Integer.parseInt(request.getParameter("no"));
 		QuestionDAO dao = new QuestionDAO();
 		dao.deleteQuestion(no);
-		response.sendRedirect("/ohmypet/com.omp.css.controller/cssselect");
+		response.sendRedirect("/ohmypet/com/omp/css/controller/cssselect");
 		
 	}
 	

@@ -15,7 +15,7 @@ import com.omp.css.dao.QuestionDAO;
 import com.omp.common.domain.LoginDM;
 import com.omp.css.domain.QuestionDM;
 
-@WebServlet("/com.omp.css.controller/questioninsert")
+@WebServlet("/com/omp/css/controller/questioninsert")
 public class QuestionInsert extends HttpServlet{
 
 	@Override
@@ -41,7 +41,7 @@ public class QuestionInsert extends HttpServlet{
 		question.setCategory_val(category_val);
 		dao.insertQuestion(question);
 		
-		response.sendRedirect("/ohmypet/com.omp.css.controller/cssselect");
+		response.sendRedirect("/ohmypet/com/omp/css/controller/cssselect");
 		
 		
 	}

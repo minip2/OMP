@@ -9,7 +9,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-@WebServlet("/com.omp.common.controller/logout")
+@WebServlet("/com/omp/common/controller/logout")
 public class Logout extends HttpServlet{
 
 	@Override
@@ -19,7 +19,7 @@ public class Logout extends HttpServlet{
 		HttpSession session = request.getSession();
 		session.invalidate();
 		
-		response.sendRedirect("/ohmypet/com.omp.css.controller/cssselect");
+		response.sendRedirect("/ohmypet/com/omp/css/controller/cssselect");
 	}
 	
 

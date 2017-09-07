@@ -40,7 +40,7 @@
 		<!-- 합쳐지고 최소화된 최신 자바스크립트 -->
 		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
 	</head>
-	<body onload="eventonload(${msg})">
+	<body>
 	<br><br><br>
 		<div class = "container">
 		<h1 class="bg-primary">오늘 나의 펫</h1><br>
@@ -48,7 +48,7 @@
 		
 		
 		<h2 class="bg-warning">회원가입</h2><br><br>
-		<form action="/ohmypet/com.omp.common.controller/loginidoverlap">
+		<form action="/ohmypet/com/omp/common/controller/loginidoverlap">
 	 		ID :
 	 		<input type="text"  name="id" placeholder="아이디를 입력하세요" value="${id}">
 	 		<button>id중복체크</button><br>
@@ -56,7 +56,7 @@
 	 		<c:out value="${msg}"/>
 	 		<br><br>
 		</form>
-		<form action="/ohmypet/com.omp.common.controller/nick_nameoverlap">
+		<form action="/ohmypet/com/omp/common/controller/nick_nameoverlap">
 				<input type="hidden" name="id" value="${id}">
 				<input type="hidden" name="msg" value="${msg}">
 	 		닉네임 : <input type = "text" placeholder="닉네임을 입력하세요" name="nick_name" value="${nick_name}">&nbsp;
@@ -67,7 +67,7 @@
 	 		
 		</form>
 
-		<form action="/ohmypet/com.omp.common.controller/membership">
+		<form action="/ohmypet/com/omp/common/controller/membership">
 			<input type="hidden" name="id" value="${id}">
 			<input type="hidden" name="nick_name" value="${nick_name}">
 			

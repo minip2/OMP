@@ -12,14 +12,14 @@ import javax.servlet.http.HttpSession;
 
 import com.omp.common.dao.MembershipDAO;
 
-@WebServlet("/com.omp.common.controller/nick_nameoverlap")
+@WebServlet("/com/omp/common/controller/nick_nameoverlap")
 public class Nick_nameOverlap extends HttpServlet{
 
 	@Override
 	protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
 		
-		System.out.println("닉네임 중복체크 서블릿 호출");
+		System.out.println("345624닉네임 중복체크 서블릿 호출");
 		
 		MembershipDAO dao = new MembershipDAO();
 		String nick_name = request.getParameter("nick_name");
@@ -38,7 +38,7 @@ public class Nick_nameOverlap extends HttpServlet{
 			nick_msg = " 사용할 수 있는 닉네임입니다";
 		}
 		request.setAttribute("nick_msg", nick_msg);
-		request.setAttribute("nick_name", nick_name);
+		request.setAttribute("modnick_name", nick_name);
 		request.setAttribute("id", id);
 		request.setAttribute("msg", msg);
 		
