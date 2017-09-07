@@ -12,6 +12,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 /*
  *     다운로드 기능을 구현하기 위한 방식
@@ -31,6 +32,8 @@ public class Download extends HttpServlet{
 		String path = request.getParameter("path");
 		String sname = request.getParameter("sname");
 		String dname = request.getParameter("dname");
+		HttpSession session = request.getSession();
+		session.getAttribute("user");
 		
 		String upload = "C:/java97/server-work/wtpwebapps/ohmypet/data/dictionary/upload";
 		File f = new File(upload + path, sname);

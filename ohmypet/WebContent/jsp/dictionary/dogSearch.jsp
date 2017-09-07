@@ -19,9 +19,25 @@
 <style>
 	a.result {
 		font-size: 50px;
-		color: rgb(198, 77, 25);
+		color: rgb(180, 127, 198);
 	}
-	body { padding-bottom: 70px; }
+	div.nav.navbar-nav {
+		float: left;
+		margin-left: 10%;
+		clear: left;
+	}
+	div.container2 {
+		float: right;
+		margin-right: 10%;
+		clear: right;
+	}
+	a.result:hover {
+		text-decoration: none;
+	}
+	a.result:focus {
+		background: white;
+		color: black;
+	}
 </style>
 <link rel=stylesheet type="text/css" href="/oh.css" />
 </head>
@@ -29,7 +45,7 @@
 	<c:import url="/jsp/common/top.jsp" />
 
 	<nav class="navbar navbar-default navbar-static-top">
-	  <div class="container">
+	  <div class="nav navbar-nav">
         <ul class="nav navbar-nav">
           <li role="presentation" class="dropdown">
             <a class="dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-expanded="false">
@@ -62,33 +78,36 @@
             </ul>
           </li>
         </ul>
+    </div>
     
+    <div class="container2">
         <form action="${pageContext.request.contextPath}/com/omp/dictionary/controller/search"
               class="navbar-form navbar-right" role="search">
-          <select name="groupName">
+          <select name="groupName" class="btn btn-default dropdown-toggle">
             <option value="dog_name">이름</option>
             <option value="origin">원산지</option>
             <option value="dog_size">크기</option>
             <option value="color">색상</option>
           </select>
-          <input type="text" placeholder="검색어" name="keyword">
-          <button type="submit">검색</button>
+          <input type="text" class="form-control" placeholder="검색어" name="keyword">
+          <button type="submit" class="btn btn-default" >검색</button>
         </form>
-        
-      </div>
+	</div>        
+      
 	</nav>
 	
+	<c:import url="/jsp/dictionary/dictionaryList.jsp" />
+		
     <div class = "dictionary-title">
 	<h3 class = "dictionary-title"><a class="dogSearch" href="${pageContext.request.contextPath}/com/omp/dictionary/controller/search">강아지 검색</a></h3>
 	</div>
 
-	<h4> 검색결과</h4>
 	    <c:forEach var="dogName" items="${dogList}">
 	    	<a class="result" href="${pageContext.request.contextPath}/com/omp/dictionary/controller/dictionary?dogName=<c:out value="${dogName}" />"> <c:out value="${dogName}" /></a>
 	    	<br>
 	    </c:forEach>
 	    
-	<c:import url="/jsp/dictionary/dictionaryList.jsp" />
+
 	
 </body>
 </html>

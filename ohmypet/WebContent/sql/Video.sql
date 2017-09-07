@@ -4,7 +4,8 @@ create table t97_video (
 	video_org_name varchar2(300) not null,
 	video_system_name varchar2(300) not null,
 	video_path varchar2(300) not null,
-	video_size number not null
+	video_size number not null,
+	nick_name varchar2(30) not null
 );
 
 create sequence s_video_no;
@@ -20,3 +21,6 @@ select *
   from t97_video
  order by no desc;
 
+	select *
+	  from t97_video
+	 order by no desc ;

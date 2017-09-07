@@ -20,6 +20,10 @@ values(1102, '영리한 푸들은 훈련을 잘 받는다.', '푸들', 1102, '�
 insert into t97_dog(dog_val, detail, dog_name, category_val, origin, color, dog_size)
 values(1103, '오랜 역사를 가진 몰타섬의 공주', '말티즈', 1103, '이탈리아',
        '흰색', '소형');
+       
+insert into t97_dog(dog_val, detail, dog_name, category_val, origin, color, dog_size)
+values(1104, '부드럽고 화려한 황금색 털처럼 밝은 성격의 개', '골든 리트리버', 1104, '영국',
+       '황금색', '대형');
 
 select * from t97_dog;
 select * from tab;
@@ -27,4 +31,7 @@ drop table t97_dog;
 
 select * from user_sequences;
 drop sequence s_dictionary_1103;
+
+
+
 

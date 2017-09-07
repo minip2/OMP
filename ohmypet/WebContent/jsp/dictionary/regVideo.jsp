@@ -7,7 +7,17 @@
 <title>Insert title here</title>
 </head>
 <body>
+<%
+	if(session.getAttribute("user") == null){
+		request.setAttribute("error", "로그인이 필요한 항목입니다");
+		RequestDispatcher rd = request.getRequestDispatcher("/jsp/css/login.jsp");
+		rd.forward(request, response);
+	}
+%>
+
 	<c:import url="/jsp/common/top.jsp" />
+	
+	<c:import url="/jsp/dictionary/dictionaryList.jsp" />
 
 	<h3>동영상 등록</h3>
 	<form action="${pageContext.request.contextPath}/com/omp/dictionary/controller/insertVideo"
@@ -17,6 +27,6 @@
 		<button>등록완료</button>
 	</form>
 	
-    <c:import url="/jsp/dictionary/dictionaryList.jsp" />
+    
 </body>
 </html>

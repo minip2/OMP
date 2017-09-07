@@ -5,10 +5,17 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Insert title here</title>
+<style type="text/css">
+	div.list-group {
+		position: fixed;
+		top: 30%;
+		right: 5%;
+	}
+</style>
 </head>
 <body>
 
-<div class="list-group"">
+<div class="list-group">
   <a href="#" class="list-group-item active">
        작은 메뉴창
   </a>

@@ -8,13 +8,14 @@ public class DictionaryDM {
 	private String id;
 	private Date modDate;
 	private String detail;
-	private String nickname;
+	private String nick_name;
 	
-	public String getNickname() {
-		return nickname;
+
+	public String getNick_name() {
+		return nick_name;
 	}
-	public void setNickname(String nickname) {
-		this.nickname = nickname;
+	public void setNick_name(String nick_name) {
+		this.nick_name = nick_name;
 	}
 	public int getDogVal() {
 		return dogVal;

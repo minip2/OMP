@@ -73,7 +73,7 @@ public class DictionaryDAO {
 				dic.setId(rs.getString("id"));
 				dic.setDetail(rs.getString("detail"));
 				dic.setModDate(rs.getTimestamp("mod_date"));
-				dic.setNickname(rs.getString("nickname"));
+				dic.setNick_name(rs.getString("nick_name"));
 				list.add(dic);
 			}
 			
@@ -95,7 +95,7 @@ public class DictionaryDAO {
 			con = ConnectionPool.getConnection();
 
 			StringBuffer sql = new StringBuffer();
-			sql.append("select dog_val, version, id, detail, mod_date, nickname ");
+			sql.append("select dog_val, version, id, detail, mod_date, nick_name ");
 			sql.append("  from t97_dictionary ");
 			sql.append(" where dog_val = ? ");
 			sql.append("   and version = ? ");
@@ -110,7 +110,7 @@ public class DictionaryDAO {
 				dic.setId(rs.getString("id"));
 				dic.setDetail(rs.getString("detail"));
 				dic.setModDate(rs.getTimestamp("mod_date"));
-				dic.setNickname(rs.getString("nickname"));
+				dic.setNick_name(rs.getString("nick_name"));
 				
 				return dic;
 				
@@ -132,7 +132,7 @@ public class DictionaryDAO {
 		try {
 			con = ConnectionPool.getConnection();
 			StringBuffer sql = new StringBuffer();
-			sql.append("select dog_val, version, id, detail, mod_date, nickname ");
+			sql.append("select dog_val, version, id, detail, mod_date, nick_name ");
 			sql.append("  from (select * ");
 			sql.append("          from t97_dictionary ");
 			sql.append("         where dog_val = ? ");
@@ -149,7 +149,7 @@ public class DictionaryDAO {
 				dic.setId(rs.getString("id"));
 				dic.setDetail(rs.getString("detail"));
 				dic.setModDate(rs.getTimestamp("mod_date"));
-				dic.setNickname(rs.getString("nickname"));
+				dic.setNick_name(rs.getString("nick_name"));
 				return dic;
 			}
 			
@@ -170,13 +170,13 @@ public class DictionaryDAO {
 			con = ConnectionPool.getConnection();
 
 			StringBuffer sql = new StringBuffer();
-			sql.append("insert into t97_dictionary(dog_val, version, id, detail, mod_date, nickname) ");
+			sql.append("insert into t97_dictionary(dog_val, version, id, detail, mod_date, nick_name) ");
 			sql.append("values (?, " + sequenceName + ".nextval, ?, ?, sysdate, ? ) ");
 			stmt = con.prepareStatement(sql.toString());
 			stmt.setInt(1, dic.getDogVal());
 			stmt.setString(2, dic.getId());
 			stmt.setString(3, dic.getDetail());
-			stmt.setString(4, dic.getNickname());
+			stmt.setString(4, dic.getNick_name());
 			
 			stmt.executeUpdate();
 			

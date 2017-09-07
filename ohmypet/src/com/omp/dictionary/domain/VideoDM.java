@@ -7,7 +7,15 @@ public class VideoDM {
 	private String videoSystemName;
 	private String videoPath;
 	private long videoSize;
+	private String nick_name;
 	
+
+	public String getNick_name() {
+		return nick_name;
+	}
+	public void setNick_name(String nick_name) {
+		this.nick_name = nick_name;
+	}
 	public int getNo() {
 		return no;
 	}

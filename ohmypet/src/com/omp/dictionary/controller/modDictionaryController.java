@@ -8,7 +8,9 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
+import com.omp.common.domain.LoginDM;
 import com.omp.dictionary.dao.DictionaryDAO;
 import com.omp.dictionary.domain.DictionaryDM;
 import com.omp.dictionary.domain.DogDM;
@@ -35,6 +37,11 @@ public class modDictionaryController extends HttpServlet{
 		sequenceName = dao.insertSequence(dogVal);
 	}
 	
+	HttpSession session = request.getSession();
+	LoginDM login = (LoginDM)session.getAttribute("user");
+	String nick_name = login.getNick_name();
+	
+	dictionary.setNick_name(nick_name);
 	dictionary.setDetail(detail);
 	dao.insertDictionary(dictionary, sequenceName);
 

@@ -15,16 +15,22 @@
 
 <!-- 합쳐지고 최소화된 최신 자바스크립트 -->
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
+<style>
+	 body { padding-bottom: 70px; }
+</style>
 </head>
 <body>
+<div>
 	<c:import url="/jsp/common/top.jsp" />
+	
+	<c:import url="/jsp/dictionary/dictionaryList.jsp" />
 
+</div>
     <h3>동영상</h3>
 	<form action="${pageContext.request.contextPath}/com/omp/dictionary/controller/regVideo">
         <button>등록</button>
 	</form>
-	
-<c:out value="" />
+
 
 <div class="row">
   <div class="col-sm-6 col-md-4">
@@ -40,7 +46,9 @@
           <%-- <p>설명</p>  --%>
           <p>
             <a href="${pageContext.request.contextPath}/com/omp/dictionary/util/download?path=<c:out value="${video.videoPath}" />&sname=<c:out value="${video.videoSystemName}" />&dname=<c:out value="${video.videoOrgName}" />" class="btn btn-primary" role="button">다운로드</a>
+            <c:if test="${user.nick_name eq video.nick_name or user.nick_name eq 'admin' }">
             <a href="${pageContext.request.contextPath}/com/omp/dictionary/controller/videoDelete?no=<c:out value="${video.no}" />" class="btn btn-default" role="button">삭제</a>
+            </c:if>
           </p>
         </div>
       </c:forEach>
@@ -48,8 +56,6 @@
     </div>
   </div>
 </div>
-
-	<c:import url="/jsp/dictionary/dictionaryList.jsp" />
 	
 </body>
 </html>

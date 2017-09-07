@@ -16,35 +16,56 @@
 <!-- 합쳐지고 최소화된 최신 자바스크립트 -->
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
 <style>
-	h3{
-		position:relative;
-		left: 40%;
+	div.edit-b {
+		float:right;
+		margin-right:20%; 
 	}
-	body { padding-bottom: 70px; }
+	div.history-b {
+		float:right;
+	}
+	div.detail {
+		float:left;
+		margin-top: 10%;
+		margin-left: 100px;
+		font-size: 30px;
+	}
 </style>
 </head>
 <body>
 	<c:import url="/jsp/common/top.jsp" />
 
+	<c:import url="/jsp/dictionary/dictionaryList.jsp" />
+
     <h3><a href="${pageContext.request.contextPath}/com/omp/dictionary/controller/dictionary?dogName=<c:out value="${dogName}" />">
         '<c:out value="${dogName}" />' 상세 정보</a></h3>
+    
+    <div><h1><c:out value="${dogName}" /></h1></div><br>
+    
+    <div>
+    <div class="edit-b">    
     <form action="${pageContext.request.contextPath}/com/omp/dictionary/controller/dictionaryEdit">
     	<input type="hidden" value="${dogName}" name="dogName">
-        <button type="submit">편집</button>
+        <button class="btn btn-danger">편집</button>
     </form>
+    </div>
+    
+    <div class="history-b">
     <form action="${pageContext.request.contextPath}/com/omp/dictionary/controller/history">
     	<input type="hidden" value="${dogName}" name="dogName">
-        <button>
+        <button class="btn btn-primary">
                   역사보기
         </button>
     </form>
-    <h1><c:out value="${dogName}" /></h1><br>
+    </div>
+    </div>
+    
+    <div class="detail">
 	원산지 : <c:out value="${dog.origin}" /><br>
 	크기 : <c:out value="${dog.dogSize}" /><br>
 	색상 : <c:out value="${dog.color}" /><br>
 	버전 : v<c:out value="${dog.version/10+1}" /><br>
 	설명 : <c:out value="${dog.detail}" /><br>
+	</div>
 	
-	<c:import url="/jsp/dictionary/dictionaryList.jsp" />
 </body>
 </html>

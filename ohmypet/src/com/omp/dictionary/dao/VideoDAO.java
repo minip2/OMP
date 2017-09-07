@@ -19,14 +19,15 @@ public class VideoDAO {
 			con = ConnectionPool.getConnection();
 			StringBuffer sql = new StringBuffer();
 			sql.append("insert into t97_video(no, title, video_org_name, "
-					+ "video_system_name, video_path, video_size) ");
-			sql.append("values(s_video_no.nextval, ?, ?, ?, ?, ?)");
+					+ "video_system_name, video_path, video_size, nick_name) ");
+			sql.append("values(s_video_no.nextval, ?, ?, ?, ?, ?, ?)");
 			stmt = con.prepareStatement(sql.toString());
 			stmt.setString(1, video.getTitle());
 			stmt.setString(2, video.getVideoOrgName());
 			stmt.setString(3, video.getVideoSystemName());
 			stmt.setString(4, video.getVideoPath());
 			stmt.setLong(5, video.getVideoSize());
+			stmt.setString(6, video.getNick_name());
 			stmt.executeUpdate();
 			
 		} catch (Exception e) {
@@ -59,6 +60,7 @@ public class VideoDAO {
 				video.setVideoSystemName(rs.getString("video_system_name"));
 				video.setVideoPath(rs.getString("video_path"));
 				video.setVideoSize(rs.getLong("video_size"));
+				video.setNick_name(rs.getString("nick_name"));
 				list.add(video);
 			}
 			

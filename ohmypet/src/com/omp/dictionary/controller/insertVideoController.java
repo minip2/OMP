@@ -13,7 +13,9 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
+import com.omp.common.domain.LoginDM;
 import com.omp.dictionary.dao.VideoDAO;
 import com.omp.dictionary.domain.VideoDM;
 import com.omp.util.MlecFileRenamePolicy;
@@ -44,6 +46,9 @@ public class insertVideoController extends HttpServlet{
 		);
 		
 		String title = mRequest.getParameter("title");
+		HttpSession session = request.getSession();
+		LoginDM login = (LoginDM)session.getAttribute("user");
+		String nickname = login.getNick_name();
 		
 		Enumeration<String> fNames = mRequest.getFileNames();
 		while (fNames.hasMoreElements()) {
@@ -57,21 +62,13 @@ public class insertVideoController extends HttpServlet{
 				video.setVideoSystemName(mRequest.getFilesystemName(fileName));
 				video.setVideoPath(path);
 				video.setVideoSize(file.length());
+				video.setNick_name(nickname);
 				dao.insertVideo(video);
 			}
 		}
 		
 		List<VideoDM> videoList = dao.videoList();
 		request.setAttribute("videoList", videoList); 
-		
-		for (VideoDM video : videoList) {
-			System.out.println(video.getNo());
-			System.out.println(video.getTitle());
-			System.out.println(video.getVideoOrgName());
-			System.out.println(video.getVideoPath());
-			System.out.println(video.getVideoSize());
-			System.out.println(video.getVideoSystemName());
-		}
 		
 		RequestDispatcher rd = request.getRequestDispatcher("/jsp/dictionary/video.jsp");
 		rd.forward(request, response);
