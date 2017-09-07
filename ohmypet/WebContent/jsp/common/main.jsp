@@ -7,27 +7,37 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Insert title here</title>
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<style>
 
+div{
+	margin-left: auto;
+	margin-right: auto;
+	margin-top: 50px;
+	width: 58%;	
+}
+</style>
 </head>
 <body>
 	<c:import url="/jsp/common/top.jsp" />
 	 	
 
 	<div>
-		<section> <article>asdfsadfas
-		asdfasdf
-		asdfasdf
-		I returned
-		from my trip to the U.S.</article> <article>We had traveled on
-		business to Phoenix, AZ.</article> <article>Although there were no
-		arrangements to do any flying, I had decided to bring a flight suit
-		with me. I figured, you never know… </article> </section>
-		
-
-
-		<aside> How I Flew a Huey in Arizona </aside>
+	최신글<br>
+	
 	</div>
-	<footer> HTML5 </footer>
+	<div>
+	사진<br>
+	<c:forEach var="i" begin="0" end="2" items="${list}">
+	<a href ="${pageContext.request.contextPath}/shboard/detail?no=${i.no}"><img src = "${pageContext.request.contextPath}/store/download?path=${i.photoPath}&sname=${i.sname}&dname=${i.dname}" width="200px" height="200px"></a>
+	</c:forEach>
+	</div>
+	
+	<div>
+	스토어<br>
+	<c:forEach var="i" begin="0" end="2" items="${list}">
+	<a href ="${pageContext.request.contextPath}/shboard/detail?no=${i.no}"><img src = "${pageContext.request.contextPath}/store/download?path=${i.photoPath}&sname=${i.sname}&dname=${i.dname}" width="200px" height="200px"></a>
+	</c:forEach>
+	</div>
 </body>
 
 

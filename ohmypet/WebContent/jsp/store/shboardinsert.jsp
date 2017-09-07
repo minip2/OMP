@@ -135,36 +135,36 @@ td {
 
 
 
-		<c:otherwise>
-			<form action="${pageContext.request.contextPath}/shboard/load">
-				<c:out value="상품코드" />
-				<select name='productId'>
-					<c:forEach var="i" items="${list}">
-						<option>
-			 	${i.productId}
-				</option>
-					</c:forEach>
-				</select>
-				<button type="submit">불러오기</button>
-			</form>
-			<table>
-				<tr colspan='3'>
-					<th>상품표</th>
-				</tr>
-				<tr>
-					<td>상품코드</td>
-					<td>상품이름</td>
-				</tr>
-				<c:forEach var="i" items="${list}">
-					<tr>
-						<td>${i.productId}</td>
-						<td>${i.productName}</td>
+			<c:otherwise>
+				<form action="${pageContext.request.contextPath}/shboard/load">
+					<c:out value="상품코드" />
+					<select name='productId'>
+						<c:forEach var="i" items="${list}">
+							<option>
+			 					${i.productId}
+							</option>
+						</c:forEach>
+					</select>
+					<button type="submit">불러오기</button>
+				</form>
+				<table>
+					<tr colspan='3'>
+						<th>상품표</th>
 					</tr>
-				</c:forEach>
-			</table>
+					<tr>
+						<td>상품코드</td>
+						<td>상품이름</td>
+					</tr>
+					<c:forEach var="i" items="${list}">
+						<tr>
+							<td>${i.productId}</td>
+							<td>${i.productName}</td>
+						</tr>
+					</c:forEach>
+				</table>
 
-		</c:otherwise>
-	</c:choose>
+			</c:otherwise>
+		</c:choose>
 	</div>
 </body>
 </html>

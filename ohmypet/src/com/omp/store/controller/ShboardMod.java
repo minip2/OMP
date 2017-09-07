@@ -23,6 +23,9 @@ public class ShboardMod extends HttpServlet{
 	
 		
 		sdm.setTitle(request.getParameter("title"));
+		sdm.setPhotoPath(request.getParameter("photoPath"));
+		sdm.setSname(request.getParameter("sname"));
+		sdm.setDname(request.getParameter("dname"));
 		sdm.setProductDetail(request.getParameter("productDetail"));
 		sdm.setNo(Integer.parseInt(request.getParameter("no")));
 		sdm.setPrice(Integer.parseInt(request.getParameter("price")));

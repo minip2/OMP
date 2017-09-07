@@ -29,21 +29,43 @@ th{border: 1px solid #444;}
 	width: 60%;
 	/* text-align: center; */
 }
+.clearfix li{
+	display: inline;
+	/* padding-bottom:5px; */
+	float: left;
+}
+.clearfix a{
+	color: #408080;
+	display: inline-block;
+	width: 100px;
+	text-align: center;
+	text-decoration: none;
+	line-height: 40px;
+	text-shadow: 1px 1px 0px #ffffff;
+	clear: right;
+	}
+.adminbutton{
+
+}
 </style>
 </head>
 <body>
 <c:import url="/jsp/common/top.jsp"/>
 <div class="store_board">
 <h2>스토어</h2>
+<nav class = "clearfix">
 <ul>
 	<li> <a href = "/ohmypet/store/main"> 전체 </a> </li>
 	<li> <a href = "/ohmypet/store/main/category?no=1000">간식 </a> </li>
 	<li> <a href = "/ohmypet/store/main/category?no=2000">장난감 </a> </li>
 	<li> <a href = "/ohmypet/store/main/category?no=3000">사료 </a> </li>
 </ul>
+</nav>
 <c:if test="${user.member_level == 0}">
+<div class = "adminbutton">
 <a href = "${pageContext.request.contextPath}/product/list"> <button type="button"> 상품관리 </button> </a>
 <a href = "${pageContext.request.contextPath}/product/idlist"> <button type="button"> 게시글등록 </button> </a> <br>
+</div>
 </c:if>
 <table>
 	<tr>

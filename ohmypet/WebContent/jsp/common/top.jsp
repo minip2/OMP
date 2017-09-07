@@ -95,7 +95,7 @@ float: right;
 <div style="margin-top:30px; margin-bottom:20px;">
 <nav class="clearfix">
    	      <ul >
-   	        <li><a href="/ohmypet/jsp/common/main.jsp"  id="all" value="HOME">HOME</a></li>
+   	        <li><a href="/ohmypet/main"  id="all" value="HOME">HOME</a></li>
 			<li><a href="#"  id="dog" value="프로필">프로필</a></li>
 			<li><a href="/ohmypet/jsp/photo/photolist.jsp" class="botton" id="cat" value="사진">사진</a></li>
 			<li><a href="#"  id="honey" value="게시판">게시판</a></li>
