@@ -25,12 +25,13 @@ public class Login extends HttpServlet{
 	@Override
 	protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
-		System.out.println("로그인 서블릿 호출");
+		System.out.println("1111로그인 서블릿 호출");
 		request.setCharacterEncoding("utf-8");
 		
 		String id = request.getParameter("id");
 		String password = request.getParameter("password");
-		
+		System.out.println("--------------"+password);
+		System.out.println("-----------"+id);
 		
 		
 		LoginDAO dao = new LoginDAO();
@@ -38,7 +39,7 @@ public class Login extends HttpServlet{
 		LoginDM login = dao.login(id, password);
 		
 		
-		
+		 
 		// 로그인 쿼리 DAO에
 		 
 		String page = "/ohmypet/com/omp/css/controller/cssselect";
@@ -52,7 +53,7 @@ public class Login extends HttpServlet{
 			session.setAttribute("user", login);
 			
 			response.sendRedirect(page);
-		
+			
 		}
 		else {
 			page = "/jsp/css/login.jsp";

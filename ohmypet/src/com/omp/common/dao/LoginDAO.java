@@ -26,8 +26,7 @@ public class LoginDAO {
 			stmt.setString(1, id);
 			stmt.setString(2, password);
 			ResultSet rs = stmt.executeQuery();
-			System.out.println(id);
-			System.out.println(password);
+
 			if(rs.next()) {
 				login.setId(rs.getString("id"));
 				login.setPassword(rs.getString("password"));

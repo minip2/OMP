@@ -14,6 +14,8 @@
 		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap-theme.min.css">
 		<!-- 합쳐지고 최소화된 최신 자바스크립트 -->
 		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
+
+
 </head>
 <body>
 	<div class="container">
@@ -21,26 +23,28 @@
 		<h1>로그인</h1>
 		<p>${error}</p>
 		<form action="/ohmypet/com/omp/common/controller/login">
-		<table>
+		<table class="table table-bordered">
 	
 			<tr>
-				<td>아이디:&nbsp;</td>
-				<td><input type="text" name="id"  placeholder="아이디를 입력하세요 "/></td>
-				<td><button>로그인</button></td>
+				
+				<td style="height: 23px; width: 318px;">아이디:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+				<input type="text" name="id"  placeholder="아이디를 입력하세요 "/></td>
+				<td rowspan="2"><button>로그인</button></td>
+			</tr>
+			
+			<tr>
+				<td>비밀번호:&nbsp;
+				<input type="password" name="password" placeholder="비밀번호를 입력하세요 " /></td>
 			</tr>
 		</form>
-			<tr>
-				<td>비밀번호:&nbsp;</td>
-				<td><input type="password" name="password" placeholder="비밀번호를 입력하세요 " /></td>
-			</tr>
-			<tr>
-				<td><form action="/ohmypet/jsp/css/join.jsp"><button>회원가입</button></form></td>
-				<td><form action="#"><button>아이디찾기</button></form></td>
-				<td><form action="#"><button>비밀번호찾기</button></form></td>
-			</tr>
+			
+				<tr><form action="/ohmypet/jsp/css/join.jsp"><button>회원가입</button></form>
+				<form action="/ohmypet/com/omp/css/controller/idsearch"><button>아이디찾기</button></form>
+				<form action="#"><button>비밀번호찾기</button></form><tr>
 			
 			
 		</table>
+			
 	</div>
 </body>
 </html>

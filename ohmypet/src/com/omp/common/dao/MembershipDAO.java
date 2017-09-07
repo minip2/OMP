@@ -197,11 +197,104 @@ public class MembershipDAO {
 	
 	
 	
+	public String idSearch(String name, String email) {
+		Connection con = null;
+		PreparedStatement stmt = null;
+		try {
+			LoginDM login = new LoginDM();
+			con = ConnectionPool.getConnection();
+			StringBuffer sql = new StringBuffer();
+			
+			sql.append(" select id ");
+			sql.append(" from t97_member ");
+			sql.append(" where name = ? ");
+			sql.append(" and email = ? ");
+			stmt= con.prepareStatement(sql.toString());
+			stmt.setString(1, name);
+			stmt.setString(2, email);
+			
+			ResultSet rs = stmt.executeQuery();
+			
+			
+			if(rs.next()) {
+				login.setId(rs.getString("id"));
+			}
+			if(login.getId() != null) return login.getId();
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		}finally {
+			JdbcUtil.close(stmt);
+			ConnectionPool.releaseConnection(con);
+		}
+		return null;
+	}
+	
+	public String passwordSearch(String name, String email, String id) {
+		Connection con = null;
+		PreparedStatement stmt = null;
+		try {
+			LoginDM login = new LoginDM();
+			con = ConnectionPool.getConnection();
+			StringBuffer sql = new StringBuffer();
+			
+			sql.append(" select password ");
+			sql.append(" from t97_member ");
+			sql.append(" where name = ? ");
+			sql.append(" and email = ? ");
+			sql.append(" and id = ? ");
+			stmt= con.prepareStatement(sql.toString());
+			stmt.setString(1, name);
+			stmt.setString(2, email);
+			stmt.setString(3, id);
+			
+			ResultSet rs = stmt.executeQuery();
+			
+			
+			if(rs.next()) {
+				login.setPassword(rs.getString("password"));
+			}
+			if(login.getPassword() != null) return login.getPassword();
+			System.out.println("비번 설정 완료");
+			
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		}finally {
+			JdbcUtil.close(stmt);
+			ConnectionPool.releaseConnection(con);
+		}
+		return null;
+	}
 	
 	
-	
-	
-	
+	public String deleteMembership(String id) {
+		Connection con = null;
+		PreparedStatement stmt = null;
+		try {
+			String msg="";
+			con = ConnectionPool.getConnection();
+			StringBuffer sql = new StringBuffer();
+			sql.append(" delete ");
+			sql.append(" from t97_member ");
+			sql.append(" where id = ? ");
+			stmt = con.prepareStatement(sql.toString());
+			stmt.setString(1, id);
+			 stmt.executeUpdate();
+			 msg="회원탈퇴가 정상적으로 진행되었습니다";
+			 return msg;
+		
+			
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		}finally {
+			JdbcUtil.close(stmt);
+			ConnectionPool.releaseConnection(con);
+			
+		}
+		 return null;
+	}
 	
 	
 	

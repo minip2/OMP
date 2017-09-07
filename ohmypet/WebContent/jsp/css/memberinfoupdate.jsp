@@ -21,8 +21,8 @@
 	display:inline-block;
 	}
 	a{
-		color:black;
-		text-decoration:none;
+		color: black;
+		text-decoration: none;
 	}
 	c:out{
 		color: tomato;
@@ -100,13 +100,7 @@
 						<input class="a" type="text" name="phon1" >-<input class="a" type="text" name="phon2" >-<input class="a" type="text" name="phon3" >
 	 		<br>
 	 		<br>
-	 		<!-- 
-	 		file : 
-	 		<input type="file">
-	 		<br>
-	 			date:
-	 			<input type="date" value="2017-07-01" min ="2017-01-01" max ="2018-12-31">
-	 		 -->
+	 		
 	 		 Email : <input type="text" placeholder="e-mail"  name="email" value="${member.email}"> @
 	 		<select name='domain'>
  					 <option value='' selected>--&nbsp; 선택 &nbsp; --</option>
@@ -131,9 +125,10 @@
 	 		
 	 		</div>
 	 	</form>
-	 	<br>
-	 	<form action="/ohmypet/com/omp/css/controller/cssselect"><div class="container"><input type="submit" value="고객센터홈 " /></div></form>
-	 	
+		<table>
+		<div class="container"><button><a style="color: black" onclick="alert('그동한 감사합니다 안녕히가세요.');" href="/ohmypet/com/omp/common/controller/membershipdelete?id=${user.id}">회원탈퇴</a></button>
+	 	<form action="/ohmypet/com/omp/css/controller/cssselect"><input type="submit" value="고객센터홈 " /></div></form>
+	 	</table>
 	 
 	 
 
