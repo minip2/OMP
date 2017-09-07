@@ -21,7 +21,9 @@
 <body>
 <div style="margin-top:80px">
 <div class="container">
-<form method = "post" action = "${pageContext.request.contextPath}/com/omp/freeboard/controller/freeinsert">
+<form method = "post" 
+  enctype="multipart/form-data"
+action = "${pageContext.request.contextPath}/com/omp/freeboard/controller/freeinsert">
  <table width="300" border="0" cellspacing="2" cellpadding="0">
             <tr class="txt01">
                 <td height="25">&nbsp;&nbsp;글 작성하기</td>
@@ -57,7 +59,7 @@
 <!-- 파일업로드  -->
 <div class="form-group">
     <label for="exampleInputFile">파일 업로드</label><br>
-    <input type="file" id="file_path" value="파일">
+    <input type="file" name="filePath" value="파일">
 </div><br>
 
 <input type="text" placeholder="글쓴이" value="글쓴이" name="name">

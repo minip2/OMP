@@ -54,7 +54,7 @@
 <img src="나쁜남자.jpg" style="width:304px;height:228px;"><br><br>
 <input type="text" class="form-control" name="title"><br>
 
-<button class="btn btn-default" name = "delete" value="삭제" href="${pageContext.request.contextPath}/com/omp/freeboard/controller/freelist">삭제 </button>
+<a class="btn btn-default" name = "delete" href="${pageContext.request.contextPath}/com/omp/freeboard/controller/freedelete?no=${board.no}">삭제</a>
 <a class="btn btn-default pull-right" href="${pageContext.request.contextPath}/com/omp/freeboard/controller/freeinsert">글쓰기</a>
 <button  class="btn btn-default pull-right" value="댓글">댓글</button>
 </form>

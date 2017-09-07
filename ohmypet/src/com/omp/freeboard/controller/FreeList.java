@@ -19,18 +19,25 @@ public class FreeList extends HttpServlet{
 	@Override
 	protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 	
-   request.setCharacterEncoding("utf-8");
+		String sPageNo = request.getParameter("pageNo");
+		int pageNo = 1;
+		if (sPageNo != null) {
+			pageNo = Integer.parseInt(sPageNo);
+		}
+		FreeBoardDAO dao = new FreeBoardDAO();
+		List<FreeBoardDM> list = dao.selectBoard(pageNo);
+		// 전체 게시물 개수
+		int count = dao.selectBoardCount();
+		int lastPage = (count % 10 == 0) ? count / 10 : count / 10 + 1;
 		
-	FreeBoardDAO dao= new FreeBoardDAO();
-	 
-	List<FreeBoardDM> list = dao.selectBoard();
-
-	request.setAttribute("list", list);
-	
-	RequestDispatcher rd = request.getRequestDispatcher(
-
-			"/jsp/freeboard/list.jsp");
-	
-	 rd.forward(request,response);
-	}  
-}
+		request.setAttribute("list", list);
+		request.setAttribute("lastPage", lastPage);
+		RequestDispatcher rd = request.getRequestDispatcher(
+				"/jsp/freeboard/list.jsp"
+		);
+		rd.forward(request, response);
+	}
+}		
+		
+		
+		

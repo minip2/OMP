@@ -50,7 +50,18 @@
     <c:forEach var="b" items="${list}">
     <tr>
        <td> ${b.no}</td>
-       <td> ${b.categoryVal}</td>
+       <td>
+       <c:choose>
+      <c:when test="${b.categoryVal == 1 }"> 
+         강아지
+      </c:when>
+      <c:when test="${b.categoryVal == 2 }"> 
+         고양이
+      </c:when>
+      <c:when test="${b.categoryVal ne 1 and b.categoryVal ne 2}">  
+         팁
+      </c:when>
+   </c:choose></td>
        <td><a href="${pageContext.request.contextPath}/com/omp/freeboard/controller/selectbyno?no=${b.no}">${b.title}</a></td>
        <td> ${b.id}</td>
        <td> ${b.regDate}</td>
@@ -63,18 +74,20 @@
 
 <!--<a class="btn btn-default">검색</a>
   -->
-<a class="btn btn-default pull-right" href="${pageContext.request.contextPath}/com/omp/freeboard/controller/freeinsertform">글쓰기</a>
-<div class="text-center">
- <ul class = "pagination">
-    <li><a rel ="next"  href="#" >1</a></li>
-     <li><a rel ="next" href="#" >2</a></li>
-     <li><a rel ="prev" href="#" >3</a></li>
-     <li><a rel ="prev" href="#" >4</a></li>
-     <li><a rel ="prev" href="#" >5</a></li>
-   
-   </ul>
+   <a class="btn btn-default pull-right" href="${pageContext.request.contextPath}/com/omp/freeboard/controller/freeinsertform">글쓰기</a>
 </div>
 </div>
-</div>
+    <%-- 페이지번호 출력하기 --%>
+    <div class="text-center">
+   <ul class = "pagination">
+	<c:forEach var="page" begin="1" end="${lastPage}">
+	<!--[<a href="${pageContext.request.contextPath}/com/omp/freeboard/controller/freelist?pageNo=${page}">${page}</a>]  -->
+	
+     <li><a href="${pageContext.request.contextPath}/com/omp/freeboard/controller/freelist?pageNo=${page}">${page}</a></li>
+  
+
+	</c:forEach>
+	 </ul>
+	</div> 
 </body>
 </html>
