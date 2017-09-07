@@ -83,7 +83,7 @@ float: right;
 
 
 			<c:otherwise>
-				<form action="/ohmypet/com.omp.common.controller/logout">
+				<form action="/ohmypet/com/omp/common/controller/logout">
 					<button class="id">로그아웃</button>
 				</form>
 			</c:otherwise>
